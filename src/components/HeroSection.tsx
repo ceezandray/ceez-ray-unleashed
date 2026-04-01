@@ -24,13 +24,16 @@ const HeroSection = () => {
       <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
         {/* Full-bleed background */}
         <div className="absolute inset-0">
-          <img
-            src="/images/hero-ferris.jpg"
-            alt="Ceez and Ray"
+          <video
+            src="/images/hero-video.mov"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         </div>
 
         {/* Content */}
