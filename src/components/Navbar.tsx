@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Season", href: "#season" },
-  { label: "Characters", href: "#characters" },
+  { label: "Cast", href: "#cast" },
   { label: "Episodes", href: "#episodes" },
+  { label: "Apparel", href: "#apparel" },
+  { label: "Team", href: "#team" },
   { label: "Shop", href: "#shop" },
 ];
 
@@ -24,19 +24,10 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-border"
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <a href="#home" className="flex items-center gap-3">
-          <img
-            src="/images/bpf-logo.png"
-            alt="BPF"
-            className="h-8 w-auto"
-          />
-          <span className="font-heading text-lg tracking-widest text-foreground hidden sm:block">
-            BLACK PICKET FENCE
-          </span>
+          <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-10 w-auto" />
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <a
@@ -47,21 +38,19 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <button onClick={() => navigate("/dashboard")} className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          >
             LOGIN
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-foreground"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -81,7 +70,10 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <button onClick={() => { setIsOpen(false); navigate("/dashboard"); }} className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit">
+              <button
+                onClick={() => { setIsOpen(false); navigate("/dashboard"); }}
+                className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit"
+              >
                 LOGIN
               </button>
             </div>
