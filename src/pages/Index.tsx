@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import SeasonSection from "@/components/SeasonSection";
-import CharactersSection from "@/components/CharactersSection";
-import EpisodesSection from "@/components/EpisodesSection";
-import SceneGallery from "@/components/SceneGallery";
-import ShopCTA from "@/components/ShopCTA";
+import CastSection from "@/components/CastSection";
+import LatestEpisodes from "@/components/LatestEpisodes";
+import FeaturedApparel from "@/components/FeaturedApparel";
+import TheTeam from "@/components/TheTeam";
+import MediaPress from "@/components/MediaPress";
+import RepTheCulture from "@/components/RepTheCulture";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -13,12 +13,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <SeasonSection />
-      <CharactersSection />
-      <SceneGallery />
-      <EpisodesSection />
-      <ShopCTA />
+      <CastSection />
+      <LatestEpisodes />
+      <FeaturedApparel />
+      <TheTeam />
+      <MediaPress />
+      <RepTheCulture />
       <Footer />
     </div>
   );
