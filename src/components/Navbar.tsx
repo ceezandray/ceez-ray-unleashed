@@ -81,7 +81,7 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <button className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit">
+              <button onClick={() => { setIsOpen(false); navigate("/dashboard"); }} className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit">
                 LOGIN
               </button>
             </div>
