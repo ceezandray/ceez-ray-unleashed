@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -50,8 +50,25 @@
     --sidebar-border: 0 0% 16%;
     --sidebar-ring: 0 85% 50%;
 
+    /* Dashboard specific */
+    --dash-bg: 0 0% 5%;
+    --dash-surface: 0 0% 10%;
+    --dash-surface2: 0 0% 13%;
+    --dash-border: 0 0% 100% / 0.09;
+    --dash-border-hi: 0 0% 100% / 0.18;
+    --dash-text: 0 0% 100%;
+    --dash-text-2: 0 0% 100% / 0.82;
+    --dash-text-3: 0 0% 100% / 0.50;
+    --dash-text-4: 0 0% 100% / 0.28;
+    --dash-red: 2 79% 55%;
+    --dash-red-bg: 2 79% 55% / 0.12;
+    --dash-red-glow: 2 79% 55% / 0.30;
+    --dash-amber: 36 100% 53%;
+    --dash-blue: 207 90% 54%;
+
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Poppins', sans-serif;
+    --font-dash: 'Plus Jakarta Sans', -apple-system, sans-serif;
   }
 }
 
@@ -95,6 +112,11 @@
   .hero-gradient {
     background: linear-gradient(180deg, transparent 0%, hsl(var(--background)) 100%);
   }
+}
+
+/* Dashboard styles */
+.dash-font {
+  font-family: var(--font-dash);
 }
 
 /* Custom scrollbar */

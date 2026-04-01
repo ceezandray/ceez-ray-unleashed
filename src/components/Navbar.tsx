@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -13,6 +14,7 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <motion.nav
@@ -45,7 +47,7 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <button className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+          <button onClick={() => navigate("/dashboard")} className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
             LOGIN
           </button>
         </div>
@@ -79,7 +81,7 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <button className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit">
+              <button onClick={() => { setIsOpen(false); navigate("/dashboard"); }} className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit">
                 LOGIN
               </button>
             </div>
