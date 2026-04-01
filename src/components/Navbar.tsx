@@ -25,7 +25,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-10 w-auto" />
+          <img src="/images/bpf-logo.png" alt="Black Picket Fence Entertainment" className="h-10 w-auto" />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">

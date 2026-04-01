@@ -24,13 +24,16 @@ const HeroSection = () => {
       <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
         {/* Full-bleed background */}
         <div className="absolute inset-0">
-          <img
-            src="/images/hero-ferris.jpg"
-            alt="Ceez and Ray"
+          <video
+            src="/images/hero-video.mov"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         </div>
 
         {/* Content */}
@@ -44,7 +47,7 @@ const HeroSection = () => {
             <motion.img
               src="/images/ceezandray-logo.png"
               alt="CEEZ & RAY"
-              className="w-full max-w-md mb-6 drop-shadow-2xl"
+              className="w-full max-w-xs mb-6 drop-shadow-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
