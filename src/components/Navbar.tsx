@@ -47,7 +47,7 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <button className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+          <button onClick={() => navigate("/dashboard")} className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
             LOGIN
           </button>
         </div>
