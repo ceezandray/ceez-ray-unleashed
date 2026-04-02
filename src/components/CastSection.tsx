@@ -23,7 +23,7 @@ const CastSection = () => {
           viewport={{ once: true }}
           className="text-center mb-4"
         >
-          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
+          <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
             MEET THE CAST
           </h2>
           <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-2">

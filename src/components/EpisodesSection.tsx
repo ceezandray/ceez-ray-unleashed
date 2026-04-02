@@ -43,7 +43,7 @@ const EpisodesSection = () => {
           className="flex items-end justify-between mb-12"
         >
           <div>
-            <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-2">
+            <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-2">
               SEASON ONE
             </h2>
             <h3 className="font-heading text-5xl md:text-6xl text-foreground">

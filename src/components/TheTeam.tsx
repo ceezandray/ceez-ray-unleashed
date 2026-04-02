@@ -23,7 +23,7 @@ const TheTeam = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
+          <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
             BEHIND THE SCENES
           </h2>
           <h3 className="font-heading text-4xl md:text-5xl text-primary">
