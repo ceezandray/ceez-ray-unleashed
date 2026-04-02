@@ -35,8 +35,8 @@ const FeaturedApparel = () => {
           <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
             OFFICIAL MERCH
           </h2>
-          <h3 className="font-heading text-4xl md:text-5xl text-foreground">
-            FEATURED <span className="text-primary text-glow-red">APPAREL</span>
+          <h3 className="font-heading text-4xl md:text-5xl text-primary">
+            FEATURED <span className="text-glow-red">APPAREL</span>
           </h3>
         </motion.div>
 
@@ -70,7 +70,7 @@ const FeaturedApparel = () => {
                   <h4 className="font-heading text-base text-foreground group-hover:text-primary transition-colors">
                     {product.name}
                   </h4>
-                  <p className="text-muted-foreground text-sm">{product.price}</p>
+                  <p className="text-foreground text-sm">{product.price}</p>
                 </div>
                 <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>

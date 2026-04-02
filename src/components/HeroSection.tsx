@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Bell } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -43,7 +44,7 @@ const HeroSection = () => {
             className="font-heading text-5xl md:text-7xl text-foreground mb-3 leading-tight"
           >
             EPISODE 1:{" "}
-            <span className="text-primary text-glow-red">THE BODEGA INCIDENT</span>
+            <span className="text-primary text-glow-red">JOE'S BODEGA</span>
           </motion.h1>
 
           <motion.p
@@ -67,6 +68,12 @@ const HeroSection = () => {
             >
               WATCH EPISODE 1
             </a>
+            <button
+              className="inline-flex items-center gap-2 font-heading tracking-wider px-8 py-4 border border-muted-foreground/50 text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 text-sm"
+            >
+              <Bell className="w-4 h-4" />
+              NEVER MISS AN EPISODE
+            </button>
           </motion.div>
         </motion.div>
       </div>
