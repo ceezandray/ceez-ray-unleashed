@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, User } from "lucide-react";
 
-const ADMIN_USERNAME = "bpfadmin";
-const ADMIN_PASSWORD = "Tothetop2026!";
+const VALID_USERS = [
+  { username: "bpfadmin", password: "Tothetop2026!" },
+  { username: "ceezadmin", password: "Tothetop2026!" },
+  { username: "jazadmin", password: "Tothetop2026!" },
+];
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -18,8 +21,16 @@ const LoginPage = () => {
     setLoading(true);
 
     setTimeout(() => {
-      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+      const user = VALID_USERS.find(
+        u => u.username === username.toLowerCase().trim() && u.password === password
+      );
+      if (user) {
         sessionStorage.setItem("bpf-auth", "true");
+        sessionStorage.setItem("bpf-user", user.username);
+        // Log activity
+        const log = JSON.parse(sessionStorage.getItem("bpf-activity") || "[]");
+        log.push({ user: user.username, action: "Logged in", time: new Date().toISOString() });
+        sessionStorage.setItem("bpf-activity", JSON.stringify(log));
         navigate("/dashboard");
       } else {
         setError("Invalid username or password");
