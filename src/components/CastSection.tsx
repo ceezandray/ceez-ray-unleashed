@@ -11,8 +11,8 @@ const CastSection = () => {
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-background/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
       </div>
 
       <div className="container mx-auto px-6 relative">
