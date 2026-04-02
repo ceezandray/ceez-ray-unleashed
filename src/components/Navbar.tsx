@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -14,14 +14,25 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-border"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
+          : "bg-transparent border-b border-transparent"
+      }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
@@ -39,7 +50,7 @@ const Navbar = () => {
             </a>
           ))}
           <button
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/login")}
             className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
           >
             LOGIN
@@ -57,22 +68,23 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass-dark border-t border-border"
+            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border"
+            style={{ maxWidth: "350px", marginLeft: "auto" }}
           >
-            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+            <div className="px-6 py-6 flex flex-col gap-5">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="font-heading text-lg tracking-wider text-muted-foreground hover:text-primary transition-colors"
+                  className="font-heading text-xl tracking-wider text-foreground hover:text-primary transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
               <button
-                onClick={() => { setIsOpen(false); navigate("/dashboard"); }}
-                className="font-heading text-sm tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit"
+                onClick={() => { setIsOpen(false); navigate("/login"); }}
+                className="font-heading text-lg tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit"
               >
                 LOGIN
               </button>
