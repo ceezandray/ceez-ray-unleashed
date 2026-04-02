@@ -4,34 +4,34 @@ const team = [
   {
     name: "Quantice Nash",
     role: "Creator / Executive Producer",
-    image: "/images/scene-parkwalk.jpg",
+    image: "/images/quantice.jpg",
   },
   {
     name: "Jasmine Wilson",
-    role: "Co-Creator / Producer",
-    image: "/images/scene-photobooth.jpg",
+    role: "Creative Director / Producer",
+    image: "/images/jasmine.png",
   },
 ];
 
 const TheTeam = () => {
   return (
-    <section id="team" className="py-24">
+    <section id="team" className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-2">
-            BEHIND THE VISION
+          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
+            BEHIND THE SCENES
           </h2>
-          <h3 className="font-heading text-5xl md:text-6xl text-foreground">
-            THE TEAM
+          <h3 className="font-heading text-4xl md:text-5xl text-foreground">
+            THE <span className="text-primary text-glow-red">TEAM</span>
           </h3>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -39,19 +39,20 @@ const TheTeam = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="text-center group"
+              className="group text-center"
             >
-              <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-2 border-border group-hover:border-primary transition-colors duration-500">
+              <div className="relative overflow-hidden mb-4 aspect-square max-w-sm mx-auto rounded-sm">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
               <h4 className="font-heading text-xl text-foreground mb-1">{member.name}</h4>
-              <p className="font-heading text-xs tracking-[0.2em] text-primary">
-                {member.role.toUpperCase()}
+              <p className="font-heading text-xs tracking-widest text-primary uppercase">
+                {member.role}
               </p>
             </motion.div>
           ))}

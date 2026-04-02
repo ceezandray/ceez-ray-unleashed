@@ -2,35 +2,38 @@ import { motion } from "framer-motion";
 
 const MediaPress = () => {
   return (
-    <section id="media" className="py-24 bg-card/30">
+    <section className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-2">
-            IN THE SPOTLIGHT
-          </h2>
-          <h3 className="font-heading text-5xl md:text-6xl text-foreground">
+          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
             MEDIA & PRESS
+          </h2>
+          <h3 className="font-heading text-4xl md:text-5xl text-foreground mb-6">
+            IN THE <span className="text-primary text-glow-red">SPOTLIGHT</span>
           </h3>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            This is an award-winning creative team.
+          </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {[
             {
-              quote: "AI-generated storytelling has never been this raw or this funny.",
-              source: "Culture Weekly",
+              quote: "A groundbreaking series that proves AI can be genuinely funny.",
+              source: "Digital Culture Weekly",
             },
             {
-              quote: "Ceez & Ray is the most original comedy concept in years.",
-              source: "Stream Report",
+              quote: "Ceez & Ray are the duo we didn't know we needed.",
+              source: "Animation Today",
             },
             {
-              quote: "Black Picket Fence is redefining what independent media looks like.",
-              source: "The Creator Economy",
+              quote: "Black Picket Fence is rewriting the rules of content creation.",
+              source: "Creator Economy Report",
             },
           ].map((item, i) => (
             <motion.div
@@ -38,14 +41,14 @@ const MediaPress = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="border border-border p-8 hover:border-primary/40 transition-colors"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="border border-border p-6 bg-card/50"
             >
-              <p className="text-muted-foreground text-sm leading-relaxed italic mb-4">
+              <p className="text-muted-foreground text-sm italic leading-relaxed mb-4">
                 "{item.quote}"
               </p>
-              <p className="font-heading text-xs tracking-[0.2em] text-primary">
-                — {item.source.toUpperCase()}
+              <p className="font-heading text-xs tracking-wider text-primary">
+                — {item.source}
               </p>
             </motion.div>
           ))}

@@ -3,38 +3,38 @@ import { Play } from "lucide-react";
 
 const episodes = [
   {
-    number: "01",
+    number: "EP 01",
     title: "The Bodega Incident",
-    description: "What happens when a gorilla walks into a bodega? Nothing good.",
+    description: "It all started with a sandwich. And a very bad decision.",
     thumbnail: "/images/scene-bodega.jpg",
-    duration: "Coming Soon",
+    duration: "12:34",
   },
   {
-    number: "02",
-    title: "Fun Spot",
-    description: "An amusement park visit goes exactly as wrong as you'd expect.",
-    thumbnail: "/images/scene-waterslide.jpg",
-    duration: "Coming Soon",
+    number: "EP 02",
+    title: "The Big Arrest",
+    description: "When the law catches up, Ceez and Ray handle it... differently.",
+    thumbnail: "/images/scene-arrest.jpg",
+    duration: "14:22",
   },
   {
-    number: "03",
-    title: "The Subway",
-    description: "NYC transit was never designed for a gorilla and his pigeon.",
-    thumbnail: "/images/scene-subway.jpg",
-    duration: "Coming Soon",
+    number: "EP 03",
+    title: "The Mugshot",
+    description: "One mugshot goes viral. The other goes missing.",
+    thumbnail: "/images/scene-mugshot.jpg",
+    duration: "11:48",
   },
   {
-    number: "04",
-    title: "Photo Booth Heist",
-    description: "Bonnie and Clyde energy, but make it unhinged.",
-    thumbnail: "/images/scene-photobooth.jpg",
-    duration: "Coming Soon",
+    number: "EP 04",
+    title: "The Courtroom",
+    description: "Ray represents himself. Ceez considers witness protection.",
+    thumbnail: "/images/scene-courtroom.jpg",
+    duration: "15:10",
   },
 ];
 
 const LatestEpisodes = () => {
   return (
-    <section id="episodes" className="py-24">
+    <section id="episodes" className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,22 +43,22 @@ const LatestEpisodes = () => {
           className="flex items-end justify-between mb-12"
         >
           <div>
-            <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-2">
+            <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
               SEASON ONE
             </h2>
-            <h3 className="font-heading text-5xl md:text-6xl text-foreground">
-              LATEST EPISODES
+            <h3 className="font-heading text-4xl md:text-5xl text-foreground">
+              LATEST EP<span className="text-primary">i</span>sodes
             </h3>
           </div>
           <a
             href="#"
-            className="hidden md:block font-heading text-sm tracking-wider text-muted-foreground hover:text-primary transition-colors border-b border-muted-foreground hover:border-primary pb-1"
+            className="hidden md:block font-heading text-xs tracking-wider text-accent hover:text-primary transition-colors"
           >
-            VIEW ALL
+            VIEW ALL →
           </a>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {episodes.map((ep, i) => (
             <motion.div
               key={ep.number}
@@ -68,29 +68,25 @@ const LatestEpisodes = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-video overflow-hidden mb-4 border-glow">
+              <div className="relative overflow-hidden mb-3 aspect-video">
                 <img
                   src={ep.thumbnail}
                   alt={ep.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-primary-foreground ml-0.5" />
-                  </div>
+                  <Play className="w-10 h-10 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
+                <span className="absolute bottom-2 right-2 bg-background/80 text-foreground text-xs px-2 py-0.5 font-heading">
+                  {ep.duration}
+                </span>
               </div>
-              <div className="flex gap-3 items-start">
-                <span className="font-heading text-2xl text-primary">{ep.number}</span>
-                <div>
-                  <h4 className="font-heading text-base text-foreground mb-1">{ep.title}</h4>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{ep.description}</p>
-                  <span className="text-xs text-primary/70 font-heading tracking-wider mt-2 inline-block">
-                    {ep.duration}
-                  </span>
-                </div>
-              </div>
+              <p className="font-heading text-xs tracking-wider text-primary mb-1">{ep.number}</p>
+              <h4 className="font-heading text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+                {ep.title}
+              </h4>
+              <p className="text-muted-foreground text-sm">{ep.description}</p>
             </motion.div>
           ))}
         </div>
