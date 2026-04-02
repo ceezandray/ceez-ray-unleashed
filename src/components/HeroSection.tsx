@@ -32,7 +32,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="font-heading text-xs tracking-[0.3em] text-primary mb-4"
+            className="font-heading text-xs tracking-[0.3em] text-foreground mb-4"
           >
             A BLACK PICKET FENCE ENTERTAINMENT ORIGINAL
           </motion.p>
