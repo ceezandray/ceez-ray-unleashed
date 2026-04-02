@@ -20,7 +20,7 @@ const ShopCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
+          <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
             OFFICIAL MERCH
           </h2>
           <h3 className="font-heading text-5xl md:text-7xl text-foreground mb-4">

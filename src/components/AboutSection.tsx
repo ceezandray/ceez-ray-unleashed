@@ -12,7 +12,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-2">
+            <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-2">
               THE SERIES
             </h2>
             <h3 className="font-heading text-5xl md:text-6xl text-foreground mb-6 leading-tight">

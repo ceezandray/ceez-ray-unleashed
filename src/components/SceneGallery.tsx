@@ -11,7 +11,7 @@ const SceneGallery = () => {
   return (
     <section className="py-16 overflow-hidden">
       <div className="container mx-auto px-6 mb-8">
-        <h2 className="font-heading text-sm tracking-[0.3em] text-primary">
+        <h2 className="font-heading text-sm tracking-[0.3em] text-foreground">
           BEHIND THE SCENES
         </h2>
       </div>
