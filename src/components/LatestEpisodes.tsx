@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 const episodes = [
   {
     number: "EP 01",
-    title: "The Bodega Incident",
+    title: "Joe's Bodega",
     description: "It all started with a sandwich. And a very bad decision.",
     thumbnail: "/images/scene-bodega.jpg",
     duration: "12:34",
@@ -46,8 +46,8 @@ const LatestEpisodes = () => {
             <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
               SEASON ONE
             </h2>
-            <h3 className="font-heading text-4xl md:text-5xl text-foreground">
-              LATEST EP<span className="text-primary">i</span>sodes
+            <h3 className="font-heading text-4xl md:text-5xl text-primary">
+              LATEST <span className="text-glow-red">EPISODES</span>
             </h3>
           </div>
           <a
@@ -76,17 +76,17 @@ const LatestEpisodes = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-300 flex items-center justify-center">
-                  <Play className="w-10 h-10 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Play className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <span className="absolute bottom-2 right-2 bg-background/80 text-foreground text-xs px-2 py-0.5 font-heading">
                   {ep.duration}
                 </span>
               </div>
               <p className="font-heading text-xs tracking-wider text-primary mb-1">{ep.number}</p>
-              <h4 className="font-heading text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+              <h4 className="font-heading text-lg text-primary mb-1 group-hover:text-primary/80 transition-colors">
                 {ep.title}
               </h4>
-              <p className="text-muted-foreground text-sm">{ep.description}</p>
+              <p className="text-foreground text-sm">{ep.description}</p>
             </motion.div>
           ))}
         </div>

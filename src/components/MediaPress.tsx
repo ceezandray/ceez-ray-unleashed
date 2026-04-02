@@ -13,10 +13,10 @@ const MediaPress = () => {
           <h2 className="font-heading text-sm tracking-[0.3em] text-primary mb-4">
             MEDIA & PRESS
           </h2>
-          <h3 className="font-heading text-4xl md:text-5xl text-foreground mb-6">
-            IN THE <span className="text-primary text-glow-red">SPOTLIGHT</span>
+          <h3 className="font-heading text-4xl md:text-5xl text-primary mb-6">
+            IN THE <span className="text-glow-red">SPOTLIGHT</span>
           </h3>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-foreground text-lg max-w-2xl mx-auto">
             This is an award-winning creative team.
           </p>
         </motion.div>
@@ -44,7 +44,7 @@ const MediaPress = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="border border-border p-6 bg-card/50"
             >
-              <p className="text-muted-foreground text-sm italic leading-relaxed mb-4">
+              <p className="text-foreground text-sm italic leading-relaxed mb-4">
                 "{item.quote}"
               </p>
               <p className="font-heading text-xs tracking-wider text-primary">
