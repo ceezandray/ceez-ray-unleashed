@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   LayoutGrid, Calendar, DollarSign, TrendingUp, Share2,
-  BarChart3, ShoppingBag, Wrench, ArrowLeft, Clock,
+  BarChart3, ShoppingBag, ArrowLeft, Clock,
   Upload, Mail, ExternalLink, FileText, Lock, Settings,
   Plus, Check, X, Paperclip, ChevronRight, Image, Video,
-  LayoutDashboard
+  LayoutDashboard, Wrench, Filter
 } from "lucide-react";
 
 // ═══════════════════════════════════════════
@@ -50,7 +50,7 @@ interface OtherEarning {
 }
 
 // ═══════════════════════════════════════════
-// SIDEBAR ITEMS
+// SIDEBAR ITEMS (removed Website Fixes from left)
 // ═══════════════════════════════════════════
 const sidebarSections: { label?: string; items: SidebarItem[] }[] = [
   {
@@ -72,12 +72,6 @@ const sidebarSections: { label?: string; items: SidebarItem[] }[] = [
     items: [
       { id: "traffic", label: "Traffic & Analytics", icon: <BarChart3 size={19} /> },
       { id: "social", label: "Social Hub", icon: <Share2 size={19} /> },
-    ],
-  },
-  {
-    label: "Operations",
-    items: [
-      { id: "fixes", label: "Website Fixes", icon: <Wrench size={19} />, badge: 5 },
     ],
   },
 ];
@@ -196,6 +190,10 @@ const DashboardPage = () => {
   // Tools drawer
   const [toolsOpen, setToolsOpen] = useState(false);
 
+  // Calendar filter
+  const [calendarFilter, setCalendarFilter] = useState<Set<string>>(new Set(["quantice", "staff", "jasmine"]));
+  const [showCalendarFilter, setShowCalendarFilter] = useState(false);
+
   // Clock
   const tick = useCallback(() => {
     const now = new Date();
@@ -273,6 +271,16 @@ const DashboardPage = () => {
     { day: "15", mo: "Apr", title: "Upload Day", detail: "Ep 3 release", assign: "quantice" as const },
   ];
 
+  const filteredCalendarEvents = calendarEvents.filter(ev => calendarFilter.has(ev.assign));
+
+  const toggleCalendarFilter = (key: string) => {
+    setCalendarFilter(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key); else next.add(key);
+      return next;
+    });
+  };
+
   return (
     <div className="dash-font h-screen flex flex-col bg-[hsl(var(--dash-bg))] text-[hsl(var(--dash-text))] text-[15px] overflow-hidden">
       {/* TOPBAR */}
@@ -285,6 +293,13 @@ const DashboardPage = () => {
           <span className="text-[15px] font-extrabold tracking-tight">Creator Dashboard</span>
         </div>
         <div className="flex items-center gap-2">
+          {/* Tools button in topbar */}
+          <button
+            onClick={() => setToolsOpen(!toolsOpen)}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${toolsOpen ? "border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] bg-[hsl(var(--dash-red-bg))]" : "border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))]"}`}
+          >
+            ⚙ Tools
+          </button>
           <button
             onClick={() => setShowPasswordChange(!showPasswordChange)}
             className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all"
@@ -367,8 +382,8 @@ const DashboardPage = () => {
 
       {/* MAIN LAYOUT */}
       <div className="flex-1 grid grid-cols-[210px_1fr_260px] overflow-hidden">
-        {/* SIDEBAR - scrollable */}
-        <div className="bg-[hsl(var(--sidebar-background))] border-r border-[rgba(255,255,255,0.09)] flex flex-col p-3 gap-1 overflow-y-auto">
+        {/* SIDEBAR - NOT scrollable */}
+        <div className="bg-[hsl(var(--sidebar-background))] border-r border-[rgba(255,255,255,0.09)] flex flex-col p-3 gap-1 overflow-hidden">
           {sidebarSections.map((section, si) => (
             <div key={si}>
               {si > 0 && <div className="h-px bg-[rgba(255,255,255,0.09)] my-1.5 mx-1" />}
@@ -387,11 +402,6 @@ const DashboardPage = () => {
                 >
                   {item.icon}
                   <span className="whitespace-nowrap">{item.label}</span>
-                  {item.badge && (
-                    <span className={`absolute top-1.5 right-2.5 w-[17px] h-[17px] rounded-full text-[9px] font-extrabold flex items-center justify-center ${
-                      activePanel === item.id ? "bg-[rgba(255,255,255,0.25)] text-[hsl(var(--dash-text))]" : "bg-[hsl(var(--dash-text))] text-[hsl(var(--dash-red))]"
-                    }`}>{item.badge}</span>
-                  )}
                 </button>
               ))}
             </div>
@@ -673,21 +683,50 @@ const DashboardPage = () => {
             <div className="flex flex-col h-full p-4 gap-3 animate-fade-in">
               <div className="flex items-center justify-between pb-3 border-b border-[rgba(255,255,255,0.09)]">
                 <div className="text-xl font-extrabold tracking-tight">Calendar</div>
-                <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">
-                  <Calendar size={13} /> Open Google Calendar
-                </a>
+                <div className="flex items-center gap-2">
+                  <div className="relative">
+                    <button
+                      onClick={() => setShowCalendarFilter(!showCalendarFilter)}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all"
+                    >
+                      <Filter size={13} /> Filter
+                    </button>
+                    {showCalendarFilter && (
+                      <div className="absolute top-full right-0 mt-1 w-[180px] bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.18)] rounded-xl p-2 shadow-2xl z-50">
+                        {(["quantice", "jasmine", "staff"] as const).map(key => (
+                          <button
+                            key={key}
+                            onClick={() => toggleCalendarFilter(key)}
+                            className="flex items-center gap-2.5 w-full px-3 py-2 rounded-lg text-sm font-semibold hover:bg-[rgba(255,255,255,0.06)] transition-all"
+                          >
+                            <div className={`w-4 h-4 rounded border-[1.5px] flex items-center justify-center transition-all ${calendarFilter.has(key) ? `${assignColors[key].checkBg} border-transparent` : "border-[rgba(255,255,255,0.3)]"}`}>
+                              {calendarFilter.has(key) && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
+                            </div>
+                            <span>{assignLabels[key]}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">
+                    <Calendar size={13} /> Open Google Calendar
+                  </a>
+                </div>
               </div>
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] overflow-hidden shadow-lg">
-                {calendarEvents.map((ev, i) => {
+                {filteredCalendarEvents.length === 0 && (
+                  <div className="px-4 py-6 text-center text-sm text-[hsl(var(--dash-text-4))]">No events match the current filter.</div>
+                )}
+                {filteredCalendarEvents.map((ev, i) => {
                   const c = assignColors[ev.assign];
                   return (
                     <div key={i} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
                       <div className="w-[42px] text-center flex-shrink-0">
                         <div className={`text-xl font-extrabold leading-none ${c.dateColor}`}>{ev.day}</div>
-                        <div className="text-[9px] font-bold uppercase tracking-wider text-[rgba(255,255,255,0.5)]">{ev.mo}</div>
+                        <div className="text-[9px] font-normal uppercase tracking-wider text-white">{ev.mo}</div>
                       </div>
                       <div className="flex-1">
-                        <div className="text-sm font-bold text-[rgba(255,255,255,0.9)]">{ev.title}</div>
+                        <div className="text-sm font-bold text-white">{ev.title}</div>
                         <div className="text-xs text-[rgba(255,255,255,0.5)] mt-0.5">{ev.detail}</div>
                       </div>
                       <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${c.badge}`}>{assignLabels[ev.assign]}</span>
@@ -819,8 +858,8 @@ const DashboardPage = () => {
 
         {/* RIGHT PANEL - fixed (not scrollable) */}
         <div className="bg-[hsl(var(--sidebar-background))] border-l border-[rgba(255,255,255,0.09)] flex flex-col overflow-hidden">
-          {/* Upload */}
-          <div className="p-3 pt-4">
+          {/* Upload Content */}
+          <div className="p-3 pt-3">
             <a
               href="https://drive.google.com/drive/folders/1Rz3fzmttd4Ue59mHPL7V-mJUYS6FI7H-?usp=sharing"
               target="_blank" rel="noopener noreferrer"
@@ -828,6 +867,16 @@ const DashboardPage = () => {
             >
               <Upload size={18} /> Upload Content
             </a>
+          </div>
+
+          {/* Storyboard - outline blue */}
+          <div className="px-3 pb-2">
+            <button
+              onClick={() => navigate("/storyboard")}
+              className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border-2 border-[#2196f3] text-[#2196f3] text-sm font-bold hover:bg-[rgba(33,150,243,0.08)] transition-all"
+            >
+              <LayoutDashboard size={18} /> Storyboard
+            </button>
           </div>
 
           {/* Email */}
@@ -840,24 +889,13 @@ const DashboardPage = () => {
             </a>
           </div>
 
-          {/* Storyboard */}
-          <div className="px-3.5 py-2.5 border-t border-[rgba(255,255,255,0.09)]">
-            <button
-              onClick={() => navigate("/storyboard")}
-              className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl bg-[#2196f3] text-white text-sm font-bold hover:bg-[#1976d2] transition-all shadow-lg"
-            >
-              <LayoutDashboard size={18} /> Storyboard
-            </button>
-          </div>
-
           {/* Documents */}
           <div className="px-3.5 py-2.5 border-t border-[rgba(255,255,255,0.09)] flex-1 flex flex-col min-h-0">
-            <div className="text-[10px] font-extrabold tracking-[0.12em] uppercase text-[hsl(var(--dash-text-4))] mb-2">Important Documents</div>
             <div className="flex flex-col gap-1">
               {[
                 { icon: <FileText size={16} />, name: "Legal Agreements", meta: "Contracts & IP docs", color: "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-red))]" },
                 { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,159,10,0.15)] text-[hsl(var(--dash-amber))]" },
-                { icon: <Settings size={16} />, name: "Website Fixes", meta: "Issue tracker", color: "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-red))]", onClick: () => setActivePanel("fixes") },
+                { icon: <Wrench size={16} />, name: "Website Fixes", meta: `${openCount} open issues`, color: "bg-[rgba(255,255,255,0.10)] text-white", onClick: () => setActivePanel("fixes"), badge: openCount },
               ].map((doc, i) => (
                 <button
                   key={i}
@@ -871,22 +909,17 @@ const DashboardPage = () => {
                     <div className="text-[13px] font-bold truncate">{doc.name}</div>
                     <div className="text-[11px] font-medium text-[hsl(var(--dash-text-4))] mt-0.5">{doc.meta}</div>
                   </div>
-                  <ChevronRight size={14} className="text-[hsl(var(--dash-text-4))] flex-shrink-0" />
+                  {"badge" in doc && doc.badge ? (
+                    <span className="w-[17px] h-[17px] rounded-full text-[9px] font-extrabold flex items-center justify-center bg-[hsl(var(--dash-red))] text-white">{doc.badge}</span>
+                  ) : (
+                    <ChevronRight size={14} className="text-[hsl(var(--dash-text-4))] flex-shrink-0" />
+                  )}
                 </button>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Tools Tab */}
-      <button
-        onClick={() => setToolsOpen(!toolsOpen)}
-        className={`fixed z-[100] bg-[hsl(var(--dash-red))] text-[hsl(var(--dash-text))] py-3.5 px-2 rounded-l-[10px] text-[11px] font-extrabold tracking-[0.12em] uppercase cursor-pointer shadow-[-3px_0_16px_hsl(var(--dash-red-glow))] transition-all hover:bg-[hsl(var(--dash-red)/0.85)] ${toolsOpen ? "right-[280px]" : "right-0"}`}
-        style={{ top: "calc(50% - 60px)", writingMode: "vertical-rl", textOrientation: "mixed" }}
-      >
-        ⚙ Tools
-      </button>
 
       {/* Tools Drawer */}
       <div className={`fixed top-[52px] bottom-0 w-[280px] z-[99] bg-[hsl(var(--sidebar-background))] border-l border-[rgba(255,255,255,0.09)] shadow-[-8px_0_32px_rgba(0,0,0,0.45)] flex flex-col overflow-y-auto transition-all duration-300 ${toolsOpen ? "right-0" : "-right-[280px]"}`}>
