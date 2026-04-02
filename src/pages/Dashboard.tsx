@@ -4,7 +4,7 @@ import {
   LayoutGrid, Calendar, DollarSign, TrendingUp, Share2,
   BarChart3, ShoppingBag, Wrench, ArrowLeft, Clock,
   Upload, Mail, ExternalLink, FileText, Lock, Settings,
-  Plus, Check, X, Paperclip, ChevronRight
+  Plus, Check, X, Paperclip, ChevronRight, Image, Video
 } from "lucide-react";
 
 // ═══════════════════════════════════════════
@@ -40,6 +40,14 @@ interface Fix {
   status: "open" | "progress" | "done";
 }
 
+interface OtherEarning {
+  id: number;
+  description: string;
+  amount: string;
+  date: string;
+  project: string;
+}
+
 // ═══════════════════════════════════════════
 // SIDEBAR ITEMS
 // ═══════════════════════════════════════════
@@ -55,13 +63,13 @@ const sidebarSections: { label?: string; items: SidebarItem[] }[] = [
     items: [
       { id: "yt-earnings", label: "YouTube", icon: <DollarSign size={19} /> },
       { id: "merch-earnings", label: "Merch Sales", icon: <ShoppingBag size={19} /> },
-      { id: "monetization", label: "Monetization", icon: <TrendingUp size={19} /> },
+      { id: "other-earnings", label: "Other Earnings", icon: <TrendingUp size={19} /> },
     ],
   },
   {
     label: "Content",
     items: [
-      { id: "yt-traffic", label: "YT Traffic", icon: <BarChart3 size={19} /> },
+      { id: "traffic", label: "Traffic & Analytics", icon: <BarChart3 size={19} /> },
       { id: "social", label: "Social Hub", icon: <Share2 size={19} /> },
     ],
   },
@@ -142,6 +150,17 @@ const DashboardPage = () => {
   const [clock, setClock] = useState("");
   const [timezone, setTimezone] = useState("America/New_York");
 
+  // Auth check
+  useEffect(() => {
+    if (!sessionStorage.getItem("bpf-auth")) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  // Password change
+  const [showPasswordChange, setShowPasswordChange] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+
   // Todos
   const [todos, setTodos] = useState<Todo[]>([]);
   const [todoInput, setTodoInput] = useState("");
@@ -165,6 +184,13 @@ const DashboardPage = () => {
   ]);
   const [fixInput, setFixInput] = useState("");
   const [fixPriority, setFixPriority] = useState<Fix["priority"]>("med");
+
+  // Other Earnings
+  const [otherEarnings, setOtherEarnings] = useState<OtherEarning[]>([]);
+  const [earningDesc, setEarningDesc] = useState("");
+  const [earningAmount, setEarningAmount] = useState("");
+  const [earningDate, setEarningDate] = useState("");
+  const [earningProject, setEarningProject] = useState("");
 
   // Tools drawer
   const [toolsOpen, setToolsOpen] = useState(false);
@@ -207,10 +233,44 @@ const DashboardPage = () => {
     setFixInput("");
   };
 
+  // Other earnings handler
+  const addOtherEarning = () => {
+    if (!earningDesc.trim() || !earningAmount.trim()) return;
+    setOtherEarnings(prev => [...prev, {
+      id: Date.now(),
+      description: earningDesc.trim(),
+      amount: earningAmount.trim(),
+      date: earningDate || new Date().toLocaleDateString(),
+      project: earningProject.trim(),
+    }]);
+    setEarningDesc("");
+    setEarningAmount("");
+    setEarningDate("");
+    setEarningProject("");
+  };
+
   const openCount = fixes.filter(f => f.status === "open").length;
 
   // Chart data
   const chartLabels = ["Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Today"];
+
+  // Color helpers for todos/calendar
+  const assignColors = {
+    jasmine: { border: "border-[#2196f3]", bg: "bg-[rgba(33,150,243,0.06)]", badge: "bg-[rgba(33,150,243,0.15)] text-[#2196f3]", check: "border-[#2196f3]", checkBg: "bg-[#2196f3]", dot: "bg-[#2196f3]" },
+    quantice: { border: "border-[#FFD600]", bg: "bg-[rgba(255,214,0,0.06)]", badge: "bg-[rgba(255,214,0,0.15)] text-[#FFD600]", check: "border-[#FFD600]", checkBg: "bg-[#FFD600]", dot: "bg-[#FFD600]" },
+    staff: { border: "border-[hsl(var(--dash-red))]", bg: "bg-[hsl(var(--dash-red-bg))]", badge: "bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]", check: "border-[hsl(var(--dash-red))]", checkBg: "bg-[hsl(var(--dash-red))]", dot: "bg-[hsl(var(--dash-red))]" },
+  };
+  const assignLabels = { jasmine: "Jasmine", quantice: "Quantice", staff: "Staff" };
+
+  // Calendar events with color coding
+  const calendarEvents = [
+    { day: "29", mo: "Mar", title: "Upload Day", detail: "New video goes live — final edit by 10am", assign: "quantice" as const },
+    { day: "31", mo: "Mar", title: "Month Recap & Q2 Planning", detail: "Review March numbers, plan April content", assign: "staff" as const },
+    { day: "5", mo: "Apr", title: "Collab Shoot", detail: "Filming with guest — confirm location", assign: "jasmine" as const },
+    { day: "8", mo: "Apr", title: "Upload Day", detail: "Ep 2 release — all platforms", assign: "quantice" as const },
+    { day: "11", mo: "Apr", title: "Merch Restock Drop", detail: "Limited hoodie restock — announce 48hrs before", assign: "staff" as const },
+    { day: "15", mo: "Apr", title: "Upload Day", detail: "Ep 3 release", assign: "quantice" as const },
+  ];
 
   return (
     <div className="dash-font h-screen flex flex-col bg-[hsl(var(--dash-bg))] text-[hsl(var(--dash-text))] text-[15px] overflow-hidden">
@@ -221,9 +281,16 @@ const DashboardPage = () => {
             <ArrowLeft size={14} />
             <span className="hidden sm:inline">Back to Site</span>
           </button>
-          <span className="text-[15px] font-extrabold tracking-tight">Ceez & Ray Creator Dashboard</span>
+          <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-8" />
+          <span className="text-[15px] font-extrabold tracking-tight">Creator Dashboard</span>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowPasswordChange(!showPasswordChange)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all"
+          >
+            <Settings size={13} />
+          </button>
           <div className="hidden sm:flex items-center gap-1.5 bg-[rgba(255,255,255,0.10)] border border-[rgba(255,255,255,0.18)] rounded-full px-2.5 py-1 text-[11px] font-semibold">
             <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--dash-text))] animate-pulse" />
             Online
@@ -240,8 +307,37 @@ const DashboardPage = () => {
               <option value="America/Los_Angeles">PST</option>
             </select>
           </div>
+          <button
+            onClick={() => { sessionStorage.removeItem("bpf-auth"); navigate("/login"); }}
+            className="px-2.5 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all"
+          >
+            Logout
+          </button>
         </div>
       </div>
+
+      {/* Password Change Modal */}
+      {showPasswordChange && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowPasswordChange(false)}>
+          <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.18)] rounded-2xl p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
+            <h3 className="text-lg font-extrabold mb-4">Change Password</h3>
+            <input
+              type="password"
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+              placeholder="New password"
+              className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none mb-3 focus:border-[hsl(var(--dash-red))]"
+            />
+            <button
+              onClick={() => { setShowPasswordChange(false); setNewPassword(""); }}
+              className="w-full py-2.5 bg-[hsl(var(--dash-red))] rounded-lg text-sm font-bold shadow-[0_2px_8px_hsl(var(--dash-red-glow))]"
+            >
+              Update Password
+            </button>
+            <p className="text-[11px] text-[hsl(var(--dash-text-4))] mt-2 text-center">Password changes will take effect on next login.</p>
+          </div>
+        </div>
+      )}
 
       {/* HERO BANNER */}
       <div className="relative h-[195px] flex-shrink-0 mt-[52px] overflow-hidden bg-[hsl(var(--dash-bg))]">
@@ -251,7 +347,7 @@ const DashboardPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(to right, hsl(var(--dash-red)) 0%, hsl(var(--dash-red) / 0.5) 50%, transparent 100%)" }} />
         <div className="absolute inset-0 flex items-center px-7">
           <div className="flex flex-col gap-2">
-            <img src="/images/logo-title.png" alt="Ceez & Ray" className="h-[72px] drop-shadow-2xl" />
+            <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-[72px] drop-shadow-2xl" style={{ objectFit: "contain", maxWidth: "300px" }} />
             <div className="flex gap-0 mt-2">
               {[
                 { val: "2.4M", lbl: "Monthly Views" },
@@ -271,7 +367,7 @@ const DashboardPage = () => {
 
       {/* MAIN LAYOUT */}
       <div className="flex-1 grid grid-cols-[210px_1fr_260px] overflow-hidden">
-        {/* SIDEBAR */}
+        {/* SIDEBAR - scrollable */}
         <div className="bg-[hsl(var(--sidebar-background))] border-r border-[rgba(255,255,255,0.09)] flex flex-col p-3 gap-1 overflow-y-auto">
           {sidebarSections.map((section, si) => (
             <div key={si}>
@@ -302,7 +398,7 @@ const DashboardPage = () => {
           ))}
         </div>
 
-        {/* MAIN CONTENT */}
+        {/* MAIN CONTENT - scrollable */}
         <div className="overflow-hidden relative">
           {/* Dashboard Home Panel */}
           {activePanel === "dashboard" && (
@@ -339,21 +435,17 @@ const DashboardPage = () => {
                 <div className="flex flex-col gap-1.5">
                   {todos.length === 0 && <div className="text-[13px] text-[hsl(var(--dash-text-4))] py-3">No tasks yet. Add one above.</div>}
                   {todos.map(t => {
-                    const colors = { jasmine: "border-[#2196f3] bg-[rgba(33,150,243,0.06)]", quantice: "border-[hsl(var(--dash-red))] bg-[hsl(var(--dash-red-bg))]", staff: "border-[rgba(255,255,255,0.30)] bg-[rgba(255,255,255,0.03)]" };
-                    const badgeColors = { jasmine: "bg-[rgba(33,150,243,0.15)] text-[#2196f3]", quantice: "bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]", staff: "bg-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.5)]" };
-                    const labels = { jasmine: "Jasmine", quantice: "Quantice", staff: "Staff" };
+                    const c = assignColors[t.assign];
                     return (
-                      <div key={t.id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-[10px] border-[1.5px] transition-all ${colors[t.assign]} ${t.done ? "opacity-45 line-through" : ""}`}>
+                      <div key={t.id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-[10px] border-[1.5px] transition-all ${c.border} ${c.bg} ${t.done ? "opacity-45 line-through" : ""}`}>
                         <button
                           onClick={() => setTodos(prev => prev.map(x => x.id === t.id ? { ...x, done: !x.done } : x))}
-                          className={`w-[18px] h-[18px] rounded-[5px] border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all ${
-                            t.assign === "jasmine" ? "border-[#2196f3]" : t.assign === "quantice" ? "border-[hsl(var(--dash-red))]" : "border-[rgba(255,255,255,0.40)]"
-                          } ${t.done ? (t.assign === "jasmine" ? "bg-[#2196f3]" : t.assign === "quantice" ? "bg-[hsl(var(--dash-red))]" : "bg-[rgba(255,255,255,0.30)]") : ""}`}
+                          className={`w-[18px] h-[18px] rounded-[5px] border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all ${c.check} ${t.done ? c.checkBg : ""}`}
                         >
-                          {t.done && <Check size={10} className="text-[hsl(var(--dash-text))]" />}
+                          {t.done && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
                         </button>
                         <span className="flex-1 text-sm font-medium">{t.text}</span>
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${badgeColors[t.assign]}`}>{labels[t.assign]}</span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${c.badge}`}>{assignLabels[t.assign]}</span>
                         <button onClick={() => setTodos(prev => prev.filter(x => x.id !== t.id))} className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[hsl(var(--dash-text-4))] hover:bg-[hsl(var(--dash-red-bg))] hover:text-[hsl(var(--dash-red))] transition-all">
                           <X size={13} />
                         </button>
@@ -407,8 +499,7 @@ const DashboardPage = () => {
                         <span className="absolute bottom-2 left-3.5 text-[10px] font-semibold opacity-50">{s.date}</span>
                         <button
                           onClick={() => setStickies(prev => prev.filter(x => x.id !== s.id))}
-                          className="absolute top-2 right-2 w-5 h-5 rounded-full bg-[rgba(0,0,0,0.18)] flex items-center justify-center text-[11px] opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity"
-                          style={{ opacity: undefined }}
+                          className="absolute top-2 right-2 w-5 h-5 rounded-full bg-[rgba(0,0,0,0.18)] flex items-center justify-center text-[11px] opacity-0 hover:opacity-100 transition-opacity"
                           onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
                           onMouseLeave={e => (e.currentTarget.style.opacity = "0")}
                         >
@@ -483,7 +574,6 @@ const DashboardPage = () => {
                   </div>
                 ))}
               </div>
-              {/* Orders Table */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] overflow-hidden shadow-lg flex-1">
                 <div className="grid grid-cols-[2fr_1.5fr_1fr_1fr] px-4 py-2.5 border-b border-[rgba(255,255,255,0.09)] text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] bg-[hsl(var(--dash-surface2))]">
                   <span>Customer</span><span>Product</span><span>Total</span><span>Status</span>
@@ -510,46 +600,52 @@ const DashboardPage = () => {
             </div>
           )}
 
-          {/* Monetization Panel */}
-          {activePanel === "monetization" && (
+          {/* Other Earnings Panel (renamed from Monetization) */}
+          {activePanel === "other-earnings" && (
             <div className="flex flex-col h-full p-4 gap-3 overflow-y-auto animate-fade-in">
               <div className="flex items-center gap-2.5 pb-3 border-b border-[rgba(255,255,255,0.09)]">
-                <div className="text-xl font-extrabold tracking-tight">Monetization</div>
-                <div className="text-xs font-medium text-[hsl(var(--dash-text-4))]">All Revenue Streams — March 2026</div>
+                <div className="text-xl font-extrabold tracking-tight">Other Earnings</div>
+                <div className="text-xs font-medium text-[hsl(var(--dash-text-4))]">Brand Deals, Endorsements & More</div>
               </div>
-              <div className="grid grid-cols-3 gap-2.5">
-                <StatCard label="Total Revenue" value="$10,053" delta="↑ +19.4% vs Feb" accent />
-                <StatCard label="YouTube AdSense" value="$3,812" delta="37.9% of total" />
-                <StatCard label="Merch (Fourthwall)" value="$6,241" delta="62.1% of total" />
-              </div>
+
+              {/* Submission form */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
-                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Revenue by Stream</div>
-                <ProgressBar name="Merch Sales (Fourthwall)" value="$6,241" pct={100} />
-                <ProgressBar name="YouTube Ad Revenue" value="$2,890" pct={46} />
-                <ProgressBar name="YouTube Premium" value="$612" pct={10} />
-                <ProgressBar name="Super Chats / Stickers" value="$310" pct={5} />
+                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Log New Earning</div>
+                <div className="grid grid-cols-2 gap-2.5 mb-3">
+                  <input value={earningDesc} onChange={e => setEarningDesc(e.target.value)} placeholder="Income description" className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[hsl(var(--dash-red))] placeholder:text-[hsl(var(--dash-text-4))]" />
+                  <input value={earningAmount} onChange={e => setEarningAmount(e.target.value)} placeholder="Amount ($)" className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[hsl(var(--dash-red))] placeholder:text-[hsl(var(--dash-text-4))]" />
+                  <input type="date" value={earningDate} onChange={e => setEarningDate(e.target.value)} className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[hsl(var(--dash-red))]" />
+                  <input value={earningProject} onChange={e => setEarningProject(e.target.value)} placeholder="Project details" className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[hsl(var(--dash-red))] placeholder:text-[hsl(var(--dash-text-4))]" />
+                </div>
+                <button onClick={addOtherEarning} className="px-4 py-2.5 bg-[hsl(var(--dash-red))] rounded-lg text-sm font-bold text-[hsl(var(--dash-text))] shadow-[0_2px_8px_hsl(var(--dash-red-glow))] hover:brightness-110">Submit</button>
               </div>
+
+              {/* Examples */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
-                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Monthly Revenue — Last 14 Days</div>
-                <BarChart data={[120, 180, 95, 210, 160, 195, 140, 230, 185, 200, 160, 210, 225, 260]} labels={chartLabels} />
-              </div>
-              <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
-                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Additional Revenue Streams</div>
-                {["Brand Deals / Sponsorships", "Patreon / Memberships", "Licensing / IP Revenue"].map((name, i) => (
-                  <div key={i} className="flex items-center justify-between py-2.5 border-b border-[rgba(255,255,255,0.09)] last:border-b-0">
-                    <span className="text-sm font-medium text-[hsl(var(--dash-text-3))]">{name}</span>
-                    <span className="text-xs font-semibold text-[hsl(var(--dash-text-4))] bg-[rgba(255,255,255,0.06)] px-2.5 py-0.5 rounded-full">Not connected</span>
+                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Logged Earnings</div>
+                {otherEarnings.length === 0 && (
+                  <div className="text-[13px] text-[hsl(var(--dash-text-4))] py-3">
+                    No entries yet. Log brand deals, endorsements, product placement, banner ads, etc.
+                  </div>
+                )}
+                {otherEarnings.map(e => (
+                  <div key={e.id} className="flex items-center justify-between py-2.5 border-b border-[rgba(255,255,255,0.09)] last:border-b-0">
+                    <div>
+                      <div className="text-sm font-semibold text-[hsl(var(--dash-text-2))]">{e.description}</div>
+                      <div className="text-xs text-[hsl(var(--dash-text-4))]">{e.project} · {e.date}</div>
+                    </div>
+                    <span className="text-[15px] font-extrabold">${e.amount}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* YT Traffic Panel */}
-          {activePanel === "yt-traffic" && (
+          {/* Traffic & Analytics Panel */}
+          {activePanel === "traffic" && (
             <div className="flex flex-col h-full p-4 gap-3 overflow-y-auto animate-fade-in">
               <div className="flex items-center gap-2.5 pb-3 border-b border-[rgba(255,255,255,0.09)]">
-                <div className="text-xl font-extrabold tracking-tight">YouTube Traffic</div>
+                <div className="text-xl font-extrabold tracking-tight">Traffic & Analytics</div>
                 <div className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]">March 2026</div>
               </div>
               <div className="grid grid-cols-3 gap-2.5">
@@ -558,19 +654,37 @@ const DashboardPage = () => {
                 <StatCard label="Avg View Duration" value="6:42" delta="↑ +0:18 vs last mo" accent />
                 <StatCard label="Impressions" value="8.1M" delta="↑ +12.3%" />
                 <StatCard label="CTR" value="5.8%" delta="↑ +0.3pp" />
-                <StatCard label="Unique Viewers" value="1.6M" delta="↑ +14.1%" />
+                <StatCard label="Unique Visitors" value="1.6M" delta="↑ +14.1%" />
               </div>
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
                 <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Daily Views — Last 14 Days</div>
                 <BarChart data={[62, 88, 52, 104, 81, 96, 68, 110, 88, 98, 76, 102, 108, 120]} labels={chartLabels} />
               </div>
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
+                  <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Traffic Sources (YouTube)</div>
+                  <ProgressBar name="YouTube Search" value="42%" pct={42} />
+                  <ProgressBar name="Suggested Videos" value="31%" pct={31} />
+                  <ProgressBar name="Browse Features" value="15%" pct={15} />
+                  <ProgressBar name="External Sources" value="8%" pct={8} />
+                  <ProgressBar name="Direct / Other" value="4%" pct={4} />
+                </div>
+                <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
+                  <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Top Regions</div>
+                  <ProgressBar name="United States" value="48%" pct={48} />
+                  <ProgressBar name="United Kingdom" value="14%" pct={14} />
+                  <ProgressBar name="Canada" value="11%" pct={11} />
+                  <ProgressBar name="Nigeria" value="8%" pct={8} />
+                  <ProgressBar name="Germany" value="5%" pct={5} />
+                </div>
+              </div>
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
-                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Traffic Sources</div>
-                <ProgressBar name="YouTube Search" value="42%" pct={42} />
-                <ProgressBar name="Suggested Videos" value="31%" pct={31} />
-                <ProgressBar name="Browse Features" value="15%" pct={15} />
-                <ProgressBar name="External Sources" value="8%" pct={8} />
-                <ProgressBar name="Direct / Other" value="4%" pct={4} />
+                <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-3">Top Keywords</div>
+                <div className="flex flex-wrap gap-2">
+                  {["ceez and ray", "ai comedy", "animated series", "black picket fence", "gorilla pigeon show", "ceez ray bodega"].map(kw => (
+                    <span key={kw} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[rgba(255,255,255,0.06)] text-[hsl(var(--dash-text-3))] border border-[rgba(255,255,255,0.09)]">{kw}</span>
+                  ))}
+                </div>
               </div>
             </div>
           )}
@@ -582,32 +696,40 @@ const DashboardPage = () => {
                 <div className="text-xl font-extrabold tracking-tight">Calendar</div>
                 <div className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]">March 2026</div>
                 <div className="flex-1" />
+                <div className="flex gap-2 mr-3">
+                  {[
+                    { label: "Jasmine", color: "bg-[#2196f3]" },
+                    { label: "Quantice", color: "bg-[#FFD600]" },
+                    { label: "Staff", color: "bg-[hsl(var(--dash-red))]" },
+                  ].map(l => (
+                    <span key={l.label} className="flex items-center gap-1.5 text-[10px] font-bold text-[rgba(255,255,255,0.7)]">
+                      <span className={`w-2 h-2 rounded-full ${l.color}`} />
+                      {l.label}
+                    </span>
+                  ))}
+                </div>
                 <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] text-xs font-semibold hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">
                   <Calendar size={13} /> Open Google Calendar
                 </a>
               </div>
-              {/* Upcoming events */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] overflow-hidden shadow-lg">
-                {[
-                  { day: "29", mo: "Mar", title: "Upload Day", detail: "New video goes live — final edit by 10am", tag: "Video" },
-                  { day: "31", mo: "Mar", title: "Month Recap & Q2 Planning", detail: "Review March numbers, plan April content", tag: "Planning" },
-                  { day: "5", mo: "Apr", title: "Collab Shoot", detail: "Filming with guest — confirm location", tag: "Collab" },
-                  { day: "8", mo: "Apr", title: "Upload Day", detail: "Ep 2 release — all platforms", tag: "Video" },
-                  { day: "11", mo: "Apr", title: "Merch Restock Drop", detail: "Limited hoodie restock — announce 48hrs before", tag: "Merch" },
-                  { day: "15", mo: "Apr", title: "Upload Day", detail: "Ep 3 release", tag: "Video" },
-                ].map((ev, i) => (
-                  <div key={i} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
-                    <div className="w-[42px] text-center flex-shrink-0">
-                      <div className="text-xl font-extrabold text-[hsl(var(--dash-red))] leading-none">{ev.day}</div>
-                      <div className="text-[9px] font-bold uppercase tracking-wider text-[hsl(var(--dash-text-4))]">{ev.mo}</div>
+                {calendarEvents.map((ev, i) => {
+                  const c = assignColors[ev.assign];
+                  return (
+                    <div key={i} className={`flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors border-l-[3px] ${c.border}`}>
+                      <div className="w-[42px] text-center flex-shrink-0">
+                        <div className="text-xl font-extrabold text-[rgba(255,255,255,0.9)] leading-none">{ev.day}</div>
+                        <div className="text-[9px] font-bold uppercase tracking-wider text-[rgba(255,255,255,0.5)]">{ev.mo}</div>
+                      </div>
+                      <div className={`w-2 h-2 rounded-full flex-shrink-0 ${c.dot}`} />
+                      <div className="flex-1">
+                        <div className="text-sm font-bold text-[rgba(255,255,255,0.9)]">{ev.title}</div>
+                        <div className="text-xs text-[rgba(255,255,255,0.5)] mt-0.5">{ev.detail}</div>
+                      </div>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${c.badge}`}>{assignLabels[ev.assign]}</span>
                     </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-bold">{ev.title}</div>
-                      <div className="text-xs text-[hsl(var(--dash-text-4))] mt-0.5">{ev.detail}</div>
-                    </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))] whitespace-nowrap">{ev.tag}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
@@ -618,11 +740,19 @@ const DashboardPage = () => {
               <div className="flex items-center gap-2.5 pb-3 border-b border-[rgba(255,255,255,0.09)]">
                 <div className="text-xl font-extrabold tracking-tight">Social Hub</div>
                 <div className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[rgba(255,255,255,0.06)] text-[hsl(var(--dash-text-3))]">5 Platforms</div>
+                <div className="text-[10px] font-medium text-[hsl(var(--dash-text-4))] ml-auto">Posts auto-clear every Sunday</div>
               </div>
-              {/* Broadcast */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
                 <div className="text-[11px] font-extrabold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-2.5">Broadcast</div>
                 <textarea placeholder="Write once. Post everywhere." className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-[10px] px-3 py-2.5 text-sm text-[hsl(var(--dash-text))] outline-none resize-none h-[70px] focus:border-[hsl(var(--dash-red))] placeholder:text-[hsl(var(--dash-text-4))]" />
+                <div className="flex items-center gap-2 mt-2">
+                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[rgba(255,255,255,0.18)] rounded-full text-[hsl(var(--dash-text-4))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                    <Image size={13} /> Photo
+                  </button>
+                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[rgba(255,255,255,0.18)] rounded-full text-[hsl(var(--dash-text-4))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                    <Video size={13} /> Video
+                  </button>
+                </div>
                 <div className="flex flex-wrap gap-1.5 mt-2.5">
                   {["Instagram", "TikTok", "YouTube", "Facebook", "Threads"].map(p => (
                     <button key={p} className="text-[11px] font-semibold px-3 py-0.5 border-[1.5px] border-[rgba(255,255,255,0.18)] rounded-full text-[hsl(var(--dash-text-4))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">{p}</button>
@@ -633,7 +763,6 @@ const DashboardPage = () => {
                   <button className="text-[13px] font-bold px-4 py-1.5 bg-[hsl(var(--dash-red))] rounded-[9px] text-[hsl(var(--dash-text))] shadow-[0_2px_8px_hsl(var(--dash-red-glow))] hover:brightness-110 transition-all">Broadcast</button>
                 </div>
               </div>
-              {/* Platform columns */}
               <div className="grid grid-cols-3 gap-2.5 flex-1 min-h-0">
                 {[
                   { name: "Instagram", subs: "—", status: "Pending API" },
@@ -672,7 +801,6 @@ const DashboardPage = () => {
                 <StatCard label="In Progress" value={String(fixes.filter(f => f.status === "progress").length)} delta="Being worked on" />
                 <StatCard label="Resolved" value={String(fixes.filter(f => f.status === "done").length)} delta="This month" />
               </div>
-              {/* Add new issue */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] p-4 shadow-lg">
                 <div className="text-[11px] font-bold tracking-wider uppercase text-[hsl(var(--dash-text-4))] mb-2.5">Add New Issue</div>
                 <div className="flex gap-2">
@@ -695,7 +823,6 @@ const DashboardPage = () => {
                   <button onClick={addFix} className="px-4 py-2.5 bg-[hsl(var(--dash-red))] rounded-[9px] text-sm font-bold text-[hsl(var(--dash-text))] shadow-[0_2px_8px_hsl(var(--dash-red-glow))] hover:brightness-110">Add</button>
                 </div>
               </div>
-              {/* Issues list */}
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)] rounded-[14px] overflow-hidden shadow-lg flex-1">
                 {fixes.map(fix => (
                   <div key={fix.id} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
@@ -726,10 +853,10 @@ const DashboardPage = () => {
           )}
         </div>
 
-        {/* RIGHT PANEL */}
+        {/* RIGHT PANEL - fixed (not scrollable) */}
         <div className="bg-[hsl(var(--sidebar-background))] border-l border-[rgba(255,255,255,0.09)] flex flex-col overflow-hidden">
           {/* Upload */}
-          <div className="p-3">
+          <div className="p-3 mt-[100px]">
             <a
               href="https://drive.google.com/drive/folders/1Rz3fzmttd4Ue59mHPL7V-mJUYS6FI7H-?usp=sharing"
               target="_blank" rel="noopener noreferrer"
@@ -807,19 +934,20 @@ const DashboardPage = () => {
         </div>
         {[
           { label: "AI Video & Audio", links: [
-            { name: "Veo", url: "https://labs.google/fx/tools/video-fx" },
             { name: "Seedance", url: "https://seedance.ai" },
+            { name: "VO", url: "https://vo.dev" },
             { name: "ElevenLabs", url: "https://elevenlabs.io" },
           ]},
           { label: "AI Assistants", links: [
             { name: "Claude", url: "https://claude.ai" },
             { name: "ChatGPT", url: "https://chatgpt.com" },
             { name: "Manus", url: "https://manus.im" },
+            { name: "Gemini", url: "https://gemini.google.com" },
           ]},
-          { label: "Design & Assets", links: [
-            { name: "Canva", url: "https://canva.com" },
-            { name: "Google Drive", url: "https://drive.google.com" },
-            { name: "CapCut", url: "https://capcut.com" },
+          { label: "Production", links: [
+            { name: "DaVinci Resolve", url: "https://www.blackmagicdesign.com/products/davinciresolve" },
+            { name: "Whisper", url: "https://openai.com/research/whisper" },
+            { name: "Rask", url: "https://rask.ai" },
           ]},
           { label: "Analytics & Monetization", links: [
             { name: "Google Analytics", url: "https://analytics.google.com" },
@@ -832,7 +960,7 @@ const DashboardPage = () => {
             {section.links.map((link, j) => (
               <a key={j} href={link.url} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 w-full px-2.5 py-2 rounded-[9px] text-sm font-semibold text-[hsl(var(--dash-text-3))] hover:bg-[rgba(255,255,255,0.06)] hover:text-[hsl(var(--dash-text))] hover:translate-x-0.5 transition-all">
-                <div className="w-[7px] h-[7px] rounded-full bg-[rgba(255,255,255,0.18)] group-hover:bg-[hsl(var(--dash-red))]" />
+                <div className="w-[7px] h-[7px] rounded-full bg-[rgba(255,255,255,0.18)]" />
                 {link.name}
               </a>
             ))}
