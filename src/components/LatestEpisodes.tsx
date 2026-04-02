@@ -76,7 +76,7 @@ const LatestEpisodes = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_rgba(229,57,53,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-full bg-primary/85 flex items-center justify-center shadow-[0_0_20px_rgba(229,57,53,0.4)] group-hover:scale-110 transition-transform duration-300">
                     <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                   </div>
                 </div>
@@ -84,7 +84,7 @@ const LatestEpisodes = () => {
                   {ep.duration}
                 </span>
               </div>
-              <p className="font-heading text-xs tracking-wider text-primary mb-1">{ep.number}</p>
+              <p className="font-heading text-xs tracking-wider text-foreground mb-1">{ep.number}</p>
               <h4 className="font-heading text-lg text-primary mb-1 group-hover:text-primary/80 transition-colors">
                 {ep.title}
               </h4>

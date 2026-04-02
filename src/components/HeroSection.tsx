@@ -1,7 +1,24 @@
-import { motion } from "framer-motion";
-import { Bell } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Bell, X } from "lucide-react";
 
 const HeroSection = () => {
+  const [showNotify, setShowNotify] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setShowNotify(false);
+        setSubmitted(false);
+        setEmail("");
+      }, 2500);
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
       {/* Full-bleed video background */}
@@ -14,7 +31,6 @@ const HeroSection = () => {
           playsInline
           className="w-full h-full object-cover"
         />
-        {/* 40-50% overlay + left gradient for text readability */}
         <div className="absolute inset-0 bg-background/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
@@ -37,15 +53,18 @@ const HeroSection = () => {
             A BLACK PICKET FENCE ENTERTAINMENT ORIGINAL
           </motion.p>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="font-heading text-5xl md:text-7xl text-foreground mb-3 leading-tight"
           >
-            EPISODE 1:{" "}
-            <span className="text-primary text-glow-red">JOE'S BODEGA</span>
-          </motion.h1>
+            <h1 className="font-heading text-4xl md:text-6xl text-foreground mb-1 leading-tight">
+              EPISODE ONE
+            </h1>
+            <h2 className="font-heading text-5xl md:text-7xl text-primary text-glow-red mb-3 leading-tight">
+              JOE'S BODEGA
+            </h2>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -53,7 +72,7 @@ const HeroSection = () => {
             transition={{ delay: 1.1 }}
             className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg"
           >
-            Never Miss an Episode
+            It all started with a sandwich. And a very bad decision.
           </motion.p>
 
           <motion.div
@@ -69,6 +88,7 @@ const HeroSection = () => {
               WATCH EPISODE 1
             </a>
             <button
+              onClick={() => setShowNotify(true)}
               className="inline-flex items-center gap-2 font-heading tracking-wider px-8 py-4 border border-muted-foreground/50 text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 text-sm"
             >
               <Bell className="w-4 h-4" />
@@ -93,6 +113,67 @@ const HeroSection = () => {
           <div className="w-1 h-2 bg-primary rounded-full" />
         </motion.div>
       </motion.div>
+
+      {/* Notification Popup */}
+      <AnimatePresence>
+        {showNotify && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowNotify(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-card border border-border rounded-2xl p-8 w-full max-w-md mx-4 shadow-2xl"
+            >
+              <button
+                onClick={() => setShowNotify(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="text-center mb-6">
+                <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <Bell className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-heading text-2xl text-foreground mb-2">NEVER MISS AN EPISODE</h3>
+                <p className="text-muted-foreground text-sm">Get notified when new episodes drop. No spam, just heat.</p>
+              </div>
+
+              {submitted ? (
+                <div className="text-center py-4">
+                  <div className="text-primary font-heading text-lg mb-1">YOU'RE IN! 🔥</div>
+                  <p className="text-muted-foreground text-sm">We'll hit your inbox when the next episode drops.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full font-heading tracking-wider py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all text-sm rounded-lg"
+                  >
+                    NOTIFY ME
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -48,6 +48,12 @@ const EPISODES_DATA: Episode[] = Array.from({ length: 10 }, (_, i) => ({
   scenes: [],
 }));
 
+const userDisplayNames: Record<string, string> = {
+  bpfadmin: "Staff (BPF)",
+  ceezadmin: "Ceez",
+  jazadmin: "Jasmine",
+};
+
 const StoryboardPage = () => {
   const navigate = useNavigate();
   const [episodes, setEpisodes] = useState<Episode[]>(EPISODES_DATA);
@@ -59,6 +65,7 @@ const StoryboardPage = () => {
   const [uploadSceneId, setUploadSceneId] = useState<string | null>(null);
 
   const currentUser = sessionStorage.getItem("bpf-user") || "bpfadmin";
+  const displayName = userDisplayNames[currentUser] || currentUser;
 
   useEffect(() => {
     if (!sessionStorage.getItem("bpf-auth")) {
@@ -113,6 +120,9 @@ const StoryboardPage = () => {
 
   const onDragEnd = (result: DropResult, sceneId: string) => {
     if (!result.destination) return;
+    const srcIdx = result.source.index;
+    const destIdx = result.destination.index;
+    if (srcIdx === destIdx) return;
     setEpisodes(prev => prev.map(ep => {
       if (ep.id !== activeEp) return ep;
       return {
@@ -120,8 +130,8 @@ const StoryboardPage = () => {
         scenes: ep.scenes.map(s => {
           if (s.id !== sceneId) return s;
           const imgs = [...s.images];
-          const [moved] = imgs.splice(result.source.index, 1);
-          imgs.splice(result.destination!.index, 0, moved);
+          const [moved] = imgs.splice(srcIdx, 1);
+          imgs.splice(destIdx, 0, moved);
           return { ...s, images: imgs };
         }),
       };
@@ -141,7 +151,7 @@ const StoryboardPage = () => {
             ...s,
             comments: [...s.comments, {
               id: `cmt-${Date.now()}`,
-              user: currentUser,
+              user: displayName,
               text,
               date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }),
             }],
@@ -176,7 +186,8 @@ const StoryboardPage = () => {
           <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.22)] bg-[rgba(255,255,255,0.08)] text-xs font-bold hover:bg-[rgba(255,255,255,0.16)] transition-all">
             <ArrowLeft size={14} /> Back to Dashboard
           </button>
-          <span className="text-[15px] font-extrabold tracking-tight">Storyboard</span>
+          <span className="text-[15px] font-semibold tracking-tight">Storyboard</span>
+          <span className="text-[11px] text-[hsl(var(--dash-text-4))]">Logged in as <span className="font-bold text-[hsl(var(--dash-text-2))]">{displayName}</span></span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold text-[hsl(var(--dash-text-4))] mr-2">Columns:</span>
@@ -219,7 +230,7 @@ const StoryboardPage = () => {
             <>
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <h2 className="text-2xl font-extrabold tracking-tight">Episode {activeEpisode.number}: {activeEpisode.title}</h2>
+                  <h2 className="text-xl font-semibold tracking-tight">Episode {activeEpisode.number} — {activeEpisode.title}</h2>
                   <p className="text-sm text-[hsl(var(--dash-text-4))] mt-1">{activeEpisode.scenes.length} scene{activeEpisode.scenes.length !== 1 ? "s" : ""} • Drag images to reorder</p>
                 </div>
                 <button
@@ -245,7 +256,7 @@ const StoryboardPage = () => {
                   {/* Scene header */}
                   <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(255,255,255,0.09)] bg-[hsl(var(--dash-surface2))]">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-extrabold">{scene.name}</span>
+                      <span className="text-sm font-semibold">{scene.name}</span>
                       <span className="text-[10px] font-bold text-[hsl(var(--dash-text-4))]">{scene.images.length} image{scene.images.length !== 1 ? "s" : ""}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -281,7 +292,11 @@ const StoryboardPage = () => {
                                   <div
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
-                                    className={`relative group rounded-lg overflow-hidden border-2 transition-all ${snapshot.isDragging ? "border-[#2196f3] shadow-[0_0_20px_rgba(33,150,243,0.3)]" : "border-[rgba(255,255,255,0.09)]"}`}
+                                    className={`relative group rounded-lg overflow-hidden border-2 transition-all ${snapshot.isDragging ? "border-[#2196f3] shadow-[0_0_20px_rgba(33,150,243,0.3)] z-50" : "border-[rgba(255,255,255,0.09)]"}`}
+                                    style={{
+                                      ...provided.draggableProps.style,
+                                      ...(snapshot.isDragging ? { zIndex: 9999 } : {}),
+                                    }}
                                   >
                                     <div {...provided.dragHandleProps} className="absolute top-1 left-1 z-10 w-6 h-6 rounded bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
                                       <GripVertical size={12} className="text-white" />
@@ -292,10 +307,7 @@ const StoryboardPage = () => {
                                     >
                                       <X size={11} className="text-white" />
                                     </button>
-                                    <img src={img.url} alt={img.name} className="w-full aspect-video object-cover" />
-                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-2 py-1">
-                                      <span className="text-[10px] font-semibold text-white/80 truncate block">{idx + 1}. {img.name}</span>
-                                    </div>
+                                    <img src={img.url} alt="" className="w-full aspect-video object-cover" />
                                   </div>
                                 )}
                               </Draggable>
@@ -342,7 +354,7 @@ const StoryboardPage = () => {
                         value={commentInput[scene.id] || ""}
                         onChange={e => setCommentInput(prev => ({ ...prev, [scene.id]: e.target.value }))}
                         onKeyDown={e => e.key === "Enter" && addComment(scene.id)}
-                        placeholder="Add a note..."
+                        placeholder={`Comment as ${displayName}...`}
                         className="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[#2196f3] placeholder:text-[hsl(var(--dash-text-4))]"
                       />
                       <button onClick={() => addComment(scene.id)} className="px-3 py-2 bg-[#2196f3] rounded-lg text-xs font-bold text-white hover:bg-[#1976d2] transition-all">Post</button>
