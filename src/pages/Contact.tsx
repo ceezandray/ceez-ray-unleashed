@@ -45,6 +45,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    inquiryType: "",
     message: "",
   });
   const [sending, setSending] = useState(false);
