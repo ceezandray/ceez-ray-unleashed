@@ -306,8 +306,8 @@ const StoryboardPage = () => {
                           className="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[#2196f3] placeholder:text-[hsl(var(--dash-text-4))]"
                           autoFocus
                         />
-                        <button onClick={() => saveCaption(scene.id, captionEditId)} className="px-3 py-2 bg-[#2196f3] rounded-lg text-xs font-bold text-white hover:bg-[#1976d2] transition-all">Save</button>
-                        <button onClick={() => setCaptionEditId(null)} className="px-3 py-2 border border-[rgba(255,255,255,0.18)] rounded-lg text-xs font-semibold text-[hsl(var(--dash-text-3))] hover:text-white transition-all">Cancel</button>
+                        <button onClick={() => saveCaption(scene.id, captionEditId)} className="px-3 py-2 border border-[#2196f3] rounded-lg text-xs font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">Save</button>
+                        <button onClick={() => setCaptionEditId(null)} className="px-3 py-2 border border-[#2196f3]/40 rounded-lg text-xs font-semibold text-[#2196f3]/60 hover:border-[#2196f3] hover:text-[#2196f3] transition-all">Cancel</button>
                       </div>
                     </div>
                   )}
