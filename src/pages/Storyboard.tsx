@@ -164,7 +164,7 @@ const StoryboardPage = () => {
     <div className="dash-font h-screen flex flex-col bg-[hsl(var(--dash-bg))] text-[hsl(var(--dash-text))] overflow-hidden">
       <div className="h-[52px] flex items-center justify-between px-4 bg-[rgba(0,0,0,0.60)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.10)] flex-shrink-0">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.22)] bg-[rgba(255,255,255,0.08)] text-xs font-bold hover:bg-[rgba(255,255,255,0.16)] transition-all">
+          <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#2196f3] bg-transparent text-xs font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
             <ArrowLeft size={14} /> Back to Dashboard
           </button>
           <span className="text-[15px] font-medium tracking-tight">Storyboard</span>
