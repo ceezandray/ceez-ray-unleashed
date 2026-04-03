@@ -39,13 +39,14 @@ const NeverMissEpisode = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
-              MISS AN EPISODE?
+              DON'T SLEEP ON IT
             </h2>
             <h3 className="font-heading text-5xl md:text-7xl text-foreground mb-4">
-              <span className="text-primary text-glow-red">NEVER</span> MISS IT
+              MISS AN{" "}
+              <span className="text-primary text-glow-red">EPISODE?</span>
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8">
-              Never miss it again. Get notified when new episodes drop. No spam, just heat.
+              Never again. Get notified the second new episodes drop. No spam, just heat.
             </p>
             <button
               onClick={() => setShowPopup(true)}
