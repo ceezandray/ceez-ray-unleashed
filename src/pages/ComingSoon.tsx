@@ -108,7 +108,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
             <img
               src="/images/ceez-animation.gif"
               alt="Ceez - BPF Gorilla"
-              className="w-96 lg:w-[32rem] object-contain drop-shadow-2xl"
+              className="w-96 lg:w-[26rem] object-contain drop-shadow-2xl"
             />
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
           </div>
