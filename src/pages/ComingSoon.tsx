@@ -28,16 +28,6 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
     setTimeout(() => setSubmitted(false), 3000);
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    setNewsletterSubmitted(true);
-    setNewsletterEmail("");
-    setTimeout(() => {
-      setNewsletterSubmitted(false);
-      setShowNewsletter(false);
-    }, 2500);
-  };
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
