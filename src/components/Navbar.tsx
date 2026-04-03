@@ -52,6 +52,12 @@ const Navbar = () => {
             <a
               key={item.label}
               href={item.href}
+              onClick={(e) => {
+                if (item.href.startsWith("/") && !item.href.includes("#")) {
+                  e.preventDefault();
+                  navigate(item.href);
+                }
+              }}
               className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               {item.label}
