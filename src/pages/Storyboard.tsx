@@ -173,7 +173,7 @@ const StoryboardPage = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowCaptions(!showCaptions)}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${showCaptions ? "border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] bg-[hsl(var(--dash-red-bg))]" : "border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))]"}`}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${showCaptions ? "border-[#2196f3] text-[#2196f3] bg-[rgba(33,150,243,0.1)]" : "border-[#2196f3]/40 text-[#2196f3]/60 hover:border-[#2196f3]"}`}
           >
             {showCaptions ? <Eye size={13} /> : <EyeOff size={13} />} Captions
           </button>
