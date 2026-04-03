@@ -18,7 +18,7 @@ const AboutBPF = () => {
               <img
                 src="/images/ceez-animation.gif"
                 alt="Ceez - BPF Gorilla Animation"
-                className="w-72 lg:w-96 object-contain drop-shadow-[0_0_30px_rgba(220,38,38,0.3)]"
+                className="w-72 lg:w-96 object-contain"
               />
             </motion.div>
 
