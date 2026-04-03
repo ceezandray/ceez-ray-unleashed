@@ -10,8 +10,8 @@ const navItems = [
   { label: "About BPF", href: "/about-bpf" },
   { label: "Meet Ceez & Ray", href: "/#cast" },
   { label: "Episodes", href: "/episodes" },
-  { label: "Apparel", href: "/#apparel" },
   { label: "Shop", href: "/shop" },
+  { label: "Contact", href: "/contact" },
   { label: "Login", href: "/login" },
 ];
 

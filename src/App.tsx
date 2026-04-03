@@ -12,6 +12,7 @@ import AboutBPF from "./pages/AboutBPF.tsx";
 import Shop from "./pages/Shop.tsx";
 import Cart from "./pages/Cart.tsx";
 import Episodes from "./pages/Episodes.tsx";
+import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
