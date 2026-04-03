@@ -48,7 +48,7 @@ export const products: Product[] = [
     price: 44.99,
     image: "/images/product-joes-bodega-tee.jpg",
     category: "Tops",
-    description: "Classic black tee with the iconic Joe's Bodega deli sign. Episode 1 collector's item.",
+    description: "Oversized black tee with the iconic Joe's Bodega sign. Elizabeth, NJ. Est. 1992.",
   },
   {
     id: "joes-bodega-deck",
