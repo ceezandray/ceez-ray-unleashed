@@ -26,10 +26,10 @@ const CastSection = () => {
           <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
             MEET THE CAST
           </h2>
-          <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-2">
+          <h3 className="font-heading text-2xl md:text-4xl text-foreground mb-2">
             ONE <span className="text-primary text-glow-red">FRIENDSHIP.</span>
           </h3>
-          <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-6">
+          <h3 className="font-heading text-2xl md:text-4xl text-foreground mb-6">
             ZERO IMPULSE <span className="text-primary text-glow-red">CONTROL.</span>
           </h3>
         </motion.div>
