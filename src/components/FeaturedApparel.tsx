@@ -9,10 +9,10 @@ const products = [
     hoverImage: "/images/ceez-bpf-tee-hover.jpg",
   },
   {
-    name: "Joe's Bodega Tee",
-    price: "$34.99",
-    image: "/images/product-bodega-tee.jpg",
-    hoverImage: "/images/scene-bodega.jpg",
+    name: "Ceez Banana Sweatshirt",
+    price: "$62.99",
+    image: "/images/product-banana-sweatshirt.png",
+    hoverImage: "/images/banana-sweatshirt-hover.png",
   },
   {
     name: "BPF Sports Watch",
@@ -50,7 +50,7 @@ const FeaturedApparel = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="group cursor-pointer"
             >
-              <div className={`relative overflow-hidden mb-4 aspect-square border border-border ${i === 0 ? 'bg-black' : 'bg-card'}`}>
+              <div className={`relative overflow-hidden mb-4 aspect-square border border-border ${i <= 1 ? 'bg-black' : 'bg-card'}`}>
                 <img
                   src={product.image}
                   alt={product.name}
