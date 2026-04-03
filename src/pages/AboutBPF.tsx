@@ -53,6 +53,7 @@ const AboutBPF = () => {
           </div>
         </div>
       </section>
+      <TheTeam />
       <Footer />
     </div>
   );
