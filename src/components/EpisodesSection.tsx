@@ -74,7 +74,7 @@ const EpisodesSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(153,0,0,0.5)] group-hover:scale-110 transition-transform" style={{ background: '#990000' }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(153,0,0,0.5)] group-hover:scale-110 transition-transform" style={{ background: 'rgba(153,0,0,0.7)' }}>
                     <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
