@@ -842,12 +842,12 @@ const DashboardPage = () => {
 
    {/* Storyboard - aligned with upload */}
    <div className="px-3 pb-2">
-   <button
-    onClick={() => navigate("/storyboard")}
-    className="flex items-center gap-2.5 w-full py-3 border-2 border-[#2196f3] text-[#2196f3] text-sm font-bold hover:bg-[rgba(33,150,243,0.08)] transition-all pl-4"
-   >
-    <LayoutDashboard size={18} className="text-[#2196f3]" /> Storyboard
-   </button>
+    <button
+     onClick={() => navigate("/storyboard")}
+     className="flex items-center gap-2.5 w-full py-3 border-2 border-[rgba(255,255,255,0.25)] text-[hsl(var(--dash-text-2))] text-sm font-bold hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.4)] transition-all pl-4"
+    >
+     <LayoutDashboard size={18} /> Storyboard
+    </button>
    </div>
 
    {/* Email */}
