@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import CartDropdown from "@/components/CartDropdown";
 
@@ -76,7 +76,7 @@ const Navbar = () => {
               onClick={() => setIsCartOpen(!isCartOpen)}
               className="relative text-foreground hover:text-primary transition-colors"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingBag className="w-5 h-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-primary text-primary-foreground text-[9px] font-bold rounded-full flex items-center justify-center">
                   {totalItems}

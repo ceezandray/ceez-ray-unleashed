@@ -1,21 +1,26 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, Minus, ShoppingCart } from "lucide-react";
+import { X, Plus, Minus, ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 
 const CartDropdown = () => {
   const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
-    // Redirect to WooCommerce checkout (placeholder URL — will be replaced with real WooCommerce endpoint)
     const checkoutUrl = "https://your-store.com/checkout";
     window.open(checkoutUrl, "_blank");
+  };
+
+  const handleViewCart = () => {
+    setIsCartOpen(false);
+    navigate("/cart");
   };
 
   return (
     <AnimatePresence>
       {isCartOpen && (
         <>
-          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -23,7 +28,6 @@ const CartDropdown = () => {
             onClick={() => setIsCartOpen(false)}
             className="fixed inset-0 z-[70] bg-black/50"
           />
-          {/* Dropdown */}
           <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -34,7 +38,7 @@ const CartDropdown = () => {
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div className="flex items-center gap-2">
-                <ShoppingCart className="w-4 h-4 text-primary" />
+                <ShoppingBag className="w-4 h-4 text-primary" />
                 <span className="font-heading text-sm tracking-wider text-foreground">
                   CART ({totalItems})
                 </span>
@@ -88,15 +92,23 @@ const CartDropdown = () => {
             {items.length > 0 && (
               <div className="p-4 border-t border-border space-y-3">
                 <div className="flex justify-between">
-                  <span className="font-heading text-xs tracking-wider text-muted-foreground">TOTAL</span>
-                  <span className="font-heading text-sm text-primary">${totalPrice.toFixed(2)}</span>
+                  <span className="font-heading text-xs tracking-wider text-white">TOTAL</span>
+                  <span className="font-heading text-sm text-white">${totalPrice.toFixed(2)}</span>
                 </div>
-                <button
-                  onClick={handleCheckout}
-                  className="w-full font-heading text-xs tracking-wider py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
-                >
-                  CHECKOUT
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleViewCart}
+                    className="flex-1 font-heading text-xs tracking-wider py-3 border border-border text-foreground hover:border-foreground transition-all duration-300"
+                  >
+                    CART
+                  </button>
+                  <button
+                    onClick={handleCheckout}
+                    className="flex-1 font-heading text-xs tracking-wider py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
+                  >
+                    CHECKOUT
+                  </button>
+                </div>
               </div>
             )}
           </motion.div>

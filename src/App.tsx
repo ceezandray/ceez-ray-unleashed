@@ -10,6 +10,7 @@ import Login from "./pages/Login.tsx";
 import Storyboard from "./pages/Storyboard.tsx";
 import AboutBPF from "./pages/AboutBPF.tsx";
 import Shop from "./pages/Shop.tsx";
+import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/about-bpf" element={<AboutBPF />} />
             <Route path="/storyboard" element={<Storyboard />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<Cart />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
