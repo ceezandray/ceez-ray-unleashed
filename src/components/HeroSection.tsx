@@ -21,7 +21,6 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Full-bleed video background */}
       <div className="absolute inset-0">
         <video
           src="/images/hero-video.mov"
@@ -36,7 +35,6 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative container mx-auto px-6 pb-24 pt-40">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -50,7 +48,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5 }}
             className="font-heading text-xs tracking-[0.3em] text-foreground mb-4"
           >
-            A BLACK PICKET FENCE ENTERTAINMENT ORIGINAL
+            A BLACK PICKET FENCE ENT. ORIGINAL
           </motion.p>
 
           <motion.div
@@ -98,7 +96,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -114,7 +111,6 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Notification Popup */}
       <AnimatePresence>
         {showNotify && (
           <motion.div

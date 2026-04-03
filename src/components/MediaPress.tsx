@@ -16,9 +16,6 @@ const MediaPress = () => {
           <h3 className="font-heading text-4xl md:text-5xl text-primary mb-6">
             IN THE <span className="text-glow-red">SPOTLIGHT</span>
           </h3>
-          <p className="text-foreground text-lg max-w-2xl mx-auto">
-            This is an award-winning creative team.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">

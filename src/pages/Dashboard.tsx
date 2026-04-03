@@ -50,7 +50,7 @@ interface OtherEarning {
 }
 
 // ═══════════════════════════════════════════
-// SIDEBAR ITEMS (removed Website Fixes from left)
+// SIDEBAR ITEMS
 // ═══════════════════════════════════════════
 const sidebarSections: { label?: string; items: SidebarItem[] }[] = [
   {
@@ -145,29 +145,22 @@ const DashboardPage = () => {
   const [clock, setClock] = useState("");
   const [timezone, setTimezone] = useState("America/New_York");
 
-  // Auth check
   useEffect(() => {
     if (!sessionStorage.getItem("bpf-auth")) {
       navigate("/login");
     }
   }, [navigate]);
 
-  // Password change
   const [showPasswordChange, setShowPasswordChange] = useState(false);
   const [newPassword, setNewPassword] = useState("");
 
-  // Todos
   const [todos, setTodos] = useState<Todo[]>([]);
   const [todoInput, setTodoInput] = useState("");
   const [todoAssign, setTodoAssign] = useState<Todo["assign"]>("jasmine");
 
-  // Sticky Notes
   const [stickies, setStickies] = useState<StickyNote[]>([]);
-
-  // Notes
   const [notes, setNotes] = useState("");
 
-  // Fixes
   const [fixes, setFixes] = useState<Fix[]>([
     { id: 1, title: "Mobile nav menu broken on iOS Safari", desc: "Hamburger menu doesn't open on iPhone 14 and below", page: "Homepage", priority: "high", status: "open" },
     { id: 2, title: "Contact form not sending emails", desc: "Form submits but emails never arrive in Gmail", page: "Contact", priority: "high", status: "open" },
@@ -180,21 +173,17 @@ const DashboardPage = () => {
   const [fixInput, setFixInput] = useState("");
   const [fixPriority, setFixPriority] = useState<Fix["priority"]>("med");
 
-  // Other Earnings
   const [otherEarnings, setOtherEarnings] = useState<OtherEarning[]>([]);
   const [earningDesc, setEarningDesc] = useState("");
   const [earningAmount, setEarningAmount] = useState("");
   const [earningDate, setEarningDate] = useState("");
   const [earningProject, setEarningProject] = useState("");
 
-  // Tools drawer
   const [toolsOpen, setToolsOpen] = useState(false);
 
-  // Calendar filter
   const [calendarFilter, setCalendarFilter] = useState<Set<string>>(new Set(["quantice", "staff", "jasmine"]));
   const [showCalendarFilter, setShowCalendarFilter] = useState(false);
 
-  // Clock
   const tick = useCallback(() => {
     const now = new Date();
     setClock(now.toLocaleTimeString("en-US", {
@@ -208,14 +197,12 @@ const DashboardPage = () => {
     return () => clearInterval(interval);
   }, [tick]);
 
-  // Todo handlers
   const addTodo = () => {
     if (!todoInput.trim()) return;
     setTodos(prev => [{ id: Date.now(), text: todoInput.trim(), assign: todoAssign, done: false }, ...prev]);
     setTodoInput("");
   };
 
-  // Sticky handlers
   const addSticky = (type: StickyNote["type"]) => {
     setStickies(prev => [...prev, {
       id: Date.now(), text: "", type,
@@ -223,7 +210,6 @@ const DashboardPage = () => {
     }]);
   };
 
-  // Fix handlers
   const addFix = () => {
     if (!fixInput.trim()) return;
     setFixes(prev => [...prev, {
@@ -232,7 +218,6 @@ const DashboardPage = () => {
     setFixInput("");
   };
 
-  // Other earnings handler
   const addOtherEarning = () => {
     if (!earningDesc.trim() || !earningAmount.trim()) return;
     setOtherEarnings(prev => [...prev, {
@@ -250,18 +235,10 @@ const DashboardPage = () => {
 
   const openCount = fixes.filter(f => f.status === "open").length;
 
-  // Chart data
   const chartLabels = ["Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Today"];
 
-  // Color helpers for todos/calendar
-  const assignColors = {
-    jasmine: { border: "border-[#2196f3]", bg: "bg-[rgba(33,150,243,0.06)]", badge: "bg-[rgba(33,150,243,0.15)] text-[#2196f3]", check: "border-[#2196f3]", checkBg: "bg-[#2196f3]", dot: "bg-[#2196f3]", dateColor: "text-[#2196f3]" },
-    quantice: { border: "border-[#FFD600]", bg: "bg-[rgba(255,214,0,0.06)]", badge: "bg-[rgba(255,214,0,0.15)] text-[#FFD600]", check: "border-[#FFD600]", checkBg: "bg-[#FFD600]", dot: "bg-[#FFD600]", dateColor: "text-[#FFD600]" },
-    staff: { border: "border-[hsl(var(--dash-red))]", bg: "bg-[hsl(var(--dash-red-bg))]", badge: "bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]", check: "border-[hsl(var(--dash-red))]", checkBg: "bg-[hsl(var(--dash-red))]", dot: "bg-[hsl(var(--dash-red))]", dateColor: "text-[hsl(var(--dash-red))]" },
-  };
   const assignLabels = { jasmine: "Jasmine", quantice: "Quantice", staff: "Staff" };
 
-  // Calendar events with color coding
   const calendarEvents = [
     { day: "29", mo: "Mar", title: "Upload Day", detail: "New video goes live — final edit by 10am", assign: "quantice" as const },
     { day: "31", mo: "Mar", title: "Month Recap & Q2 Planning", detail: "Review March numbers, plan April content", assign: "staff" as const },
@@ -293,7 +270,6 @@ const DashboardPage = () => {
           <span className="text-[15px] font-extrabold tracking-tight">Creator Dashboard</span>
         </div>
         <div className="flex items-center gap-2">
-          {/* Tools button in topbar */}
           <button
             onClick={() => setToolsOpen(!toolsOpen)}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${toolsOpen ? "border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] bg-[hsl(var(--dash-red-bg))]" : "border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))]"}`}
@@ -362,6 +338,7 @@ const DashboardPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(to right, hsl(var(--dash-red)) 0%, hsl(var(--dash-red) / 0.5) 50%, transparent 100%)" }} />
         <div className="absolute inset-0 flex items-center px-7">
           <div className="flex flex-col gap-2">
+            <img src="/images/bpf-logo.png" alt="Black Picket Fence" className="h-[64px] drop-shadow-2xl mb-1" style={{ objectFit: "contain", maxWidth: "280px" }} />
             <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-[52px] drop-shadow-2xl" style={{ objectFit: "contain", maxWidth: "240px" }} />
             <div className="flex gap-0 mt-2">
               {[
@@ -444,24 +421,21 @@ const DashboardPage = () => {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   {todos.length === 0 && <div className="text-[13px] text-[hsl(var(--dash-text-4))] py-3">No tasks yet. Add one above.</div>}
-                  {todos.map(t => {
-                    const c = assignColors[t.assign];
-                    return (
-                      <div key={t.id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-[10px] border-[1.5px] transition-all ${c.border} ${c.bg} ${t.done ? "opacity-45 line-through" : ""}`}>
-                        <button
-                          onClick={() => setTodos(prev => prev.map(x => x.id === t.id ? { ...x, done: !x.done } : x))}
-                          className={`w-[18px] h-[18px] rounded-[5px] border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all ${c.check} ${t.done ? c.checkBg : ""}`}
-                        >
-                          {t.done && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
-                        </button>
-                        <span className="flex-1 text-sm font-medium">{t.text}</span>
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${c.badge}`}>{assignLabels[t.assign]}</span>
-                        <button onClick={() => setTodos(prev => prev.filter(x => x.id !== t.id))} className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[hsl(var(--dash-text-4))] hover:bg-[hsl(var(--dash-red-bg))] hover:text-[hsl(var(--dash-red))] transition-all">
-                          <X size={13} />
-                        </button>
-                      </div>
-                    );
-                  })}
+                  {todos.map(t => (
+                    <div key={t.id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-[10px] border-[1.5px] transition-all border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.03)] ${t.done ? "opacity-45 line-through" : ""}`}>
+                      <button
+                        onClick={() => setTodos(prev => prev.map(x => x.id === t.id ? { ...x, done: !x.done } : x))}
+                        className={`w-[18px] h-[18px] rounded-[5px] border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all border-[rgba(255,255,255,0.3)] ${t.done ? "bg-white" : ""}`}
+                      >
+                        {t.done && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
+                      </button>
+                      <span className="flex-1 text-sm font-medium">{t.text}</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider bg-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.6)]">{assignLabels[t.assign]}</span>
+                      <button onClick={() => setTodos(prev => prev.filter(x => x.id !== t.id))} className="w-[22px] h-[22px] rounded-full flex items-center justify-center text-[hsl(var(--dash-text-4))] hover:bg-[hsl(var(--dash-red-bg))] hover:text-[hsl(var(--dash-red))] transition-all">
+                        <X size={13} />
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -699,7 +673,7 @@ const DashboardPage = () => {
                             onClick={() => toggleCalendarFilter(key)}
                             className="flex items-center gap-2.5 w-full px-3 py-2 rounded-lg text-sm font-semibold hover:bg-[rgba(255,255,255,0.06)] transition-all"
                           >
-                            <div className={`w-4 h-4 rounded border-[1.5px] flex items-center justify-center transition-all ${calendarFilter.has(key) ? `${assignColors[key].checkBg} border-transparent` : "border-[rgba(255,255,255,0.3)]"}`}>
+                            <div className={`w-4 h-4 rounded border-[1.5px] flex items-center justify-center transition-all ${calendarFilter.has(key) ? "bg-white border-transparent" : "border-[rgba(255,255,255,0.3)]"}`}>
                               {calendarFilter.has(key) && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
                             </div>
                             <span>{assignLabels[key]}</span>
@@ -717,22 +691,19 @@ const DashboardPage = () => {
                 {filteredCalendarEvents.length === 0 && (
                   <div className="px-4 py-6 text-center text-sm text-[hsl(var(--dash-text-4))]">No events match the current filter.</div>
                 )}
-                {filteredCalendarEvents.map((ev, i) => {
-                  const c = assignColors[ev.assign];
-                  return (
-                    <div key={i} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
-                      <div className="w-[42px] text-center flex-shrink-0">
-                        <div className={`text-xl font-extrabold leading-none ${c.dateColor}`}>{ev.day}</div>
-                        <div className="text-[9px] font-normal uppercase tracking-wider text-white">{ev.mo}</div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm font-bold text-white">{ev.title}</div>
-                        <div className="text-xs text-[rgba(255,255,255,0.5)] mt-0.5">{ev.detail}</div>
-                      </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${c.badge}`}>{assignLabels[ev.assign]}</span>
+                {filteredCalendarEvents.map((ev, i) => (
+                  <div key={i} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
+                    <div className="w-[42px] text-center flex-shrink-0">
+                      <div className="text-xl font-extrabold leading-none text-white">{ev.day}</div>
+                      <div className="text-[9px] font-normal uppercase tracking-wider text-white">{ev.mo}</div>
                     </div>
-                  );
-                })}
+                    <div className="flex-1">
+                      <div className="text-sm font-bold text-white">{ev.title}</div>
+                      <div className="text-xs text-[rgba(255,255,255,0.5)] mt-0.5">{ev.detail}</div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap bg-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.6)]">{assignLabels[ev.assign]}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -749,10 +720,10 @@ const DashboardPage = () => {
                 <div className="text-[11px] font-extrabold tracking-wider uppercase text-white mb-2.5">Broadcast</div>
                 <textarea placeholder="Write once. Post everywhere." className="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-[10px] px-3 py-2.5 text-sm text-white outline-none resize-none h-[70px] focus:border-[hsl(var(--dash-red))] placeholder:text-[rgba(255,255,255,0.4)]" />
                 <div className="flex items-center gap-2 mt-2">
-                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[rgba(255,255,255,0.25)] rounded-full text-white hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[hsl(var(--dash-red))] rounded-full text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">
                     <Image size={13} /> Photo
                   </button>
-                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[rgba(255,255,255,0.25)] rounded-full text-white hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                  <button className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 border-[1.5px] border-[hsl(var(--dash-red))] rounded-full text-[hsl(var(--dash-red))] hover:bg-[hsl(var(--dash-red-bg))] transition-all">
                     <Video size={13} /> Video
                   </button>
                 </div>
@@ -858,24 +829,24 @@ const DashboardPage = () => {
 
         {/* RIGHT PANEL - fixed (not scrollable) */}
         <div className="bg-[hsl(var(--sidebar-background))] border-l border-[rgba(255,255,255,0.09)] flex flex-col overflow-hidden">
-          {/* Upload Content */}
+          {/* Upload Content - red icon + red text */}
           <div className="p-3 pt-3">
             <a
               href="https://drive.google.com/drive/folders/1Rz3fzmttd4Ue59mHPL7V-mJUYS6FI7H-?usp=sharing"
               target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border-2 border-[hsl(var(--dash-red))] text-sm font-bold hover:bg-[hsl(var(--dash-red-bg))] hover:shadow-[0_0_0_3px_hsl(var(--dash-red-glow))] transition-all"
+              className="flex items-center gap-2.5 w-full py-3 rounded-xl border-2 border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] text-sm font-bold hover:bg-[hsl(var(--dash-red-bg))] hover:shadow-[0_0_0_3px_hsl(var(--dash-red-glow))] transition-all pl-4"
             >
               <Upload size={18} /> Upload Content
             </a>
           </div>
 
-          {/* Storyboard - outline blue */}
+          {/* Storyboard - aligned with upload */}
           <div className="px-3 pb-2">
             <button
               onClick={() => navigate("/storyboard")}
-              className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl border-2 border-[#2196f3] text-[#2196f3] text-sm font-bold hover:bg-[rgba(33,150,243,0.08)] transition-all"
+              className="flex items-center gap-2.5 w-full py-3 rounded-xl border-2 border-[#2196f3] text-white text-sm font-bold hover:bg-[rgba(33,150,243,0.08)] transition-all pl-4"
             >
-              <LayoutDashboard size={18} /> Storyboard
+              <LayoutDashboard size={18} className="text-[#2196f3]" /> Storyboard
             </button>
           </div>
 
@@ -930,21 +901,23 @@ const DashboardPage = () => {
           </button>
         </div>
         {[
-          { label: "AI Video & Audio", links: [
-            { name: "Seedance", url: "https://seedance.ai" },
-            { name: "VO", url: "https://vo.dev" },
-            { name: "ElevenLabs", url: "https://elevenlabs.io" },
+          { label: "Video", links: [
+            { name: "Higgsfield", url: "https://higgsfield.ai" },
+            { name: "Veo", url: "https://deepmind.google/technologies/veo/" },
           ]},
-          { label: "AI Assistants", links: [
-            { name: "Claude", url: "https://claude.ai" },
+          { label: "Audio", links: [
+            { name: "ElevenLabs", url: "https://elevenlabs.io" },
+            { name: "Rask (Dubbing)", url: "https://rask.ai" },
+            { name: "Whisper (Transcribing)", url: "https://openai.com/research/whisper" },
+            { name: "DaVinci Resolve", url: "https://www.blackmagicdesign.com/products/davinciresolve" },
+            { name: "Suno (Music)", url: "https://suno.com" },
+          ]},
+          { label: "Scripting & Imaging", links: [
             { name: "ChatGPT", url: "https://chatgpt.com" },
             { name: "Manus", url: "https://manus.im" },
             { name: "Gemini", url: "https://gemini.google.com" },
-          ]},
-          { label: "Production", links: [
-            { name: "DaVinci Resolve", url: "https://www.blackmagicdesign.com/products/davinciresolve" },
-            { name: "Whisper", url: "https://openai.com/research/whisper" },
-            { name: "Rask", url: "https://rask.ai" },
+            { name: "Claude", url: "https://claude.ai" },
+            { name: "Ideogram", url: "https://ideogram.ai" },
           ]},
           { label: "Analytics & Monetization", links: [
             { name: "Google Analytics", url: "https://analytics.google.com" },

@@ -18,10 +18,14 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+      // Auto-close mobile menu on scroll
+      if (isOpen) setIsOpen(false);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isOpen]);
 
   return (
     <motion.nav
@@ -36,7 +40,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-9 w-auto" />
+          <img
+            src="/images/ceezandray-logo.png"
+            alt="Ceez & Ray"
+            className={`w-auto transition-all duration-500 ${scrolled ? "h-8" : "h-12"}`}
+          />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -62,19 +70,17 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile menu - fully transparent, right-aligned text */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.35, ease: "easeOut" }}
-            className="fixed top-0 right-0 bottom-0 w-[350px] z-[55] flex items-center lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed top-0 right-0 bottom-0 w-full z-[55] flex flex-col items-end justify-center lg:hidden pr-6"
           >
-            {/* Transparent background with subtle blur only behind text area */}
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
-            
-            <div className="relative px-10 py-16 flex flex-col gap-6 w-full">
+            <div className="flex flex-col items-end gap-5">
               {navItems.map((item, i) => (
                 <motion.a
                   key={item.label}
@@ -84,7 +90,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 40 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="font-heading text-2xl tracking-wider text-white hover:text-primary transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  className="font-heading text-3xl tracking-wider text-white hover:text-primary transition-colors drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
                 >
                   {item.label}
                 </motion.a>
@@ -95,7 +101,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 40 }}
                 transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-                className="font-heading text-xl tracking-wider px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                className="font-heading text-2xl tracking-wider text-primary hover:text-primary/80 transition-all duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
               >
                 LOGIN
               </motion.button>

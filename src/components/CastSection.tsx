@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 const CastSection = () => {
   return (
     <section id="cast" className="py-24 relative overflow-hidden">
-      {/* Faceoff background image */}
       <div className="absolute inset-0">
         <img
           src="/images/ceazray-faceoff.png"
@@ -16,7 +15,6 @@ const CastSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative">
-        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +32,6 @@ const CastSection = () => {
           </h3>
         </motion.div>
 
-        {/* Button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -47,9 +44,8 @@ const CastSection = () => {
           </button>
         </motion.div>
 
-        {/* Characters */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* CEEZ */}
+        {/* Characters - pushed down 60px */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-[60px]">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -66,7 +62,6 @@ const CastSection = () => {
             </p>
           </motion.div>
 
-          {/* RAY */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
