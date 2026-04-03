@@ -61,7 +61,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
         onClick={() => setShowPassword(!showPassword)}
-        className="absolute top-6 right-6 z-20 px-4 py-2 border border-white/20 text-white/60 text-xs font-heading tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300 rounded"
+        className="absolute top-6 right-6 z-20 px-4 py-2 border border-primary text-white text-xs font-heading tracking-widest uppercase hover:bg-primary/20 transition-all duration-300 rounded"
       >
         Preview Access
       </motion.button>
