@@ -27,10 +27,10 @@ const CastSection = () => {
             MEET THE CAST
           </h2>
           <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-2">
-            TWO FUTURE <span className="text-primary text-glow-red">LEGENDS</span>
+            ONE UNEXPECTED <span className="text-primary text-glow-red">FRIENDSHIP</span>
           </h3>
           <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-6">
-            ZERO IMPULSE <span className="text-primary text-glow-red">CONTROL</span>
+            ZERO CHANCE THEY <span className="text-primary text-glow-red">PLAY IT SAFE</span>
           </h3>
         </motion.div>
 
