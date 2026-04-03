@@ -5,7 +5,7 @@ const episodes = [
   {
     number: "EP 01",
     title: "Joe's Bodega",
-    description: "It all started with a sandwich. And a very bad decision.",
+    description: "It all started with smoothie, banana bread, and a very bad decision.",
     thumbnail: "/images/ep-bodega-incident.png",
     duration: "12:34",
     progress: 30,
