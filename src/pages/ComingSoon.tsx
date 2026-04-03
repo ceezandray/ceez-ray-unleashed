@@ -108,7 +108,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
             <img
               src="/images/ceez-animation.gif"
               alt="Ceez - BPF Gorilla"
-              className="w-80 lg:w-[28rem] object-contain drop-shadow-2xl"
+              className="w-96 lg:w-[32rem] object-contain drop-shadow-2xl"
             />
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
           </div>
@@ -119,7 +119,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 bg-black/80 border border-white/10 backdrop-blur-md rounded-xl p-8 md:p-10 flex flex-col items-center gap-8 max-w-md w-full"
+          className="relative z-10 bg-black/80 border border-white/10 backdrop-blur-md rounded-xl p-8 md:p-12 flex flex-col items-center gap-10 max-w-md w-full"
         >
           {/* Logo */}
           <img
@@ -130,7 +130,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
 
           {/* Message */}
           <div className="text-center space-y-3">
-            <h1 className="text-muted-foreground text-xl md:text-2xl font-heading tracking-wider">
+            <h1 className="text-xl md:text-2xl font-heading tracking-wider" style={{ color: '#990000' }}>
               SOMETHING BIG IS COMING...
             </h1>
             <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
