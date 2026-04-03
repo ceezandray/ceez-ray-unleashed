@@ -40,13 +40,12 @@ export const products: Product[] = [
     description: "All black trucker hat with tonal B.P.F embroidery. One size fits all.",
   },
   {
-    id: "bpf-dawick-shirt",
-    name: "BPF Da'Wick Shirt",
-    price: 54.99,
-    image: "/images/bpf-dawick-front.png",
-    hoverImage: "/images/product-ceez-hoodie.jpg",
+    id: "ray-pigeon-tee",
+    name: "Ray 'The Pigeon' Tee",
+    price: 44.99,
+    image: "/images/product-ray-tee.jpg",
     category: "Tops",
-    description: "White oversized tee with Black Picket Fence Da'Wick graphic. Ceez & Ray. Est. 2020.",
+    description: "White tee with Ray in full swagger mode. Sunglasses. Chain. Attitude.",
   },
   // Row 2: decor, tee, accessory, tee
   {
