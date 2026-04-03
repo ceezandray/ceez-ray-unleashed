@@ -47,19 +47,19 @@ const Navbar = () => {
           />
         </a>
 
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-heading text-sm tracking-wider text-muted-foreground hover:text-primary transition-colors duration-300"
+              className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               {item.label}
             </a>
           ))}
           <button
             onClick={() => navigate("/login")}
-            className="font-heading text-sm tracking-wider px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+            className="font-heading text-[10px] tracking-[0.2em] uppercase px-5 py-1.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
           >
             LOGIN
           </button>
