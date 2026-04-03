@@ -164,7 +164,7 @@ const StoryboardPage = () => {
     <div className="dash-font h-screen flex flex-col bg-[hsl(var(--dash-bg))] text-[hsl(var(--dash-text))] overflow-hidden">
       <div className="h-[52px] flex items-center justify-between px-4 bg-[rgba(0,0,0,0.60)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.10)] flex-shrink-0">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.22)] bg-[rgba(255,255,255,0.08)] text-xs font-bold hover:bg-[rgba(255,255,255,0.16)] transition-all">
+          <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#2196f3] bg-transparent text-xs font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
             <ArrowLeft size={14} /> Back to Dashboard
           </button>
           <span className="text-[15px] font-medium tracking-tight">Storyboard</span>
@@ -173,7 +173,7 @@ const StoryboardPage = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowCaptions(!showCaptions)}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${showCaptions ? "border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] bg-[hsl(var(--dash-red-bg))]" : "border-[rgba(255,255,255,0.18)] text-[hsl(var(--dash-text-3))]"}`}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${showCaptions ? "border-[#2196f3] text-[#2196f3] bg-[rgba(33,150,243,0.1)]" : "border-[#2196f3]/40 text-[#2196f3]/60 hover:border-[#2196f3]"}`}
           >
             {showCaptions ? <Eye size={13} /> : <EyeOff size={13} />} Captions
           </button>
@@ -204,7 +204,7 @@ const StoryboardPage = () => {
                   <h2 className="text-lg font-medium tracking-tight">Episode {activeEpisode.number} — {activeEpisode.title}</h2>
                   <p className="text-sm text-[hsl(var(--dash-text-4))] mt-1">{activeEpisode.scenes.length} scene{activeEpisode.scenes.length !== 1 ? "s" : ""} • Drag images to reorder</p>
                 </div>
-                <button onClick={() => addScene(activeEp)} className="flex items-center gap-2 px-4 py-2.5 bg-[#2196f3] rounded-xl text-sm font-bold text-white hover:bg-[#1976d2] transition-all shadow-lg">
+              <button onClick={() => addScene(activeEp)} className="flex items-center gap-2 px-4 py-2.5 border border-[#2196f3] bg-transparent rounded-xl text-sm font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                   <Plus size={16} /> New Scene
                 </button>
               </div>
@@ -226,13 +226,13 @@ const StoryboardPage = () => {
                       {scene.saved && <span className="text-[10px] font-bold text-green-400">✓ Saved</span>}
                     </div>
                     <div className="flex items-center gap-2">
-                      <button onClick={() => saveScene(scene.id)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-500/50 text-xs font-semibold text-green-400 hover:border-green-400 hover:bg-green-400/10 transition-all">
+                      <button onClick={() => saveScene(scene.id)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2196f3] text-xs font-semibold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <Save size={13} /> Save Scene
                       </button>
-                      <button onClick={() => { setUploadSceneId(scene.id); fileInputRef.current?.click(); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-xs font-semibold text-[hsl(var(--dash-text-3))] hover:border-[#2196f3] hover:text-[#2196f3] transition-all">
+                      <button onClick={() => { setUploadSceneId(scene.id); fileInputRef.current?.click(); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2196f3] text-xs font-semibold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <Upload size={13} /> Upload Images
                       </button>
-                      <button onClick={() => deleteScene(scene.id)} className="w-7 h-7 rounded-lg border border-[rgba(255,255,255,0.18)] flex items-center justify-center text-[hsl(var(--dash-text-4))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                      <button onClick={() => deleteScene(scene.id)} className="w-7 h-7 rounded-lg border border-[#2196f3] flex items-center justify-center text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <X size={13} />
                       </button>
                     </div>
@@ -240,9 +240,9 @@ const StoryboardPage = () => {
 
                   <div className="p-4">
                     <DragDropContext onDragEnd={(result) => onDragEnd(result, scene.id)}>
-                      <Droppable droppableId={scene.id} direction="horizontal">
+                      <Droppable droppableId={scene.id}>
                         {(provided) => (
-                          <div ref={provided.innerRef} {...provided.droppableProps} className="grid gap-3" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
+                          <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-wrap gap-3">
                             {scene.images.map((img, idx) => (
                               <Draggable key={img.id} draggableId={img.id} index={idx}>
                                 {(provided, snapshot) => (
@@ -250,7 +250,7 @@ const StoryboardPage = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     className={`relative group rounded-lg overflow-hidden border-2 transition-all ${snapshot.isDragging ? "border-[#2196f3] shadow-[0_0_20px_rgba(33,150,243,0.3)] z-50" : "border-[rgba(255,255,255,0.09)]"}`}
-                                    style={{ ...provided.draggableProps.style, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
+                                    style={{ ...provided.draggableProps.style, width: `calc(${100 / columns}% - ${(columns - 1) * 12 / columns}px)`, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
                                   >
                                     <div {...provided.dragHandleProps} className="absolute top-1 left-1 z-10 w-6 h-6 rounded bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
                                       <GripVertical size={12} className="text-white" />
@@ -306,8 +306,8 @@ const StoryboardPage = () => {
                           className="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[#2196f3] placeholder:text-[hsl(var(--dash-text-4))]"
                           autoFocus
                         />
-                        <button onClick={() => saveCaption(scene.id, captionEditId)} className="px-3 py-2 bg-[#2196f3] rounded-lg text-xs font-bold text-white hover:bg-[#1976d2] transition-all">Save</button>
-                        <button onClick={() => setCaptionEditId(null)} className="px-3 py-2 border border-[rgba(255,255,255,0.18)] rounded-lg text-xs font-semibold text-[hsl(var(--dash-text-3))] hover:text-white transition-all">Cancel</button>
+                        <button onClick={() => saveCaption(scene.id, captionEditId)} className="px-3 py-2 border border-[#2196f3] rounded-lg text-xs font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">Save</button>
+                        <button onClick={() => setCaptionEditId(null)} className="px-3 py-2 border border-[#2196f3]/40 rounded-lg text-xs font-semibold text-[#2196f3]/60 hover:border-[#2196f3] hover:text-[#2196f3] transition-all">Cancel</button>
                       </div>
                     </div>
                   )}
@@ -334,7 +334,7 @@ const StoryboardPage = () => {
                         placeholder={`Comment as ${displayName}...`}
                         className="flex-1 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.18)] rounded-lg px-3 py-2 text-sm text-[hsl(var(--dash-text))] outline-none focus:border-[#2196f3] placeholder:text-[hsl(var(--dash-text-4))]"
                       />
-                      <button onClick={() => addComment(scene.id)} className="px-3 py-2 bg-[#2196f3] rounded-lg text-xs font-bold text-white hover:bg-[#1976d2] transition-all">Post</button>
+                      <button onClick={() => addComment(scene.id)} className="px-3 py-2 border border-[#2196f3] rounded-lg text-xs font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">Post</button>
                     </div>
                   </div>
                 </div>
