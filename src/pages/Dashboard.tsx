@@ -811,7 +811,7 @@ const DashboardPage = () => {
      <span className="text-[11px] font-semibold text-[hsl(var(--dash-text-4))] whitespace-nowrap hidden md:block">{fix.page}</span>
      <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 whitespace-nowrap ${
       fix.status === "open" ? "bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]" :
-      fix.status === "progress" ? "bg-[rgba(255,159,10,0.12)] text-[hsl(var(--dash-amber))]" :
+      fix.status === "progress" ? "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]" :
       "bg-[rgba(128,128,128,0.12)] text-[hsl(var(--dash-text-3))]"
      }`}>{fix.status === "progress" ? "In Progress" : fix.status === "open" ? "Open" : "Done"}</span>
      {fix.status !== "done" && (
