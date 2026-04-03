@@ -42,11 +42,10 @@ const NeverMissEpisode = () => {
               MISS AN EPISODE?
             </h2>
             <h3 className="font-heading text-5xl md:text-7xl text-foreground mb-4">
-              NEVER MISS IT{" "}
-              <span className="text-primary text-glow-red">AGAIN</span>
+              <span className="text-primary text-glow-red">NEVER</span> MISS IT
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8">
-              Get notified when new episodes drop. No spam, just heat.
+              Never miss it again. Get notified when new episodes drop. No spam, just heat.
             </p>
             <button
               onClick={() => setShowPopup(true)}
