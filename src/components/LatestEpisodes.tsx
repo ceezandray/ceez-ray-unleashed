@@ -20,7 +20,7 @@ const episodes = [
     number: "EP 03",
     title: "The Mugshot",
     description: "One mugshot goes viral. The other goes missing.",
-    thumbnail: "/images/scene-mugshot.jpg",
+    thumbnail: "/images/ep-mugshot.png",
     duration: "11:48",
   },
   {
