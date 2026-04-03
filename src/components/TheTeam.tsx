@@ -5,13 +5,58 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
+    bio: "Born and raised in New Jersey, Quantice Nash is an award-winning creative force and the visionary behind Ceez & Ray. As creator, director, and executive producer, he brings raw authenticity and bold storytelling to every frame. A pioneer in AI-driven animation, Quantice is leading the charge in merging cutting-edge technology with culture-first content — all while keeping the energy, humor, and heart that makes his work unmistakably his.",
+    socials: {
+      tiktok: "#",
+      instagram: "#",
+      youtube: "#",
+      email: "#",
+    },
   },
   {
     name: "Jasmine Wilson",
     role: "Producer / Brand Strategist / Audio Director",
     image: "/images/jasmine.png",
+    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With deep expertise in technical production, brand architecture, and strategic marketing, she builds the complete digital ecosystem that powers the BPF brand. From audio direction to cross-platform strategy, Jasmine ensures every element — from sound design to merch drops — works together seamlessly to amplify the Ceez & Ray universe.",
+    socials: {
+      tiktok: "#",
+      instagram: "#",
+      youtube: "#",
+      email: "#",
+    },
   },
 ];
+
+const SocialIcon = ({ type }: { type: string }) => {
+  switch (type) {
+    case "tiktok":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+      );
+    case "youtube":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /><path d="m10 15 5-3-5-3z" />
+        </svg>
+      );
+    case "email":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
 
 const TheTeam = () => {
   return (
@@ -31,7 +76,7 @@ const TheTeam = () => {
           </h3>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -51,9 +96,26 @@ const TheTeam = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent rounded-full" />
               </div>
               <h4 className="font-heading text-xl text-primary mb-1">{member.name}</h4>
-              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[220px] mx-auto">
+              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[220px] mx-auto mb-4">
                 {member.role}
               </p>
+              <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-4">
+                {member.bio}
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                {Object.entries(member.socials).map(([type, url]) => (
+                  <a
+                    key={type}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-full border border-muted-foreground/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+                    aria-label={type}
+                  >
+                    <SocialIcon type={type} />
+                  </a>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
