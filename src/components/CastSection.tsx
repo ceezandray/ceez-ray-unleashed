@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const CastSection = () => {
   return (
-    <section id="cast" className="pt-[124px] pb-24 relative overflow-hidden">
+    <section id="cast" className="pt-[180px] pb-24 relative overflow-hidden">
       {/* Top fade gradient to hide section division */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
       <div className="absolute inset-0">
@@ -27,10 +27,10 @@ const CastSection = () => {
             MEET THE CAST
           </h2>
           <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-2">
-            TWO FUTURE <span className="text-primary text-glow-red">LEGENDS</span>
+            ONE UNEXPECTED <span className="text-primary text-glow-red">FRIENDSHIP</span>
           </h3>
           <h3 className="font-heading text-4xl md:text-6xl text-foreground mb-6">
-            ZERO IMPULSE <span className="text-primary text-glow-red">CONTROL</span>
+            ZERO CHANCE THEY <span className="text-primary text-glow-red">PLAY IT SAFE</span>
           </h3>
         </motion.div>
 
