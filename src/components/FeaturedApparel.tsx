@@ -9,10 +9,10 @@ const products = [
     hoverImage: "/images/ceez-bpf-tee-hover.jpg",
   },
   {
-    name: "Joe's Bodega Tee",
-    price: "$34.99",
-    image: "/images/product-bodega-tee.jpg",
-    hoverImage: "/images/scene-bodega.jpg",
+    name: "Ceez Banana Sweatshirt",
+    price: "$62.99",
+    image: "/images/product-banana-sweatshirt.png",
+    hoverImage: "/images/banana-sweatshirt-hover.png",
   },
   {
     name: "BPF Sports Watch",
