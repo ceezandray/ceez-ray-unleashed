@@ -14,7 +14,7 @@ const characters = [
     subtitle: "THE PIGEON · THE BRAINS · THE PROBLEM",
     description:
       "Ray has a plan for everything. Every plan involves at least three things that can go catastrophically wrong. Smooth, fast, and operating at what he calls genius level.",
-    image: "/images/scene-parkwalk.jpg",
+    image: "/images/ray-mugshot.png",
     accent: "accent" as const,
   },
 ];
