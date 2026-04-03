@@ -18,7 +18,7 @@ const Index = () => {
       <FeaturedApparel />
       <TheTeam />
       <MediaPress />
-      <RepTheCulture />
+      <NeverMissEpisode />
       <Footer />
     </div>
   );

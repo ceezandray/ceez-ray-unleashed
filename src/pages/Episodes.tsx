@@ -92,6 +92,7 @@ const Episodes = () => {
           </div>
         </div>
       </section>
+      <NeverMissEpisode />
       <Footer />
     </div>
   );
