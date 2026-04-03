@@ -7,7 +7,7 @@ const MediaPress = () => {
     {
       quote: "A groundbreaking series that proves AI can be genuinely funny.",
       source: "Quantice Nash — AI Magazine",
-      image: aiMagazine,
+      image: aiMagazineLogo,
     },
     {
       quote: "Ceez & Ray are the duo we didn't know we needed.",
