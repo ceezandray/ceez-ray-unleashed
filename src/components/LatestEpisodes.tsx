@@ -27,7 +27,7 @@ const episodes = [
     number: "EP 04",
     title: "The Courtroom",
     description: "Ray represents himself. Ceez considers witness protection.",
-    thumbnail: "/images/scene-courtroom.jpg",
+    thumbnail: "/images/ep-courtroom.png",
     duration: "15:10",
   },
 ];
