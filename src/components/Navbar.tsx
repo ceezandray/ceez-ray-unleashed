@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Cast", href: "#cast" },
-  { label: "Episodes", href: "#episodes" },
-  { label: "Apparel", href: "#apparel" },
-  { label: "Team", href: "#team" },
-  { label: "Shop", href: "#shop" },
+  { label: "Home", href: "/" },
+  { label: "About BPF", href: "/about-bpf" },
+  { label: "Meet Ceez & Ray", href: "/#cast" },
+  { label: "Episodes", href: "/storyboard" },
+  { label: "Apparel", href: "/#apparel" },
+  { label: "Shop", href: "/#shop" },
 ];
 
 const Navbar = () => {
