@@ -7,7 +7,7 @@ const AboutBPF = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <section className="pt-32 pb-24 px-6">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
