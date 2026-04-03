@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 interface ComingSoonProps {
   onAccessGranted: () => void;
@@ -11,6 +12,22 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [showNewsletter, setShowNewsletter] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      const popupTimer = setTimeout(() => setShowNewsletter(true), 3000);
+      return () => clearTimeout(popupTimer);
+    }
+  }, [loading]);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +35,17 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
     setSubmitted(true);
     setEmail("");
     setTimeout(() => setSubmitted(false), 3000);
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterSubmitted(true);
+    setNewsletterEmail("");
+    setTimeout(() => {
+      setNewsletterSubmitted(false);
+      setShowNewsletter(false);
+    }, 2500);
   };
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
@@ -53,10 +81,41 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
     )},
   ];
 
+  // Loading screen
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex flex-col items-center justify-center">
+        <motion.img
+          src="/images/bpf-logo.png"
+          alt="Loading"
+          className="h-20 md:h-28 w-auto mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: [0, 1, 1, 0.7, 1], scale: [0.8, 1, 1.02, 1] }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
+        <motion.div
+          className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <motion.div
+            className="h-full rounded-full"
+            style={{ background: '#990000' }}
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center relative overflow-hidden">
       {/* Subtle ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[150px] pointer-events-none" />
+
       {/* Preview Access Button */}
       <motion.button
         initial={{ opacity: 0 }}
@@ -97,96 +156,153 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
         )}
       </AnimatePresence>
 
-      {/* Main Content - Character + Box Layout */}
-      <div className="relative flex items-center justify-center w-full max-w-4xl px-6">
-        {/* Ceez Character - Left/Behind */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hidden md:block relative z-0 -mr-16 flex-shrink-0"
-        >
-          <div className="relative">
-            <img
-              src="/images/ceez-animation.gif"
-              alt="Ceez - BPF Gorilla"
-              className="w-96 lg:w-[26rem] object-contain drop-shadow-2xl"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
-          </div>
-        </motion.div>
+      {/* Main Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 flex flex-col items-center gap-12 max-w-md w-full px-6"
+      >
+        {/* Logo */}
+        <img
+          src="/images/bpf-logo.png"
+          alt="Black Picket Fence Entertainment"
+          className="h-16 md:h-24 w-auto drop-shadow-2xl"
+        />
 
-        {/* Content Box - Right/In Front */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 bg-black/80 border border-white/10 backdrop-blur-md rounded-xl p-8 md:p-12 flex flex-col items-center gap-12 max-w-md w-full"
-        >
-          {/* Logo */}
-          <img
-            src="/images/bpf-logo.png"
-            alt="Black Picket Fence Entertainment"
-            className="h-16 md:h-24 w-auto drop-shadow-2xl"
-          />
+        {/* Message */}
+        <div className="text-center space-y-3">
+          <h1 className="text-xl md:text-2xl font-heading tracking-wider" style={{ color: '#990000' }}>
+            SOMETHING BIG IS COMING...
+          </h1>
+          <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
+            The culture's favorite AI TV series is about to level up. Be the first to know when we drop.
+          </p>
+        </div>
 
-          {/* Message */}
-          <div className="text-center space-y-3">
-            <h1 className="text-xl md:text-2xl font-heading tracking-wider" style={{ color: '#990000' }}>
-              SOMETHING BIG IS COMING...
-            </h1>
-            <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
-              The culture's favorite AI TV series is about to level up. Be the first to know when we drop.
-            </p>
-          </div>
-
-          {/* Email Signup */}
-          <form onSubmit={handleEmailSubmit} className="w-full flex gap-2">
-            {submitted ? (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-primary font-body text-sm text-center w-full py-3"
+        {/* Email Signup */}
+        <form onSubmit={handleEmailSubmit} className="w-full flex gap-2">
+          {submitted ? (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-primary font-body text-sm text-center w-full py-3"
+            >
+              You're on the list! 🔥
+            </motion.p>
+          ) : (
+            <>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 bg-white/5 border border-white/10 text-white text-sm px-4 py-3 rounded focus:outline-none focus:border-primary font-body placeholder:text-white/30"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-transparent border border-primary text-white text-xs font-heading tracking-wider px-5 py-3 rounded hover:bg-primary/20 transition-colors uppercase whitespace-nowrap"
               >
-                You're on the list! 🔥
-              </motion.p>
-            ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-white/5 border border-white/10 text-white text-sm px-4 py-3 rounded focus:outline-none focus:border-primary font-body placeholder:text-white/30"
-                  required
+                Notify Me
+              </button>
+            </>
+          )}
+        </form>
+
+        {/* Social Links */}
+        <div className="flex items-center gap-6">
+          {socials.map((s) => (
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-primary transition-colors duration-300"
+              aria-label={s.name}
+            >
+              {s.icon}
+            </a>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Newsletter Popup */}
+      <AnimatePresence>
+        {showNewsletter && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setShowNewsletter(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative bg-black border border-white/10 rounded-xl overflow-hidden max-w-lg w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setShowNewsletter(false)}
+                className="absolute top-3 right-3 z-10 text-white/60 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Image */}
+              <div className="w-full h-56 md:h-64 overflow-hidden">
+                <img
+                  src="/images/ceez-ray-carnival.jpg"
+                  alt="Ceez & Ray"
+                  className="w-full h-full object-cover object-top"
                 />
-                <button
-                  type="submit"
-                  className="bg-transparent border border-primary text-white text-xs font-heading tracking-wider px-5 py-3 rounded hover:bg-primary/20 transition-colors uppercase whitespace-nowrap"
-                >
-                  Notify Me
-                </button>
-              </>
-            )}
-          </form>
+              </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
-            {socials.map((s) => (
-              <a
-                key={s.name}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-primary transition-colors duration-300"
-                aria-label={s.name}
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              {/* Content */}
+              <div className="p-6 md:p-8 flex flex-col items-center gap-4">
+                <h2 className="text-lg md:text-xl font-heading tracking-wider text-white text-center">
+                  JOIN THE MOVEMENT
+                </h2>
+                <p className="text-white/50 font-body text-xs md:text-sm text-center">
+                  Get exclusive updates, behind-the-scenes content, and early access drops straight to your inbox.
+                </p>
+
+                {newsletterSubmitted ? (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-primary font-body text-sm py-3"
+                  >
+                    Welcome to the family! 🔥
+                  </motion.p>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="w-full flex gap-2 mt-2">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      className="flex-1 bg-white/5 border border-white/10 text-white text-sm px-4 py-3 rounded focus:outline-none focus:border-primary font-body placeholder:text-white/30"
+                      required
+                    />
+                    <button
+                      type="submit"
+                      className="text-white text-xs font-heading tracking-wider px-5 py-3 rounded transition-colors uppercase whitespace-nowrap"
+                      style={{ background: '#990000' }}
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer */}
       <p className="absolute bottom-6 text-white/20 text-xs font-body tracking-wider">
