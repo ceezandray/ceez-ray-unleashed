@@ -283,7 +283,7 @@ const DashboardPage = () => {
             <Settings size={13} />
           </button>
           <div className="hidden sm:flex items-center gap-1.5 bg-[rgba(255,255,255,0.10)] border border-[rgba(255,255,255,0.18)]  px-2.5 py-1 text-[11px] font-semibold">
-            <div className="w-1.5 h-1.5  bg-[hsl(var(--dash-text))] animate-pulse" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--dash-text))] animate-pulse" />
             Online
           </div>
           <div className="flex items-center gap-1.5">
@@ -747,7 +747,7 @@ const DashboardPage = () => {
                     <div className="px-3 py-2.5 border-b border-[rgba(255,255,255,0.09)] flex items-center justify-between bg-[hsl(var(--dash-surface2))]">
                       <span className="text-sm font-extrabold text-white">{p.name}</span>
                       <span className="flex items-center gap-1 text-[10px] font-semibold text-[rgba(255,255,255,0.6)]">
-                        <div className="w-1.5 h-1.5  bg-[rgba(255,255,255,0.3)]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[rgba(255,255,255,0.3)]" />
                         {p.status}
                       </span>
                     </div>
@@ -800,7 +800,7 @@ const DashboardPage = () => {
               <div className="bg-[hsl(var(--dash-surface))] border border-[rgba(255,255,255,0.09)]  overflow-hidden shadow-lg flex-1">
                 {fixes.map(fix => (
                   <div key={fix.id} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
-                    <div className={`w-2.5 h-2.5  flex-shrink-0 ${
+                    <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
                       fix.priority === "high" ? "bg-[hsl(var(--dash-red))] shadow-[0_0_6px_hsl(var(--dash-red-glow))]" :
                       fix.priority === "med" ? "bg-[hsl(var(--dash-amber))]" : "bg-[rgba(128,128,128,0.5)]"
                     }`} />
@@ -930,7 +930,7 @@ const DashboardPage = () => {
             {section.links.map((link, j) => (
               <a key={j} href={link.url} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 w-full px-2.5 py-2  text-sm font-semibold text-[hsl(var(--dash-text-3))] hover:bg-[rgba(255,255,255,0.06)] hover:text-[hsl(var(--dash-text))] hover:translate-x-0.5 transition-all">
-                <div className="w-[7px] h-[7px]  bg-[rgba(255,255,255,0.18)]" />
+                <div className="w-[7px] h-[7px] rounded-full bg-[rgba(255,255,255,0.18)]" />
                 {link.name}
               </a>
             ))}
