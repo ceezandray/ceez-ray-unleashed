@@ -29,10 +29,21 @@ const ShopCTA = () => {
           <p className="text-muted-foreground max-w-md mx-auto mb-8">
             Exclusive Black Picket Fence apparel. Hustler quality. Trap tested.
           </p>
-          <button className="inline-flex items-center gap-3 font-heading tracking-wider px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-lg">
-            <ShoppingBag className="w-5 h-5" />
-            SHOP NOW
-          </button>
+          <div className="relative inline-block">
+            <div
+              className="absolute inset-y-0 -left-16 -right-16 pointer-events-none"
+              style={{
+                backgroundImage: "url('/images/black-fence.png')",
+                backgroundRepeat: "repeat-x",
+                backgroundSize: "auto 100%",
+                backgroundPosition: "center",
+              }}
+            />
+            <button className="relative inline-flex items-center gap-3 font-heading tracking-wider px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-lg z-10">
+              <ShoppingBag className="w-5 h-5" />
+              SHOP NOW
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
