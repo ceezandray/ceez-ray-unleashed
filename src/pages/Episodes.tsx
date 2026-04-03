@@ -35,17 +35,17 @@ const episodes = [
   },
   {
     number: "EP 05",
-    title: "Episode 5",
-    description: "Coming soon...",
-    thumbnail: "/images/ep-bodega-incident.png",
-    duration: "00:00",
+    title: "The Plan",
+    description: "Every great escape starts with a terrible plan.",
+    thumbnail: "/images/ep-the-plan.webp",
+    duration: "Coming Soon",
   },
   {
     number: "EP 06",
-    title: "Episode 6",
-    description: "Coming soon...",
-    thumbnail: "/images/ep-bodega-incident.png",
-    duration: "00:00",
+    title: "The Food Fight",
+    description: "Kitchen duty was supposed to be the easy gig.",
+    thumbnail: "/images/ep-food-fight.webp",
+    duration: "Coming Soon",
   },
 ];
 
@@ -71,7 +71,7 @@ const Episodes = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {episodes.map((ep, i) => (
               <motion.div
                 key={ep.number}
@@ -88,7 +88,7 @@ const Episodes = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(153,0,0,0.5)] group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(153,0,0,0.7)' }}>
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(153,0,0,0.7)' }}>
                       <Play className="w-7 h-7 text-white fill-white ml-0.5" />
                     </div>
                   </div>
