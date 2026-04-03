@@ -425,7 +425,7 @@ const DashboardPage = () => {
                     <div key={t.id} className={`flex items-center gap-2.5 px-3 py-2.5  border-[1.5px] transition-all border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.03)] ${t.done ? "opacity-45 line-through" : ""}`}>
                       <button
                         onClick={() => setTodos(prev => prev.map(x => x.id === t.id ? { ...x, done: !x.done } : x))}
-                        className={`w-[18px] h-[18px] rounded-[5px] border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all border-[rgba(255,255,255,0.3)] ${t.done ? "bg-white" : ""}`}
+                        className={`w-[18px] h-[18px]  border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all border-[rgba(255,255,255,0.3)] ${t.done ? "bg-white" : ""}`}
                       >
                         {t.done && <Check size={10} className="text-[hsl(var(--dash-bg))]" />}
                       </button>
