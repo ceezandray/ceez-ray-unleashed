@@ -54,7 +54,15 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-[#1a0000] to-[#330000] flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Gritty street texture overlay */}
+      <div className="absolute inset-0 opacity-[0.07] pointer-events-none" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+        backgroundSize: '150px 150px'
+      }} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 pointer-events-none" />
+      {/* Subtle red glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#990000]/20 rounded-full blur-[120px] pointer-events-none" />
       {/* Preview Access Button */}
       <motion.button
         initial={{ opacity: 0 }}
