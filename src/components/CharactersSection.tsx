@@ -6,7 +6,7 @@ const characters = [
     subtitle: "THE GORILLA · THE MUSCLE · THE SANE ONE",
     description:
       "Tough exterior, huge heart. Doesn't take nonsense from anyone — except Ray. Somehow always ends up in orange. Sharp, street-smart, and deeply tired.",
-    image: "/images/scene-bodega.jpg",
+    image: "/images/ceez-mugshot.webp",
     accent: "primary" as const,
   },
   {
@@ -14,7 +14,7 @@ const characters = [
     subtitle: "THE PIGEON · THE BRAINS · THE PROBLEM",
     description:
       "Ray has a plan for everything. Every plan involves at least three things that can go catastrophically wrong. Smooth, fast, and operating at what he calls genius level.",
-    image: "/images/scene-parkwalk.jpg",
+    image: "/images/ray-mugshot.png",
     accent: "accent" as const,
   },
 ];
@@ -53,7 +53,7 @@ const CharactersSection = () => {
                 <img
                   src={char.image}
                   alt={char.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
