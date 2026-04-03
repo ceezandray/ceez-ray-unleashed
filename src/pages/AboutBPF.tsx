@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import TheTeam from "@/components/TheTeam";
 import Footer from "@/components/Footer";
 
 const AboutBPF = () => {
@@ -52,6 +53,7 @@ const AboutBPF = () => {
           </div>
         </div>
       </section>
+      <TheTeam />
       <Footer />
     </div>
   );
