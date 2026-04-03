@@ -802,7 +802,7 @@ const DashboardPage = () => {
      <div key={fix.id} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
      <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
       fix.priority === "high" ? "bg-[hsl(var(--dash-red))] shadow-[0_0_6px_hsl(var(--dash-red-glow))]" :
-      fix.priority === "med" ? "bg-[hsl(var(--dash-amber))]" : "bg-[rgba(128,128,128,0.5)]"
+      fix.priority === "med" ? "bg-[rgba(255,255,255,0.4)]" : "bg-[rgba(255,255,255,0.2)]"
      }`} />
      <div className="flex-1 min-w-0">
       <div className="text-sm font-semibold truncate">{fix.title}</div>
