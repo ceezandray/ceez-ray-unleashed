@@ -4,10 +4,11 @@ import { Play } from "lucide-react";
 const episodes = [
   {
     number: "EP 01",
-    title: "The Bodega Incident",
+    title: "Joe's Bodega",
     description: "It all started with a sandwich. And a very bad decision.",
     thumbnail: "/images/ep-bodega-incident.png",
     duration: "12:34",
+    progress: 30,
   },
   {
     number: "EP 02",
