@@ -45,6 +45,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    inquiryType: "",
     message: "",
   });
   const [sending, setSending] = useState(false);
@@ -56,12 +57,13 @@ const Contact = () => {
       return;
     }
     setSending(true);
-    const mailtoLink = `mailto:ceezandray@gmail.com?subject=Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
+    const subject = formData.inquiryType ? `[${formData.inquiryType}] Contact from ${encodeURIComponent(formData.name)}` : `Contact from ${encodeURIComponent(formData.name)}`;
+    const mailtoLink = `mailto:ceezandray@gmail.com?subject=${subject}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
     window.location.href = mailtoLink;
     setTimeout(() => {
       setSending(false);
       toast({ title: "Opening your email client..." });
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", inquiryType: "", message: "" });
     }, 1000);
   };
 
@@ -170,6 +172,22 @@ const Contact = () => {
                     className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground font-body focus:outline-none focus:border-primary transition-colors"
                     placeholder="your@email.com"
                   />
+                </div>
+                <div>
+                  <label className="font-heading text-xs tracking-wider text-muted-foreground mb-2 block">
+                    INQUIRY TYPE
+                  </label>
+                  <select
+                    value={formData.inquiryType}
+                    onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                    className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground font-body focus:outline-none focus:border-primary transition-colors"
+                  >
+                    <option value="">Select an inquiry type</option>
+                    <option value="General Inquiries">General Inquiries</option>
+                    <option value="Partnerships">Partnerships</option>
+                    <option value="Distribution">Distribution</option>
+                    <option value="Press & Media">Press & Media</option>
+                  </select>
                 </div>
                 <div>
                   <label className="font-heading text-xs tracking-wider text-muted-foreground mb-2 block">
