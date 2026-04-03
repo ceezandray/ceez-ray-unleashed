@@ -175,6 +175,22 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="font-heading text-xs tracking-wider text-muted-foreground mb-2 block">
+                    INQUIRY TYPE
+                  </label>
+                  <select
+                    value={formData.inquiryType}
+                    onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                    className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground font-body focus:outline-none focus:border-primary transition-colors"
+                  >
+                    <option value="">Select an inquiry type</option>
+                    <option value="General Inquiries">General Inquiries</option>
+                    <option value="Partnerships">Partnerships</option>
+                    <option value="Distribution">Distribution</option>
+                    <option value="Press & Media">Press & Media</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="font-heading text-xs tracking-wider text-muted-foreground mb-2 block">
                     MESSAGE
                   </label>
                   <textarea
