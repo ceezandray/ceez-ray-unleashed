@@ -13,7 +13,7 @@ const episodes = [
     number: "EP 02",
     title: "The Big Arrest",
     description: "When the law catches up, Ceez and Ray handle it... differently.",
-    thumbnail: "/images/scene-arrest.jpg",
+    thumbnail: "/images/ep-thearrest.jpg",
     duration: "14:22",
   },
   {
