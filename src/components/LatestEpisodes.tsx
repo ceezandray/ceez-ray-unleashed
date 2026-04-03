@@ -73,7 +73,7 @@ const LatestEpisodes = () => {
           </a>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
           {episodes.map((ep, i) => (
             <motion.div
               key={ep.number}
