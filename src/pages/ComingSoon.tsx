@@ -13,9 +13,6 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  const [showNewsletter, setShowNewsletter] = useState(false);
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2200);
