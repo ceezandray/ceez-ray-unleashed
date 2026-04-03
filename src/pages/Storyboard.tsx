@@ -240,9 +240,9 @@ const StoryboardPage = () => {
 
                   <div className="p-4">
                     <DragDropContext onDragEnd={(result) => onDragEnd(result, scene.id)}>
-                      <Droppable droppableId={scene.id} direction="horizontal">
+                      <Droppable droppableId={scene.id}>
                         {(provided) => (
-                          <div ref={provided.innerRef} {...provided.droppableProps} className="grid gap-3" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
+                          <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-wrap gap-3">
                             {scene.images.map((img, idx) => (
                               <Draggable key={img.id} draggableId={img.id} index={idx}>
                                 {(provided, snapshot) => (
