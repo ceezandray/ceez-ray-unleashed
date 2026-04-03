@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const RepTheCulture = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="shop" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -29,7 +32,10 @@ const RepTheCulture = () => {
           <p className="text-muted-foreground max-w-md mx-auto mb-8">
             Exclusive Black Picket Fence apparel. Built for the culture.
           </p>
-          <button className="inline-flex items-center gap-3 font-heading tracking-wider px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-lg">
+          <button
+            onClick={() => navigate("/shop")}
+            className="inline-flex items-center gap-3 font-heading tracking-wider px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-lg"
+          >
             <ShoppingBag className="w-5 h-5" />
             SHOP NOW
           </button>
