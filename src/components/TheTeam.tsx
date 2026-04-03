@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 const team = [
   {
     name: "Quantice Nash",
-    role: "Creator / Executive Producer",
+    role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
   },
   {
     name: "Jasmine Wilson",
-    role: "Executive Producer / Brand Strategist / Audio & Music Director",
+    role: "Producer / Brand Strategist / Audio Director",
     image: "/images/jasmine.png",
   },
 ];
@@ -51,7 +51,7 @@ const TheTeam = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent rounded-full" />
               </div>
               <h4 className="font-heading text-xl text-primary mb-1">{member.name}</h4>
-              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[200px] mx-auto">
+              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[220px] mx-auto">
                 {member.role}
               </p>
             </motion.div>

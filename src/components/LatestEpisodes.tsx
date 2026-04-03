@@ -76,7 +76,7 @@ const LatestEpisodes = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/85 flex items-center justify-center shadow-[0_0_20px_rgba(229,57,53,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-full bg-primary/75 flex items-center justify-center shadow-[0_0_20px_rgba(229,57,53,0.4)] group-hover:scale-110 transition-transform duration-300">
                     <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                   </div>
                 </div>
