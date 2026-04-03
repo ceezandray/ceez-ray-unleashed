@@ -6,7 +6,7 @@ const characters = [
     subtitle: "THE GORILLA · THE MUSCLE · THE SANE ONE",
     description:
       "Tough exterior, huge heart. Doesn't take nonsense from anyone — except Ray. Somehow always ends up in orange. Sharp, street-smart, and deeply tired.",
-    image: "/images/scene-bodega.jpg",
+    image: "/images/ceez-mugshot.webp",
     accent: "primary" as const,
   },
   {
