@@ -130,7 +130,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
 
           {/* Message */}
           <div className="text-center space-y-3">
-            <h1 className="text-xl md:text-2xl font-heading tracking-wider" style={{ color: '#990000' }}>
+            <h1 className="text-muted-foreground text-xl md:text-2xl font-heading tracking-wider">
               SOMETHING BIG IS COMING...
             </h1>
             <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
