@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BananaScratchOff from "@/components/BananaScratchOff";
 import { products, categories } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
