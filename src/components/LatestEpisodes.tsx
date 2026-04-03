@@ -31,6 +31,20 @@ const episodes = [
     thumbnail: "/images/ep-courtroom.png",
     duration: "15:10",
   },
+  {
+    number: "EP 05",
+    title: "The Plan",
+    description: "Every great escape starts with a terrible plan.",
+    thumbnail: "/images/ep-the-plan.webp",
+    duration: "Coming Soon",
+  },
+  {
+    number: "EP 06",
+    title: "The Food Fight",
+    description: "Kitchen duty was supposed to be the easy gig.",
+    thumbnail: "/images/ep-food-fight.webp",
+    duration: "Coming Soon",
+  },
 ];
 
 const LatestEpisodes = () => {
