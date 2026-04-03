@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import hypeMagazine from "@/assets/hype-magazine.png";
+import aiMagazine from "@/assets/ai-magazine.png";
 
 const MediaPress = () => {
   const items = [
     {
       quote: "A groundbreaking series that proves AI can be genuinely funny.",
-      source: "Digital Culture Weekly",
-      image: null,
+      source: "Quantice Nash — AI Magazine",
+      image: aiMagazine,
     },
     {
       quote: "Ceez & Ray are the duo we didn't know we needed.",
