@@ -256,7 +256,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
               {/* Image */}
               <div className="w-full h-56 md:h-64 overflow-hidden">
                 <img
-                  src="/images/ceez-ray-carnival.jpg"
+                  src="/images/ceez-ray-gorilla.png"
                   alt="Ceez & Ray"
                   className="w-full h-full object-cover object-top"
                 />
