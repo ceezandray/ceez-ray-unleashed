@@ -576,7 +576,7 @@ const DashboardPage = () => {
      <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 inline-block w-fit ${
       o.status === "Shipped" ? "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-text))]" :
       o.status === "Processing" ? "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]" :
-      "bg-[rgba(255,159,10,0.12)] text-[hsl(var(--dash-amber))]"
+      "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]"
      }`}>{o.status}</span>
      </div>
     ))}
