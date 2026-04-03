@@ -226,13 +226,13 @@ const StoryboardPage = () => {
                       {scene.saved && <span className="text-[10px] font-bold text-green-400">✓ Saved</span>}
                     </div>
                     <div className="flex items-center gap-2">
-                      <button onClick={() => saveScene(scene.id)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-500/50 text-xs font-semibold text-green-400 hover:border-green-400 hover:bg-green-400/10 transition-all">
+                      <button onClick={() => saveScene(scene.id)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2196f3] text-xs font-semibold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <Save size={13} /> Save Scene
                       </button>
-                      <button onClick={() => { setUploadSceneId(scene.id); fileInputRef.current?.click(); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.18)] text-xs font-semibold text-[hsl(var(--dash-text-3))] hover:border-[#2196f3] hover:text-[#2196f3] transition-all">
+                      <button onClick={() => { setUploadSceneId(scene.id); fileInputRef.current?.click(); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#2196f3] text-xs font-semibold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <Upload size={13} /> Upload Images
                       </button>
-                      <button onClick={() => deleteScene(scene.id)} className="w-7 h-7 rounded-lg border border-[rgba(255,255,255,0.18)] flex items-center justify-center text-[hsl(var(--dash-text-4))] hover:border-[hsl(var(--dash-red))] hover:text-[hsl(var(--dash-red))] transition-all">
+                      <button onClick={() => deleteScene(scene.id)} className="w-7 h-7 rounded-lg border border-[#2196f3] flex items-center justify-center text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                         <X size={13} />
                       </button>
                     </div>
