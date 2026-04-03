@@ -66,7 +66,7 @@ const TheTeam = () => {
         <img
           src="/images/black-fence.png"
           alt=""
-          className="w-full h-40 object-cover opacity-[0.25]"
+          className="w-full h-40 object-cover opacity-[0.4]"
           style={{ objectPosition: "center" }}
         />
       </div>
