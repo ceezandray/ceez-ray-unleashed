@@ -19,12 +19,6 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (!loading) {
-      const popupTimer = setTimeout(() => setShowNewsletter(true), 3000);
-      return () => clearTimeout(popupTimer);
-    }
-  }, [loading]);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
