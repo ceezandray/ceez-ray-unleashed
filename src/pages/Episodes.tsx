@@ -33,6 +33,20 @@ const episodes = [
     thumbnail: "/images/ep-courtroom.png",
     duration: "15:10",
   },
+  {
+    number: "EP 05",
+    title: "Episode 5",
+    description: "Coming soon...",
+    thumbnail: "/images/ep-bodega-incident.png",
+    duration: "00:00",
+  },
+  {
+    number: "EP 06",
+    title: "Episode 6",
+    description: "Coming soon...",
+    thumbnail: "/images/ep-bodega-incident.png",
+    duration: "00:00",
+  },
 ];
 
 const Episodes = () => {
