@@ -336,25 +336,24 @@ const DashboardPage = () => {
   <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.75) 18%, rgba(0,0,0,0.30) 40%, rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.55) 82%, rgba(0,0,0,0.90) 100%)" }} />
   <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-b from-transparent to-[hsl(var(--dash-bg))]" />
   <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(to right, hsl(var(--dash-red)) 0%, hsl(var(--dash-red) / 0.5) 50%, transparent 100%)" }} />
-  <div className="absolute inset-x-0 bottom-4 flex items-end justify-between px-7">
-   <div className="flex gap-0">
-   {[
-    { val: "2.4M", lbl: "Monthly Views" },
-    { val: "142K", lbl: "Subscribers" },
-    { val: "$3,812", lbl: "YT Revenue" },
-    { val: "$6,241", lbl: "Merch Sales" },
-   ].map((kpi, i) => (
-    <div key={i} className="px-4 py-2 border-r border-[rgba(255,255,255,0.15)] last:border-r-0 mr-4 last:mr-0">
-    <div className="text-xl font-extrabold text-[hsl(var(--dash-text))] leading-none tracking-tight drop-shadow-lg">{kpi.val}</div>
-    <div className="text-[10px] font-bold text-[hsl(var(--dash-red))] uppercase tracking-widest mt-0.5">{kpi.lbl}</div>
+   <div className="absolute inset-x-0 bottom-4 flex items-end justify-between px-7">
+    <div className="flex flex-col items-start gap-2">
+    <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-[52px] drop-shadow-2xl" style={{ objectFit: "contain" }} />
+    <div className="flex gap-0">
+     {[
+     { val: "2.4M", lbl: "Monthly Views" },
+     { val: "142K", lbl: "Subscribers" },
+     { val: "$3,812", lbl: "YT Revenue" },
+     { val: "$6,241", lbl: "Merch Sales" },
+     ].map((kpi, i) => (
+     <div key={i} className="px-4 py-2 border-r border-[rgba(255,255,255,0.15)] last:border-r-0 mr-4 last:mr-0">
+      <div className="text-xl font-extrabold text-[hsl(var(--dash-text))] leading-none tracking-tight drop-shadow-lg">{kpi.val}</div>
+      <div className="text-[10px] font-bold text-[hsl(var(--dash-red))] uppercase tracking-widest mt-0.5">{kpi.lbl}</div>
+     </div>
+     ))}
     </div>
-   ))}
+    </div>
    </div>
-   <div className="flex items-center gap-4">
-   <img src="/images/bpf-logo.png" alt="Black Picket Fence" className="h-[50px] drop-shadow-2xl" style={{ objectFit: "contain" }} />
-   <img src="/images/ceezandray-logo.png" alt="Ceez & Ray" className="h-[42px] drop-shadow-2xl" style={{ objectFit: "contain" }} />
-   </div>
-  </div>
   </div>
 
   {/* MAIN LAYOUT */}
