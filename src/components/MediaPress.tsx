@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import hypeMagazine from "@/assets/hype-magazine.png";
-import aiMagazine from "@/assets/ai-magazine.png";
+import aiMagazineLogo from "@/assets/ai-magazine-logo.webp";
 
 const MediaPress = () => {
   const items = [
