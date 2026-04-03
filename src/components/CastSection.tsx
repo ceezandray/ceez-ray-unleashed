@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const CastSection = () => {
   return (
-    <section id="cast" className="pt-[244px] pb-16 relative overflow-hidden">
+    <section id="cast" className="pt-32 pb-12 relative overflow-hidden">
       {/* Top fade gradient to hide section division */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
       <div className="absolute inset-0">
