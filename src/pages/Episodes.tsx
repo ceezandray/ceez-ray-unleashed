@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NeverMissEpisode from "@/components/NeverMissEpisode";
 
 const episodes = [
   {
@@ -91,6 +92,7 @@ const Episodes = () => {
           </div>
         </div>
       </section>
+      <NeverMissEpisode />
       <Footer />
     </div>
   );
