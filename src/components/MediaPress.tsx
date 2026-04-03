@@ -49,11 +49,13 @@ const MediaPress = () => {
               className="border border-border p-6 bg-card/50 flex flex-col"
             >
               {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.source}
-                  className="w-full h-48 object-cover object-top mb-4 rounded"
-                />
+                <div className="flex items-center justify-center py-8 mb-4">
+                  <img
+                    src={item.image}
+                    alt={item.source}
+                    className="max-h-24 w-auto object-contain"
+                  />
+                </div>
               )}
               <p className="text-foreground text-sm italic leading-relaxed mb-4">
                 "{item.quote}"
