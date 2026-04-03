@@ -5,8 +5,8 @@ const products = [
   {
     name: "Ceez BPF Tee",
     price: "$54.99",
-    image: "/images/product-ceez-bpf-tee.jpg",
-    hoverImage: "/images/ceez-bpf-tee-hover.jpg",
+    image: "/images/ceez-bpf-tee-hover.jpg",
+    hoverImage: "/images/product-ceez-bpf-tee.jpg",
   },
   {
     name: "Ceez Banana Sweatshirt",
