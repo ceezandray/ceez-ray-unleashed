@@ -240,9 +240,14 @@ const StoryboardPage = () => {
 
                   <div className="p-4">
                     <DragDropContext onDragEnd={(result) => onDragEnd(result, scene.id)}>
-                      <Droppable droppableId={scene.id}>
+                      <Droppable droppableId={scene.id} direction="horizontal">
                         {(provided) => (
-                          <div ref={provided.innerRef} {...provided.droppableProps} className="flex flex-wrap gap-3">
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            className="grid gap-3"
+                            style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+                          >
                             {scene.images.map((img, idx) => (
                               <Draggable key={img.id} draggableId={img.id} index={idx}>
                                 {(provided, snapshot) => (
@@ -250,7 +255,7 @@ const StoryboardPage = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     className={`relative group rounded-lg overflow-hidden border-2 transition-all ${snapshot.isDragging ? "border-[#2196f3] shadow-[0_0_20px_rgba(33,150,243,0.3)] z-50" : "border-[rgba(255,255,255,0.09)]"}`}
-                                    style={{ ...provided.draggableProps.style, width: `calc(${100 / columns}% - ${(columns - 1) * 12 / columns}px)`, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
+                                    style={{ ...provided.draggableProps.style, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
                                   >
                                     <div {...provided.dragHandleProps} className="absolute top-1 left-1 z-10 w-6 h-6 rounded bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
                                       <GripVertical size={12} className="text-white" />
@@ -258,7 +263,6 @@ const StoryboardPage = () => {
                                     <button onClick={() => removeImage(scene.id, img.id)} className="absolute top-1 right-1 z-10 w-6 h-6 rounded-full bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[hsl(var(--dash-red))]">
                                       <X size={11} className="text-white" />
                                     </button>
-                                    {/* Caption note button */}
                                     <button
                                       onClick={() => { setCaptionEditId(img.id); setCaptionText(img.caption || ""); }}
                                       className="absolute bottom-1 right-1 z-10 w-6 h-6 rounded bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#2196f3]"
@@ -266,7 +270,6 @@ const StoryboardPage = () => {
                                       <StickyNote size={11} className="text-white" />
                                     </button>
                                     <img src={img.url} alt="" className="w-full aspect-video object-cover" />
-                                    {/* Caption overlay */}
                                     {showCaptions && img.caption && (
                                       <div className="absolute inset-0 bg-black/40 flex items-end opacity-0 group-hover:opacity-100 transition-opacity">
                                         <p className="text-white text-[11px] px-2 py-1.5 w-full leading-snug">{img.caption}</p>
