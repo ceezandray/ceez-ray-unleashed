@@ -17,7 +17,7 @@ const team = [
     name: "Jasmine Wilson",
     role: "Producer / Brand Strategist / Audio Director",
     image: "/images/jasmine.png",
-    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With deep expertise in technical production, brand architecture, and strategic marketing, she builds the complete digital ecosystem that powers the BPF brand. From audio direction to cross-platform strategy, Jasmine ensures every element — from sound design to merch drops — works together seamlessly to amplify the Ceez & Ray universe.",
+    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With expertise in production, brand strategy, and digital marketing, she builds the ecosystem powering the BPF brand. From audio direction to merch and platform strategy, Jasmine ensures every piece works together to expand the Ceez & Ray universe.",
     socials: {
       tiktok: "#",
       instagram: "#",
