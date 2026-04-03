@@ -50,7 +50,7 @@ const FeaturedApparel = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="group cursor-pointer"
             >
-              <div className={`relative overflow-hidden mb-4 aspect-square border border-border ${i === 0 ? 'bg-black' : 'bg-card'}`}>
+              <div className={`relative overflow-hidden mb-4 aspect-square border border-border ${i <= 1 ? 'bg-black' : 'bg-card'}`}>
                 <img
                   src={product.image}
                   alt={product.name}
