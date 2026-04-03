@@ -336,7 +336,7 @@ const DashboardPage = () => {
         <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.75) 18%, rgba(0,0,0,0.30) 40%, rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.55) 82%, rgba(0,0,0,0.90) 100%)" }} />
         <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-b from-transparent to-[hsl(var(--dash-bg))]" />
         <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: "linear-gradient(to right, hsl(var(--dash-red)) 0%, hsl(var(--dash-red) / 0.5) 50%, transparent 100%)" }} />
-        <div className="absolute inset-0 flex items-center justify-between px-7">
+        <div className="absolute inset-x-0 bottom-4 flex items-end justify-between px-7">
           <div className="flex gap-0">
             {[
               { val: "2.4M", lbl: "Monthly Views" },
