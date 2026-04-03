@@ -165,11 +165,11 @@ const Contact = () => {
                 className="w-48 opacity-80"
               />
 
-              <div>
+              <div className="flex flex-col items-center">
                 <h3 className="font-heading text-sm tracking-[0.3em] text-muted-foreground mb-6 text-center">
                   FOLLOW THE MOVEMENT
                 </h3>
-                <div className="flex gap-4">
+                <div className="flex gap-4 mb-8">
                   {socials.map((social) => {
                     const Icon = social.icon;
                     return (
