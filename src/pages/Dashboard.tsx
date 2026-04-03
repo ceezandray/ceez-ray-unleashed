@@ -576,7 +576,7 @@ const DashboardPage = () => {
      <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 inline-block w-fit ${
       o.status === "Shipped" ? "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-text))]" :
       o.status === "Processing" ? "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]" :
-      "bg-[rgba(255,159,10,0.12)] text-[hsl(var(--dash-amber))]"
+      "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]"
      }`}>{o.status}</span>
      </div>
     ))}
@@ -802,7 +802,7 @@ const DashboardPage = () => {
      <div key={fix.id} className="flex items-center gap-3.5 px-4 py-3 border-b border-[rgba(255,255,255,0.09)] last:border-b-0 hover:bg-[rgba(255,255,255,0.02)] transition-colors">
      <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
       fix.priority === "high" ? "bg-[hsl(var(--dash-red))] shadow-[0_0_6px_hsl(var(--dash-red-glow))]" :
-      fix.priority === "med" ? "bg-[hsl(var(--dash-amber))]" : "bg-[rgba(128,128,128,0.5)]"
+      fix.priority === "med" ? "bg-[rgba(255,255,255,0.4)]" : "bg-[rgba(255,255,255,0.2)]"
      }`} />
      <div className="flex-1 min-w-0">
       <div className="text-sm font-semibold truncate">{fix.title}</div>
@@ -811,7 +811,7 @@ const DashboardPage = () => {
      <span className="text-[11px] font-semibold text-[hsl(var(--dash-text-4))] whitespace-nowrap hidden md:block">{fix.page}</span>
      <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 whitespace-nowrap ${
       fix.status === "open" ? "bg-[hsl(var(--dash-red-bg))] text-[hsl(var(--dash-red))]" :
-      fix.status === "progress" ? "bg-[rgba(255,159,10,0.12)] text-[hsl(var(--dash-amber))]" :
+      fix.status === "progress" ? "bg-[rgba(255,255,255,0.08)] text-[hsl(var(--dash-text-3))]" :
       "bg-[rgba(128,128,128,0.12)] text-[hsl(var(--dash-text-3))]"
      }`}>{fix.status === "progress" ? "In Progress" : fix.status === "open" ? "Open" : "Done"}</span>
      {fix.status !== "done" && (
@@ -842,12 +842,12 @@ const DashboardPage = () => {
 
    {/* Storyboard - aligned with upload */}
    <div className="px-3 pb-2">
-   <button
-    onClick={() => navigate("/storyboard")}
-    className="flex items-center gap-2.5 w-full py-3 border-2 border-[#2196f3] text-[#2196f3] text-sm font-bold hover:bg-[rgba(33,150,243,0.08)] transition-all pl-4"
-   >
-    <LayoutDashboard size={18} className="text-[#2196f3]" /> Storyboard
-   </button>
+    <button
+     onClick={() => navigate("/storyboard")}
+     className="flex items-center gap-2.5 w-full py-3 border-2 border-[rgba(255,255,255,0.25)] text-[hsl(var(--dash-text-2))] text-sm font-bold hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.4)] transition-all pl-4"
+    >
+     <LayoutDashboard size={18} /> Storyboard
+    </button>
    </div>
 
    {/* Email */}
@@ -865,7 +865,7 @@ const DashboardPage = () => {
    <div className="flex flex-col gap-1">
     {[
     { icon: <FileText size={16} />, name: "Legal Agreements", meta: "Contracts & IP docs", color: "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-red))]" },
-    { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,159,10,0.15)] text-[hsl(var(--dash-amber))]" },
+    { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,255,255,0.10)] text-[hsl(var(--dash-text-2))]" },
     { icon: <Wrench size={16} />, name: "Website Fixes", meta: `${openCount} open issues`, color: "bg-[rgba(255,255,255,0.10)] text-white", onClick: () => setActivePanel("fixes"), badge: openCount },
     ].map((doc, i) => (
     <button
