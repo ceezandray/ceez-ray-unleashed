@@ -70,38 +70,36 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu - fully transparent, right-aligned text */}
+      {/* Mobile slide-out menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed top-0 right-0 bottom-0 w-full z-[55] flex flex-col items-end justify-center lg:hidden pr-6"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 24, stiffness: 200 }}
+            className="fixed top-0 right-0 bottom-0 w-72 z-[55] bg-background border-l border-border flex flex-col items-start justify-center px-8 lg:hidden"
           >
-            <div className="flex flex-col items-end gap-5">
+            <div className="flex flex-col items-start gap-6">
               {navItems.map((item, i) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  initial={{ opacity: 0, x: 40 }}
+                  initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 40 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="font-heading text-3xl tracking-wider text-white hover:text-primary transition-colors drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+                  className="font-heading text-lg tracking-[0.2em] uppercase text-foreground hover:text-primary transition-colors"
                 >
                   {item.label}
                 </motion.a>
               ))}
               <motion.button
                 onClick={() => { setIsOpen(false); navigate("/login"); }}
-                initial={{ opacity: 0, x: 40 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 40 }}
                 transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-                className="font-heading text-2xl tracking-wider text-primary hover:text-primary/80 transition-all duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+                className="font-heading text-lg tracking-[0.2em] uppercase text-primary hover:text-primary/80 transition-colors"
               >
                 LOGIN
               </motion.button>
