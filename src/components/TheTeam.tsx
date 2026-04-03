@@ -111,7 +111,7 @@ const TheTeam = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent rounded-full" />
               </div>
               <h4 className="font-heading text-xl text-primary mb-1">{member.name}</h4>
-              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[220px] mx-auto mb-4">
+              <p className="font-heading text-xs tracking-widest text-foreground uppercase max-w-[300px] mx-auto mb-4">
                 {member.role}
               </p>
               <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-4">
