@@ -123,8 +123,8 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
         >
           {/* Logo */}
           <img
-            src="/images/ceezandray-logo.png"
-            alt="Ceez & Ray"
+            src="/images/bpf-logo.png"
+            alt="Black Picket Fence Entertainment"
             className="h-16 md:h-24 w-auto drop-shadow-2xl"
           />
 
@@ -134,7 +134,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
               SOMETHING BIG IS COMING
             </h1>
             <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
-              The culture's favorite AI comedy series is about to level up. Be the first to know when we drop.
+              The culture's favorite AI TV series is about to level up. Be the first to know when we drop.
             </p>
           </div>
 
