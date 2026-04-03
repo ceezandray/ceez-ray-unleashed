@@ -5,7 +5,7 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
-    bio: "Born and raised in New Jersey, Quantice Nash is an award-winning creative force and the visionary behind Ceez & Ray. As creator, director, and executive producer, he brings raw authenticity and bold storytelling to every frame. A pioneer in AI-driven animation, Quantice is leading the charge in merging cutting-edge technology with culture-first content — all while keeping the energy, humor, and heart that makes his work unmistakably his.",
+    bio: "Born in New Jersey, Quantice Nash is the award-winning creator behind Ceez & Ray. As creator, director, and executive producer, he brings bold storytelling and raw authenticity to every frame. A pioneer in AI-driven animation, Quantice blends cutting-edge technology with culture-first content, delivering work that's energetic, humorous, and unmistakably his.",
     socials: {
       tiktok: "#",
       instagram: "#",
@@ -17,7 +17,7 @@ const team = [
     name: "Jasmine Wilson",
     role: "Producer / Brand Strategist / Audio Director",
     image: "/images/jasmine.png",
-    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With deep expertise in technical production, brand architecture, and strategic marketing, she builds the complete digital ecosystem that powers the BPF brand. From audio direction to cross-platform strategy, Jasmine ensures every element — from sound design to merch drops — works together seamlessly to amplify the Ceez & Ray universe.",
+    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With expertise in production, brand strategy, and digital marketing, she builds the ecosystem powering the BPF brand. From audio direction to merch and platform strategy, Jasmine ensures every piece works together to expand the Ceez & Ray universe.",
     socials: {
       tiktok: "#",
       instagram: "#",
