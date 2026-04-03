@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, Youtube, Send } from "lucide-react";
+import { Instagram, Youtube, Send, Download } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -165,11 +165,11 @@ const Contact = () => {
                 className="w-48 opacity-80"
               />
 
-              <div>
+              <div className="flex flex-col items-center">
                 <h3 className="font-heading text-sm tracking-[0.3em] text-muted-foreground mb-6 text-center">
                   FOLLOW THE MOVEMENT
                 </h3>
-                <div className="flex gap-4">
+                <div className="flex gap-4 mb-8">
                   {socials.map((social) => {
                     const Icon = social.icon;
                     return (
@@ -186,6 +186,14 @@ const Contact = () => {
                     );
                   })}
                 </div>
+
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-2 font-heading text-xs tracking-wider px-6 py-3 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
+                >
+                  <Download className="w-4 h-4" />
+                  DOWNLOAD MEDIA KIT
+                </a>
               </div>
             </motion.div>
           </div>
