@@ -91,7 +91,7 @@
 
 @layer utilities {
   .text-glow-red {
-    text-shadow: 0 0 20px hsl(var(--glow-red) / 0.6), 0 0 40px hsl(var(--glow-red) / 0.3);
+    text-shadow: 0 0 20px hsl(var(--glow-red) / 0.25), 0 0 40px hsl(var(--glow-red) / 0.1);
   }
 
   .gradient-red-fade {
