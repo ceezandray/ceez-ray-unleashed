@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BananaScratchOff from "@/components/BananaScratchOff";
+
 import { products, categories } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
@@ -18,7 +18,7 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <BananaScratchOff />
+      
       <section className="pt-28 pb-24">
         <div className="container mx-auto px-6">
           <motion.div
