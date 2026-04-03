@@ -35,17 +35,17 @@ const episodes = [
   },
   {
     number: "EP 05",
-    title: "Episode 5",
-    description: "Coming soon...",
-    thumbnail: "/images/ep-bodega-incident.png",
-    duration: "00:00",
+    title: "The Plan",
+    description: "Every great escape starts with a terrible plan.",
+    thumbnail: "/images/ep-the-plan.webp",
+    duration: "Coming Soon",
   },
   {
     number: "EP 06",
-    title: "Episode 6",
-    description: "Coming soon...",
-    thumbnail: "/images/ep-bodega-incident.png",
-    duration: "00:00",
+    title: "The Food Fight",
+    description: "Kitchen duty was supposed to be the easy gig.",
+    thumbnail: "/images/ep-food-fight.webp",
+    duration: "Coming Soon",
   },
 ];
 
