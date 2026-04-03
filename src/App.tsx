@@ -29,6 +29,7 @@ const App = () => (
             <Route path="/about-bpf" element={<AboutBPF />} />
             <Route path="/storyboard" element={<Storyboard />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<Cart />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
