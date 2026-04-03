@@ -95,76 +95,93 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
         )}
       </AnimatePresence>
 
-      {/* Main Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col items-center gap-10 px-6 max-w-lg w-full"
-      >
-        {/* Logo */}
-        <img
-          src="/images/ceezandray-logo.png"
-          alt="Ceez & Ray"
-          className="h-20 md:h-28 w-auto drop-shadow-2xl"
-        />
+      {/* Main Content - Character + Box Layout */}
+      <div className="relative flex items-center justify-center w-full max-w-4xl px-6">
+        {/* Ceez Character - Left/Behind */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="hidden md:block relative z-0 -mr-16 flex-shrink-0"
+        >
+          <img
+            src="/images/ceez-animation.gif"
+            alt="Ceez - BPF Gorilla"
+            className="w-64 lg:w-80 object-contain drop-shadow-2xl"
+          />
+        </motion.div>
 
-        {/* Message */}
-        <div className="text-center space-y-3">
-          <h1 className="text-white text-2xl md:text-3xl font-heading tracking-wider">
-            SOMETHING BIG IS COMING
-          </h1>
-          <p className="text-white/50 font-body text-sm md:text-base leading-relaxed max-w-md">
-            The culture's favorite AI comedy series is about to level up. Be the first to know when we drop.
-          </p>
-        </div>
+        {/* Content Box - Right/In Front */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative z-10 bg-black/80 border border-white/10 backdrop-blur-md rounded-xl p-8 md:p-10 flex flex-col items-center gap-8 max-w-md w-full"
+        >
+          {/* Logo */}
+          <img
+            src="/images/ceezandray-logo.png"
+            alt="Ceez & Ray"
+            className="h-16 md:h-24 w-auto drop-shadow-2xl"
+          />
 
-        {/* Email Signup */}
-        <form onSubmit={handleEmailSubmit} className="w-full flex gap-2">
-          {submitted ? (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-primary font-body text-sm text-center w-full py-3"
-            >
-              You're on the list! 🔥
-            </motion.p>
-          ) : (
-            <>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white/5 border border-white/10 text-white text-sm px-4 py-3 rounded focus:outline-none focus:border-primary font-body placeholder:text-white/30"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-primary text-white text-sm font-heading tracking-wider px-6 py-3 rounded hover:bg-primary/80 transition-colors uppercase whitespace-nowrap"
+          {/* Message */}
+          <div className="text-center space-y-3">
+            <h1 className="text-white text-xl md:text-2xl font-heading tracking-wider">
+              SOMETHING BIG IS COMING
+            </h1>
+            <p className="text-white/50 font-body text-xs md:text-sm leading-relaxed">
+              The culture's favorite AI comedy series is about to level up. Be the first to know when we drop.
+            </p>
+          </div>
+
+          {/* Email Signup */}
+          <form onSubmit={handleEmailSubmit} className="w-full flex gap-2">
+            {submitted ? (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-primary font-body text-sm text-center w-full py-3"
               >
-                Notify Me
-              </button>
-            </>
-          )}
-        </form>
+                You're on the list! 🔥
+              </motion.p>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 bg-white/5 border border-white/10 text-white text-sm px-4 py-3 rounded focus:outline-none focus:border-primary font-body placeholder:text-white/30"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-primary text-white text-xs font-heading tracking-wider px-5 py-3 rounded hover:bg-primary/80 transition-colors uppercase whitespace-nowrap"
+                >
+                  Notify Me
+                </button>
+              </>
+            )}
+          </form>
 
-        {/* Social Links */}
-        <div className="flex items-center gap-6 pt-4">
-          {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/40 hover:text-primary transition-colors duration-300"
-              aria-label={s.name}
-            >
-              {s.icon}
-            </a>
-          ))}
-        </div>
-      </motion.div>
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
+            {socials.map((s) => (
+              <a
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-primary transition-colors duration-300"
+                aria-label={s.name}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      </div>
 
       {/* Footer */}
       <p className="absolute bottom-6 text-white/20 text-xs font-body tracking-wider">
