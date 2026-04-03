@@ -10,7 +10,7 @@ export interface Product {
 }
 
 export const products: Product[] = [
-  // Featured (existing products)
+  // Row 1: Hero mix — tee, accessory, hat, tee
   {
     id: "ceez-bpf-tee",
     name: "Ceez BPF Tee",
@@ -22,16 +22,6 @@ export const products: Product[] = [
     featured: true,
   },
   {
-    id: "ceez-banana-sweatshirt",
-    name: "Ceez Banana Sweatshirt",
-    price: 62.99,
-    image: "/images/product-banana-sweatshirt.png",
-    hoverImage: "/images/banana-sweatshirt-hover.png",
-    category: "Tops",
-    description: "Heavyweight crewneck sweatshirt with the iconic banana design.",
-    featured: true,
-  },
-  {
     id: "bpf-sports-watch",
     name: "BPF Sports Watch",
     price: 149.99,
@@ -40,39 +30,6 @@ export const products: Product[] = [
     category: "Accessories",
     description: "Limited edition BPF sports watch. Water-resistant, street-ready.",
     featured: true,
-  },
-  // Additional products with unique images
-  {
-    id: "joes-bodega-tee",
-    name: "Joe's Bodega Tee",
-    price: 44.99,
-    image: "/images/product-joes-bodega-tee.jpg",
-    category: "Tops",
-    description: "Oversized black tee with the iconic Joe's Bodega sign. Elizabeth, NJ. Est. 1992.",
-  },
-  {
-    id: "joes-bodega-deck",
-    name: "Joe's Bodega Skateboard",
-    price: 89.99,
-    image: "/images/product-joes-bodega-deck.jpg",
-    category: "Accessories",
-    description: "Custom skateboard deck featuring Joe's Bodega storefront artwork. Limited run.",
-  },
-  {
-    id: "ray-pigeon-tee",
-    name: "Ray 'The Pigeon' Tee",
-    price: 44.99,
-    image: "/images/product-ray-tee.jpg",
-    category: "Tops",
-    description: "White tee with Ray in full swagger mode. Sunglasses. Chain. Attitude.",
-  },
-  {
-    id: "bpf-red-tee",
-    name: "BPF Red Tee",
-    price: 49.99,
-    image: "/images/product-bpf-red-tee.jpg",
-    category: "Tops",
-    description: "Bold red tee with gothic B.P.F lettering. Premium heavyweight cotton.",
   },
   {
     id: "bpf-snapback",
@@ -90,6 +47,7 @@ export const products: Product[] = [
     category: "Tops",
     description: "White oversized tee with Black Picket Fence Da'Wick graphic. Ceez & Ray. Est. 2020.",
   },
+  // Row 2: decor, tee, accessory, tee
   {
     id: "ceezray-poster",
     name: "Ceez & Ray Art Print",
@@ -97,6 +55,41 @@ export const products: Product[] = [
     image: "/images/product-poster.jpg",
     category: "Decor",
     description: "Premium framed art print of Ceez & Ray in the city. Gallery quality.",
+  },
+  {
+    id: "ray-pigeon-tee",
+    name: "Ray 'The Pigeon' Tee",
+    price: 44.99,
+    image: "/images/product-ray-tee.jpg",
+    category: "Tops",
+    description: "White tee with Ray in full swagger mode. Sunglasses. Chain. Attitude.",
+  },
+  {
+    id: "bpf-chain",
+    name: "Ceez Gold Chain",
+    price: 64.99,
+    image: "/images/product-chain.jpg",
+    category: "Accessories",
+    description: "Gold stainless steel chain with gorilla face pendant. Anti-tarnish finish.",
+  },
+  {
+    id: "ceez-banana-sweatshirt",
+    name: "Ceez Banana Sweatshirt",
+    price: 62.99,
+    image: "/images/product-banana-sweatshirt.png",
+    hoverImage: "/images/banana-sweatshirt-hover.png",
+    category: "Tops",
+    description: "Heavyweight crewneck sweatshirt with the iconic banana design.",
+    featured: true,
+  },
+  // Row 3: tee, decor, tee, accessory
+  {
+    id: "joes-bodega-tee",
+    name: "Joe's Bodega Tee",
+    price: 44.99,
+    image: "/images/product-joes-bodega-tee.jpg",
+    category: "Tops",
+    description: "Oversized black tee with the iconic Joe's Bodega sign. Elizabeth, NJ. Est. 1992.",
   },
   {
     id: "ceezray-mug",
@@ -107,12 +100,20 @@ export const products: Product[] = [
     description: "Black ceramic mug with Ceez holding Ray. Microwave safe.",
   },
   {
-    id: "bpf-chain",
-    name: "Ceez Gold Chain",
-    price: 64.99,
-    image: "/images/product-chain.jpg",
+    id: "bpf-red-tee",
+    name: "BPF Red Tee",
+    price: 49.99,
+    image: "/images/product-bpf-red-tee.jpg",
+    category: "Tops",
+    description: "Bold red tee with gothic B.P.F lettering. Premium heavyweight cotton.",
+  },
+  {
+    id: "joes-bodega-deck",
+    name: "Joe's Bodega Skateboard",
+    price: 89.99,
+    image: "/images/product-joes-bodega-deck.jpg",
     category: "Accessories",
-    description: "Gold stainless steel chain with gorilla face pendant. Anti-tarnish finish.",
+    description: "Custom skateboard deck featuring Joe's Bodega storefront artwork. Limited run.",
   },
 ];
 
