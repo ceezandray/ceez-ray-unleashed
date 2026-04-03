@@ -204,7 +204,7 @@ const StoryboardPage = () => {
                   <h2 className="text-lg font-medium tracking-tight">Episode {activeEpisode.number} — {activeEpisode.title}</h2>
                   <p className="text-sm text-[hsl(var(--dash-text-4))] mt-1">{activeEpisode.scenes.length} scene{activeEpisode.scenes.length !== 1 ? "s" : ""} • Drag images to reorder</p>
                 </div>
-                <button onClick={() => addScene(activeEp)} className="flex items-center gap-2 px-4 py-2.5 bg-[#2196f3] rounded-xl text-sm font-bold text-white hover:bg-[#1976d2] transition-all shadow-lg">
+              <button onClick={() => addScene(activeEp)} className="flex items-center gap-2 px-4 py-2.5 border border-[#2196f3] bg-transparent rounded-xl text-sm font-bold text-[#2196f3] hover:bg-[rgba(33,150,243,0.1)] transition-all">
                   <Plus size={16} /> New Scene
                 </button>
               </div>
