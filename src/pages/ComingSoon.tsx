@@ -160,7 +160,7 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
                 />
                 <button
                   type="submit"
-                  className="bg-primary text-white text-xs font-heading tracking-wider px-5 py-3 rounded hover:bg-primary/80 transition-colors uppercase whitespace-nowrap"
+                  className="bg-transparent border border-primary text-white text-xs font-heading tracking-wider px-5 py-3 rounded hover:bg-primary/20 transition-colors uppercase whitespace-nowrap"
                 >
                   Notify Me
                 </button>
