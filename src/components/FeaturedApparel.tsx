@@ -3,9 +3,9 @@ import { ShoppingBag } from "lucide-react";
 
 const products = [
   {
-    name: "Ceez & Ray Tee",
-    price: "$34.99",
-    image: "/images/product-tee-ceezray.jpg",
+    name: "Ceez BPF Tee",
+    price: "$54.99",
+    image: "/images/product-ceez-bpf-tee.jpg",
     hoverImage: "/images/ceazray-faceoff.png",
   },
   {
