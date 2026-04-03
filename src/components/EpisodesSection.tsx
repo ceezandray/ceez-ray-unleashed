@@ -4,10 +4,11 @@ import { Play } from "lucide-react";
 const episodes = [
   {
     number: "01",
-    title: "The Bodega Incident",
+    title: "Joe's Bodega",
     description: "What happens when a gorilla walks into a bodega? Nothing good.",
     thumbnail: "/images/scene-bodega.jpg",
     duration: "Coming Soon",
+    progress: 30,
   },
   {
     number: "02",
@@ -73,10 +74,15 @@ const EpisodesSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-primary-foreground ml-0.5" />
+                  <div className="w-12 h-12 rounded-full bg-black/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
+                {ep.progress && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                    <div className="h-full bg-primary" style={{ width: `${ep.progress}%` }} />
+                  </div>
+                )}
               </div>
               <div className="flex gap-3 items-start">
                 <span className="font-heading text-2xl text-primary">
