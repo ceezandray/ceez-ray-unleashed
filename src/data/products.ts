@@ -83,12 +83,12 @@ export const products: Product[] = [
     description: "All black trucker hat with tonal B.P.F embroidery. One size fits all.",
   },
   {
-    id: "ceez-hoodie",
-    name: "Ceez Street Hoodie",
-    price: 79.99,
+    id: "bpf-dawick-shirt",
+    name: "BPF Da'Wick Shirt",
+    price: 54.99,
     image: "/images/product-ceez-hoodie.jpg",
     category: "Tops",
-    description: "Oversized black hoodie with gorilla graphic on the back. Heavy fleece.",
+    description: "White oversized tee with Black Picket Fence Da'Wick graphic. Ceez & Ray. Est. 2020.",
   },
   {
     id: "ceezray-poster",
