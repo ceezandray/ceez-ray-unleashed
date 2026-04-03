@@ -104,11 +104,14 @@ const ComingSoon = ({ onAccessGranted }: ComingSoonProps) => {
           transition={{ duration: 0.8 }}
           className="hidden md:block relative z-0 -mr-16 flex-shrink-0"
         >
-          <img
-            src="/images/ceez-animation.gif"
-            alt="Ceez - BPF Gorilla"
-            className="w-64 lg:w-80 object-contain drop-shadow-2xl"
-          />
+          <div className="relative">
+            <img
+              src="/images/ceez-animation.gif"
+              alt="Ceez - BPF Gorilla"
+              className="w-80 lg:w-[28rem] object-contain drop-shadow-2xl"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+          </div>
         </motion.div>
 
         {/* Content Box - Right/In Front */}
