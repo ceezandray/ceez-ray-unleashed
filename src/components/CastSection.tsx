@@ -47,7 +47,7 @@ const CastSection = () => {
         </motion.div>
 
         {/* Characters - pushed down 60px */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-[120px]">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
