@@ -830,15 +830,15 @@ const DashboardPage = () => {
   {/* RIGHT PANEL - fixed (not scrollable) */}
   <div className="bg-[hsl(var(--sidebar-background))] border-l border-[rgba(255,255,255,0.09)] flex flex-col overflow-hidden">
    {/* Upload Content - red icon + red text */}
-   <div className="p-3 pt-3">
-   <a
-    href="https://drive.google.com/drive/folders/1Rz3fzmttd4Ue59mHPL7V-mJUYS6FI7H-?usp=sharing"
-    target="_blank" rel="noopener noreferrer"
-    className="flex items-center gap-2.5 w-full py-3 border-2 border-[hsl(var(--dash-red))] text-[hsl(var(--dash-red))] text-sm font-bold hover:bg-[hsl(var(--dash-red-bg))] hover:shadow-[0_0_0_3px_hsl(var(--dash-red-glow))] transition-all pl-4"
-   >
-    <Upload size={18} /> Upload Content
-   </a>
-   </div>
+    <div className="p-3 pt-3">
+    <a
+     href="https://drive.google.com/drive/folders/1Rz3fzmttd4Ue59mHPL7V-mJUYS6FI7H-?usp=sharing"
+     target="_blank" rel="noopener noreferrer"
+     className="flex items-center gap-2.5 w-full py-3 border-2 border-[rgba(255,255,255,0.25)] text-[hsl(var(--dash-text-2))] text-sm font-bold hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.4)] transition-all pl-4"
+    >
+     <Upload size={18} /> Upload Content
+    </a>
+    </div>
 
    {/* Storyboard - aligned with upload */}
    <div className="px-3 pb-2">
