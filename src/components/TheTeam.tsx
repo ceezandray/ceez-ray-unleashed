@@ -76,7 +76,7 @@ const TheTeam = () => {
           </h3>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
