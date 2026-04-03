@@ -21,7 +21,7 @@ const NeverMissEpisode = () => {
 
   return (
     <>
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/images/scene-merch.jpg"
@@ -38,19 +38,16 @@ const NeverMissEpisode = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
-              DON'T SLEEP ON IT
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-3">
+              NEVER MISS AN{" "}
+              <span className="text-primary text-glow-red">EPISODE.</span>
             </h2>
-            <h3 className="font-heading text-5xl md:text-7xl text-foreground mb-4">
-              MISS AN{" "}
-              <span className="text-primary text-glow-red">EPISODE?</span>
-            </h3>
-            <p className="text-muted-foreground max-w-md mx-auto mb-8">
-              Never again. Get notified the second new episodes drop. No spam, just heat.
+            <p className="text-muted-foreground text-sm max-w-md mx-auto mb-6">
+              Get notified the second new episodes drop. No spam, just heat.
             </p>
             <button
               onClick={() => setShowPopup(true)}
-              className="inline-flex items-center gap-3 font-heading tracking-wider px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-lg"
+              className="inline-flex items-center gap-3 font-heading tracking-wider px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 animate-pulse-glow text-base"
             >
               <Bell className="w-5 h-5" />
               NOTIFY ME
