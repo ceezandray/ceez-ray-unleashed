@@ -76,11 +76,11 @@ export const products: Product[] = [
   },
   {
     id: "bpf-snapback",
-    name: "BPF Gorilla Snapback",
+    name: "All Black BPF Hat",
     price: 34.99,
     image: "/images/product-bpf-snapback.jpg",
     category: "Hats",
-    description: "Black snapback with embroidered gorilla face. One size fits all.",
+    description: "All black trucker hat with tonal B.P.F embroidery. One size fits all.",
   },
   {
     id: "ceez-hoodie",
