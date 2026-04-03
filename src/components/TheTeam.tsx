@@ -60,7 +60,47 @@ const SocialIcon = ({ type }: { type: string }) => {
 
 const TheTeam = () => {
   return (
-    <section id="team" className="py-24 relative">
+    <section id="team" className="py-24 relative overflow-hidden">
+      {/* Fence background */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 28px,
+              hsl(var(--muted-foreground) / 0.4) 28px,
+              hsl(var(--muted-foreground) / 0.4) 32px
+            ),
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 80px,
+              hsl(var(--muted-foreground) / 0.3) 80px,
+              hsl(var(--muted-foreground) / 0.3) 84px
+            )`,
+          }}
+        />
+        {/* Pointed tops on each picket */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 26px,
+              transparent 26px,
+              transparent 34px
+            )`,
+          }}
+        />
+        {/* Black overlay */}
+        <div className="absolute inset-0 bg-background/80" />
+        {/* Top and bottom fade */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </div>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
