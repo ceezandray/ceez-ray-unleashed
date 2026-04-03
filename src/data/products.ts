@@ -57,12 +57,13 @@ export const products: Product[] = [
     description: "Premium framed art print of Ceez & Ray in the city. Gallery quality.",
   },
   {
-    id: "ray-pigeon-tee",
-    name: "Ray 'The Pigeon' Tee",
-    price: 44.99,
-    image: "/images/product-ray-tee.jpg",
+    id: "bpf-dawick-shirt",
+    name: "BPF Da'Wick Shirt",
+    price: 54.99,
+    image: "/images/bpf-dawick-front.png",
+    hoverImage: "/images/product-ceez-hoodie.jpg",
     category: "Tops",
-    description: "White tee with Ray in full swagger mode. Sunglasses. Chain. Attitude.",
+    description: "White oversized tee with Black Picket Fence Da'Wick graphic. Ceez & Ray. Est. 2020.",
   },
   {
     id: "bpf-chain",
