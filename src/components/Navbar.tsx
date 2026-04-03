@@ -91,7 +91,13 @@ const Navbar = () => {
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    if (item.href.startsWith("/") && !item.href.includes("#")) {
+                      e.preventDefault();
+                      navigate(item.href);
+                    }
+                    setIsOpen(false);
+                  }}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
