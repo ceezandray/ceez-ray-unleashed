@@ -865,7 +865,7 @@ const DashboardPage = () => {
    <div className="flex flex-col gap-1">
     {[
     { icon: <FileText size={16} />, name: "Legal Agreements", meta: "Contracts & IP docs", color: "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-red))]" },
-    { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,159,10,0.15)] text-[hsl(var(--dash-amber))]" },
+    { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,255,255,0.10)] text-[hsl(var(--dash-text-2))]" },
     { icon: <Wrench size={16} />, name: "Website Fixes", meta: `${openCount} open issues`, color: "bg-[rgba(255,255,255,0.10)] text-white", onClick: () => setActivePanel("fixes"), badge: openCount },
     ].map((doc, i) => (
     <button
