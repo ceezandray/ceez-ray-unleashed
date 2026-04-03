@@ -864,7 +864,7 @@ const DashboardPage = () => {
    <div className="px-3.5 py-2.5 border-t border-[rgba(255,255,255,0.09)] flex-1 flex flex-col min-h-0">
    <div className="flex flex-col gap-1">
     {[
-    { icon: <FileText size={16} />, name: "Legal Agreements", meta: "Contracts & IP docs", color: "bg-[rgba(229,57,53,0.15)] text-[hsl(var(--dash-red))]" },
+    { icon: <FileText size={16} />, name: "Legal Agreements", meta: "Contracts & IP docs", color: "bg-[rgba(255,255,255,0.10)] text-[hsl(var(--dash-text-2))]" },
     { icon: <Lock size={16} />, name: "Passwords", meta: "Shared credentials vault", color: "bg-[rgba(255,255,255,0.10)] text-[hsl(var(--dash-text-2))]" },
     { icon: <Wrench size={16} />, name: "Website Fixes", meta: `${openCount} open issues`, color: "bg-[rgba(255,255,255,0.10)] text-white", onClick: () => setActivePanel("fixes"), badge: openCount },
     ].map((doc, i) => (
