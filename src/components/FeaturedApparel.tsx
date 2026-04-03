@@ -6,7 +6,7 @@ const products = [
     name: "Ceez BPF Tee",
     price: "$54.99",
     image: "/images/product-ceez-bpf-tee.jpg",
-    hoverImage: "/images/ceazray-faceoff.png",
+    hoverImage: "/images/ceez-bpf-tee-hover.jpg",
   },
   {
     name: "Joe's Bodega Tee",
