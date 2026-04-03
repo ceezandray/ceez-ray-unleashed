@@ -5,7 +5,7 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
-    bio: "Born and raised in New Jersey, Quantice Nash is an award-winning creative force and the visionary behind Ceez & Ray. As creator, director, and executive producer, he brings raw authenticity and bold storytelling to every frame. A pioneer in AI-driven animation, Quantice is leading the charge in merging cutting-edge technology with culture-first content — all while keeping the energy, humor, and heart that makes his work unmistakably his.",
+    bio: "Born in New Jersey, Quantice Nash is the award-winning creator behind Ceez & Ray. As creator, director, and executive producer, he brings bold storytelling and raw authenticity to every frame. A pioneer in AI-driven animation, Quantice blends cutting-edge technology with culture-first content, delivering work that's energetic, humorous, and unmistakably his.",
     socials: {
       tiktok: "#",
       instagram: "#",
