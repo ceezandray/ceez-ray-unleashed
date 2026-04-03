@@ -186,6 +186,14 @@ const Contact = () => {
                     );
                   })}
                 </div>
+
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-2 font-heading text-xs tracking-wider px-6 py-3 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
+                >
+                  <Download className="w-4 h-4" />
+                  DOWNLOAD MEDIA KIT
+                </a>
               </div>
             </motion.div>
           </div>

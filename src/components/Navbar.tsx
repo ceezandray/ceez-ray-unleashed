@@ -7,8 +7,8 @@ import CartDropdown from "@/components/CartDropdown";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About BPF", href: "/about-bpf" },
-  { label: "Meet Ceez & Ray", href: "/#cast" },
+  { label: "The Studio", href: "/about-bpf" },
+  { label: "Characters", href: "/#cast" },
   { label: "Episodes", href: "/episodes" },
   { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },

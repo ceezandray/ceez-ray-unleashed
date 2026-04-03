@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 const episodes = [
   {
     number: "EP 01",
-    title: "Joe's Bodega",
+    title: "The Bodega Incident",
     description: "It all started with a sandwich. And a very bad decision.",
-    thumbnail: "/images/ep-joesbodega.webp",
+    thumbnail: "/images/ep-bodega-incident.png",
     duration: "12:34",
   },
   {

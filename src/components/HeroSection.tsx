@@ -60,7 +60,7 @@ const HeroSection = () => {
               EPISODE ONE
             </h1>
             <h2 className="font-heading text-5xl md:text-7xl text-primary text-glow-red mb-3 leading-tight">
-              JOE'S BODEGA
+              THE BODEGA INCIDENT
             </h2>
           </motion.div>
 
