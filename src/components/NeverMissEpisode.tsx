@@ -39,11 +39,11 @@ const NeverMissEpisode = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
-              STAY IN THE LOOP
+              MISS AN EPISODE?
             </h2>
             <h3 className="font-heading text-5xl md:text-7xl text-foreground mb-4">
-              NEVER MISS AN{" "}
-              <span className="text-primary text-glow-red">EPISODE</span>
+              NEVER MISS IT{" "}
+              <span className="text-primary text-glow-red">AGAIN</span>
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8">
               Get notified when new episodes drop. No spam, just heat.
