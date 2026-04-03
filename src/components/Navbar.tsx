@@ -116,7 +116,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[54] lg:hidden"
+            className="fixed inset-0 z-[54] bg-black/60 lg:hidden"
           />
         )}
       </AnimatePresence>
