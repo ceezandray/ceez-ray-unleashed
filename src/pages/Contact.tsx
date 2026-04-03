@@ -57,12 +57,13 @@ const Contact = () => {
       return;
     }
     setSending(true);
-    const mailtoLink = `mailto:ceezandray@gmail.com?subject=Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
+    const subject = formData.inquiryType ? `[${formData.inquiryType}] Contact from ${encodeURIComponent(formData.name)}` : `Contact from ${encodeURIComponent(formData.name)}`;
+    const mailtoLink = `mailto:ceezandray@gmail.com?subject=${subject}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
     window.location.href = mailtoLink;
     setTimeout(() => {
       setSending(false);
       toast({ title: "Opening your email client..." });
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", inquiryType: "", message: "" });
     }, 1000);
   };
 
