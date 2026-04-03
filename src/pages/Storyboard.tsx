@@ -250,7 +250,7 @@ const StoryboardPage = () => {
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     className={`relative group rounded-lg overflow-hidden border-2 transition-all ${snapshot.isDragging ? "border-[#2196f3] shadow-[0_0_20px_rgba(33,150,243,0.3)] z-50" : "border-[rgba(255,255,255,0.09)]"}`}
-                                    style={{ ...provided.draggableProps.style, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
+                                    style={{ ...provided.draggableProps.style, width: `calc(${100 / columns}% - ${(columns - 1) * 12 / columns}px)`, ...(snapshot.isDragging ? { zIndex: 9999 } : {}) }}
                                   >
                                     <div {...provided.dragHandleProps} className="absolute top-1 left-1 z-10 w-6 h-6 rounded bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
                                       <GripVertical size={12} className="text-white" />
