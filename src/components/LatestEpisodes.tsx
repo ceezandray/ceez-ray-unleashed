@@ -77,10 +77,15 @@ const LatestEpisodes = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/75 flex items-center justify-center shadow-[0_0_20px_rgba(229,57,53,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-full bg-black/80 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300">
                     <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                   </div>
                 </div>
+                {ep.progress && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                    <div className="h-full bg-primary" style={{ width: `${ep.progress}%` }} />
+                  </div>
+                )}
                 <span className="absolute bottom-2 right-2 bg-background/80 text-foreground text-xs px-2 py-0.5 font-heading">
                   {ep.duration}
                 </span>
