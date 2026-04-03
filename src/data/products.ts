@@ -102,7 +102,7 @@ export const products: Product[] = [
     id: "ceezray-mug",
     name: "Ceez & Ray Mug",
     price: 18.99,
-    image: "/images/ceezandray-logo-mug.png",
+    image: "/images/product-mug.jpg",
     category: "Decor",
     description: "Black ceramic mug with Ceez holding Ray. Microwave safe.",
   },
