@@ -27,6 +27,7 @@ const episodes = [
     thumbnail: "/images/ep-mugshot.png",
     duration: "11:48",
     free: false,
+    objectPosition: "left bottom",
   },
   {
     number: "EP 04",
@@ -104,7 +105,8 @@ const LatestEpisodes = () => {
                 <img
                   src={ep.thumbnail}
                   alt={ep.title}
-                  className={`w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-all duration-500`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  style={{ objectPosition: ep.objectPosition || "center 35%" }}
                   loading="lazy"
                 />
 
