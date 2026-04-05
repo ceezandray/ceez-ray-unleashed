@@ -5,6 +5,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartProvider } from "@/context/CartContext";
+import { MusicProvider } from "@/context/MusicContext";
+import FloatingMusicPlayer from "@/components/FloatingMusicPlayer";
 import ComingSoon from "./pages/ComingSoon.tsx";
 import Index from "./pages/Index.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
