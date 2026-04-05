@@ -109,8 +109,6 @@ const LatestEpisodes = () => {
                   style={{ objectPosition: ep.objectPosition || "center 35%" }}
                   loading="lazy"
                 />
-                  loading="lazy"
-                />
 
                 {ep.free ? (
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
