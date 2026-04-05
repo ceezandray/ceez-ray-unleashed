@@ -65,7 +65,7 @@ const Navbar = () => {
             <img
               src="/images/ceezandray-logo.png"
               alt="Ceez & Ray"
-              className={`w-auto transition-all duration-500 ${scrolled ? "h-8" : "h-12"}`}
+              className={`w-auto transition-all duration-500 ${scrolled ? "h-10 opacity-100" : "h-16 opacity-90"}`}
             />
           </a>
 
