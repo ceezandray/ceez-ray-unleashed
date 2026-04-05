@@ -1,5 +1,10 @@
 import { createContext, useContext, useState, useRef, useEffect, useCallback, ReactNode } from "react";
 
+const TRACKS = [
+  { title: "Ceez & Ray Theme", src: "/audio/Ceez_Ray.mp3" },
+  { title: "Monkey Business", src: "/audio/Monkey_Business.mp3" },
+];
+
 interface MusicContextType {
   isPlaying: boolean;
   togglePlay: () => void;
@@ -10,6 +15,9 @@ interface MusicContextType {
   registerVideo: (video: HTMLVideoElement) => void;
   unregisterVideo: (video: HTMLVideoElement) => void;
   onVideoPlay: (video: HTMLVideoElement) => void;
+  nextTrack: () => void;
+  currentTrackTitle: string;
+  trackIndex: number;
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
@@ -19,16 +27,31 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
   const videosRef = useRef<Set<HTMLVideoElement>>(new Set());
   const wasMusicPlayingRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [trackIndex, setTrackIndex] = useState(0);
   const [hasChosen, setHasChosen] = useState(() => {
     return sessionStorage.getItem("bpf-music-chosen") === "true";
   });
 
+  // Check if user had muted (persisted in localStorage)
+  const wasMuted = useCallback(() => {
+    return localStorage.getItem("bpf-music-muted") === "true";
+  }, []);
+
   useEffect(() => {
-    const audio = new Audio("/audio/Ceez_Ray.mp3");
-    audio.loop = true;
+    const audio = new Audio(TRACKS[0].src);
+    audio.loop = false;
     audioRef.current = audio;
 
-    if (sessionStorage.getItem("bpf-music-play") === "true") {
+    // Auto-advance to next track when current ends
+    audio.addEventListener("ended", () => {
+      const nextIdx = (trackIndex + 1) % TRACKS.length;
+      setTrackIndex(nextIdx);
+      audio.src = TRACKS[nextIdx].src;
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    });
+
+    // Restore state on refresh
+    if (sessionStorage.getItem("bpf-music-play") === "true" && !wasMuted()) {
       audio.play().then(() => setIsPlaying(true)).catch(() => {});
     }
 
@@ -37,6 +60,22 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
       audio.src = "";
     };
   }, []);
+
+  // Update audio src when trackIndex changes (after initial mount)
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    const audio = audioRef.current;
+    if (!audio) return;
+    const wasPlaying = !audio.paused;
+    audio.src = TRACKS[trackIndex].src;
+    if (wasPlaying) {
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  }, [trackIndex]);
 
   const pauseMusic = useCallback(() => {
     const audio = audioRef.current;
@@ -59,7 +98,6 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
 
     const handlePlay = () => onVideoPlay(video);
     const handleEnded = () => {
-      // Resume music when video ends if no other video is playing
       const anyPlaying = Array.from(videosRef.current).some(v => v !== video && !v.paused);
       if (!anyPlaying) resumeMusic();
     };
@@ -85,9 +123,7 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const onVideoPlay = useCallback((video: HTMLVideoElement) => {
-    // Pause music
     pauseMusic();
-    // Pause all other videos
     videosRef.current.forEach(v => {
       if (v !== video && !v.paused) {
         v.pause();
@@ -101,9 +137,16 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
+      localStorage.setItem("bpf-music-muted", "true");
     } else {
       audio.play().then(() => setIsPlaying(true)).catch(() => {});
+      localStorage.setItem("bpf-music-muted", "false");
     }
+  };
+
+  const nextTrack = () => {
+    const nextIdx = (trackIndex + 1) % TRACKS.length;
+    setTrackIndex(nextIdx);
   };
 
   const chooseMusic = (play: boolean) => {
@@ -111,14 +154,16 @@ export const MusicProvider = ({ children }: { children: ReactNode }) => {
     sessionStorage.setItem("bpf-music-chosen", "true");
     if (play) {
       sessionStorage.setItem("bpf-music-play", "true");
+      localStorage.setItem("bpf-music-muted", "false");
       audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {});
     } else {
-      sessionStorage.setItem("bpf-music-play", "false");
+      sessionStorage.setItem("bpf-music-play", "true");
+      localStorage.setItem("bpf-music-muted", "true");
     }
   };
 
   return (
-    <MusicContext.Provider value={{ isPlaying, togglePlay, hasChosen, chooseMusic, pauseMusic, resumeMusic, registerVideo, unregisterVideo, onVideoPlay }}>
+    <MusicContext.Provider value={{ isPlaying, togglePlay, hasChosen, chooseMusic, pauseMusic, resumeMusic, registerVideo, unregisterVideo, onVideoPlay, nextTrack, currentTrackTitle: TRACKS[trackIndex].title, trackIndex }}>
       {children}
     </MusicContext.Provider>
   );
@@ -130,11 +175,6 @@ export const useMusic = () => {
   return ctx;
 };
 
-/**
- * Hook to register a video element with the music system.
- * Usage: const videoRef = useVideoMediaSync();
- * Then: <video ref={videoRef} ... />
- */
 export const useVideoMediaSync = () => {
   const { registerVideo, unregisterVideo } = useMusic();
   const videoRef = useRef<HTMLVideoElement | null>(null);
