@@ -65,7 +65,7 @@ const Index = () => {
                     style={{ background: '#990000' }}
                   >
                     <Volume2 className="w-4 h-4" />
-                    TURN IT UP
+                    MUSIC ON
                   </button>
                   <button
                     onClick={() => chooseMusic(false)}
