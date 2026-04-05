@@ -214,7 +214,7 @@ const LatestEpisodes = () => {
                     <Shield className="w-4 h-4 text-primary" />
                     <h4 className="font-heading text-sm text-foreground">ACCESS PASS</h4>
                   </div>
-                  <span className="font-heading text-xl text-primary">$14.99</span>
+                  <span className="font-heading text-xl text-foreground">$14.99</span>
                 </div>
                 <p className="text-muted-foreground text-xs mb-3">Unlock all Season 1 episodes · Save over 50%</p>
                 <button className="w-full font-heading text-xs tracking-wider py-3 bg-primary text-white hover:bg-primary/80 transition-all duration-300">
