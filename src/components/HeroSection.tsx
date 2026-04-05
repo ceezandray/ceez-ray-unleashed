@@ -35,7 +35,21 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
 
-      <div className="relative container mx-auto px-6 pb-24 pt-40">
+      {/* Large show logo watermark */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.15, scale: 1 }}
+        transition={{ duration: 1.5, delay: 0.2 }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]"
+      >
+        <img
+          src="/images/ceezandray-logo.png"
+          alt="Ceez & Ray"
+          className="w-[70vw] md:w-[50vw] max-w-[800px] object-contain"
+        />
+      </motion.div>
+
+      <div className="relative z-[2] container mx-auto px-6 pb-24 pt-40">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
