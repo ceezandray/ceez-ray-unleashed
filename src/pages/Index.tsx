@@ -72,7 +72,7 @@ const Index = () => {
                     className="flex-1 flex items-center justify-center gap-2 py-3 rounded font-heading tracking-wider text-sm text-white/60 border border-white/10 hover:border-white/30 transition-colors uppercase"
                   >
                     <VolumeX className="w-4 h-4" />
-                    NAH, I'M GOOD
+                    SILENT PLEASE
                   </button>
                 </div>
               </div>
