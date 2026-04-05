@@ -88,61 +88,9 @@ const LatestEpisodes = () => {
           </a>
         </motion.div>
 
-        {/* Featured Free Episode - Large Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="group cursor-pointer mb-8"
-        >
-          <div className="relative overflow-hidden aspect-[21/9] border border-border/30">
-            <img
-              src={episodes[0].thumbnail}
-              alt={episodes[0].title}
-              className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-
-            {/* Free badge */}
-            <div className="absolute top-4 left-4 bg-primary px-3 py-1 flex items-center gap-1.5">
-              <Play className="w-3 h-3 text-white fill-white" />
-              <span className="font-heading text-[11px] tracking-wider text-white">FREE EPISODE</span>
-            </div>
-
-            {/* Content overlay */}
-            <div className="absolute bottom-0 left-0 p-6 md:p-10 max-w-lg">
-              <p className="font-heading text-xs tracking-[0.2em] text-accent mb-2">{episodes[0].number}</p>
-              <h4 className="font-heading text-3xl md:text-4xl text-foreground mb-2">
-                {episodes[0].title}
-              </h4>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {episodes[0].description}
-              </p>
-              <div className="inline-flex items-center gap-2 font-heading text-xs tracking-wider px-5 py-2.5 bg-primary text-white hover:bg-primary/80 transition-all">
-                <Play className="w-3.5 h-3.5 fill-white" />
-                WATCH NOW
-              </div>
-            </div>
-
-            {/* Duration */}
-            <span className="absolute bottom-4 right-4 bg-background/80 text-foreground text-xs px-2 py-0.5 font-heading">
-              {episodes[0].duration}
-            </span>
-
-            {episodes[0].progress && (
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
-                <div className="h-full bg-primary" style={{ width: `${episodes[0].progress}%` }} />
-              </div>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Locked Episodes Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {episodes.slice(1).map((ep, i) => (
+        {/* Episodes Grid - 3 columns, 2 rows */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {episodes.map((ep, i) => (
             <motion.div
               key={ep.number}
               initial={{ opacity: 0, y: 30 }}
@@ -150,36 +98,54 @@ const LatestEpisodes = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
               className="group cursor-pointer"
-              onClick={() => handleLockedClick(ep.title)}
+              onClick={() => !ep.free && handleLockedClick(ep.title)}
             >
-              <div className="relative overflow-hidden mb-3 aspect-[4/3] border border-border/20">
+              <div className="relative overflow-hidden mb-3 aspect-video border border-border/20">
                 <img
                   src={ep.thumbnail}
                   alt={ep.title}
-                  className="w-full h-full object-cover object-[center_35%] grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                  className={`w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-all duration-500 ${!ep.free ? "grayscale group-hover:grayscale-0" : ""}`}
                   loading="lazy"
                 />
 
-                {/* Dark locked overlay */}
-                <div className="absolute inset-0 bg-background/75 group-hover:bg-background/60 transition-all duration-300 flex flex-col items-center justify-center gap-2">
-                  <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all duration-300">
-                    <Lock className="w-4 h-4 text-primary" />
+                {ep.free ? (
+                  <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(153,0,0,0.7)' }}>
+                      <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+                    </div>
                   </div>
-                  <span className="font-heading text-[9px] tracking-[0.2em] text-primary/80 group-hover:text-primary transition-colors">
-                    ACCESS PASS
-                  </span>
-                </div>
+                ) : (
+                  <div className="absolute inset-0 bg-background/70 group-hover:bg-background/55 transition-all duration-300 flex flex-col items-center justify-center gap-2">
+                    <div className="w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+                      <Lock className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="font-heading text-[10px] tracking-[0.2em] text-primary/80 group-hover:text-primary transition-colors">
+                      UNLOCK WITH ACCESS PASS
+                    </span>
+                  </div>
+                )}
 
-                {/* Duration badge */}
-                <span className="absolute bottom-2 right-2 bg-background/80 text-foreground text-[10px] px-1.5 py-0.5 font-heading">
+                {ep.free && (
+                  <div className="absolute top-2 left-2 bg-primary px-2 py-0.5">
+                    <span className="font-heading text-[10px] tracking-wider text-white">FREE</span>
+                  </div>
+                )}
+
+                {ep.progress && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
+                    <div className="h-full bg-primary" style={{ width: `${ep.progress}%` }} />
+                  </div>
+                )}
+
+                <span className="absolute bottom-2 right-2 bg-background/80 text-foreground text-xs px-2 py-0.5 font-heading">
                   {ep.duration}
                 </span>
               </div>
-              <p className="font-heading text-[10px] tracking-wider text-muted-foreground mb-0.5">{ep.number}</p>
-              <h4 className="font-heading text-sm text-foreground mb-0.5 group-hover:text-primary transition-colors">
+              <p className="font-heading text-xs tracking-wider text-muted-foreground mb-0.5">{ep.number}</p>
+              <h4 className="font-heading text-base text-foreground mb-0.5 group-hover:text-primary transition-colors">
                 {ep.title}
               </h4>
-              <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">{ep.description}</p>
+              <p className="text-muted-foreground text-xs leading-relaxed">{ep.description}</p>
             </motion.div>
           ))}
         </div>
@@ -258,23 +224,19 @@ const LatestEpisodes = () => {
                 </p>
               </div>
 
-              {/* Single Episode Option */}
               {selectedEpisode && (
-                <div className="border border-border p-5 mb-3 hover:border-primary/50 transition-colors cursor-pointer group">
+                <div className="border border-border p-5 mb-3 hover:border-primary/50 transition-colors cursor-pointer">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-heading text-sm text-foreground">THIS EPISODE</h4>
                     <span className="font-heading text-xl text-foreground">$2.99</span>
                   </div>
-                  <p className="text-muted-foreground text-xs mb-3">
-                    Unlock this episode only
-                  </p>
+                  <p className="text-muted-foreground text-xs mb-3">Unlock this episode only</p>
                   <button className="w-full font-heading text-xs tracking-wider py-3 border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all duration-300">
                     BUY EPISODE — $2.99
                   </button>
                 </div>
               )}
 
-              {/* Access Pass Option */}
               <div className="border border-primary/50 p-5 relative hover:border-primary transition-colors cursor-pointer bg-primary/5">
                 <div className="absolute -top-3 left-4 bg-primary px-3 py-0.5">
                   <span className="font-heading text-[10px] tracking-wider text-white">BEST VALUE</span>
@@ -286,9 +248,7 @@ const LatestEpisodes = () => {
                   </div>
                   <span className="font-heading text-xl text-primary">$14.99</span>
                 </div>
-                <p className="text-muted-foreground text-xs mb-3">
-                  Unlock all Season 1 episodes · Save over 50%
-                </p>
+                <p className="text-muted-foreground text-xs mb-3">Unlock all Season 1 episodes · Save over 50%</p>
                 <button className="w-full font-heading text-xs tracking-wider py-3 bg-primary text-white hover:bg-primary/80 transition-all duration-300">
                   GET ACCESS PASS — $14.99
                 </button>
