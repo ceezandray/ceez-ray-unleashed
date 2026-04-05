@@ -7,16 +7,16 @@ const CastSection = () => {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10" />
       <div className="absolute inset-0">
         <img
-          src="/images/ceazray-faceoff.png"
+          src="/images/ceazray-faceoff-2.png"
           alt="Ceez vs Ray faceoff"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-background/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+        <div className="absolute inset-0 bg-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
       </div>
 
-      <div className="container mx-auto px-6 relative">
+      <div className="container mx-auto px-6 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
