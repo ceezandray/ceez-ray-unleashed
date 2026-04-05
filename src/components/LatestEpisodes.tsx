@@ -115,7 +115,7 @@ const LatestEpisodes = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="absolute inset-0 bg-background/70 group-hover:bg-background/55 transition-all duration-300 flex flex-col items-center justify-center gap-2">
+                  <div className="absolute inset-0 bg-background/85 group-hover:bg-background/75 transition-all duration-300 flex flex-col items-center justify-center gap-2">
                     <div className="w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all duration-300">
                       <Lock className="w-5 h-5 text-primary" />
                     </div>
