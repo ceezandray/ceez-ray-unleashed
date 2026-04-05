@@ -70,7 +70,7 @@ const HeroSection = () => {
             transition={{ delay: 1.1 }}
             className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg"
           >
-            It all started with a sandwich. And a very bad decision.
+            It all started with a strawberry smoothie, banana bread, and a very bad decision.
           </motion.p>
 
           <motion.div
