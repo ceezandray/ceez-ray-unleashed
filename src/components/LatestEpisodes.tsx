@@ -104,7 +104,7 @@ const LatestEpisodes = () => {
                 <img
                   src={ep.thumbnail}
                   alt={ep.title}
-                  className={`w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-all duration-500 ${!ep.free ? "grayscale group-hover:grayscale-0" : ""}`}
+                  className={`w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-all duration-500`}
                   loading="lazy"
                 />
 
