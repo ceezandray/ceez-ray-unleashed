@@ -52,7 +52,7 @@ const Index = () => {
 
               <div className="p-6 md:p-8 flex flex-col items-center gap-4">
                 <h2 className="text-lg md:text-xl font-heading tracking-wider text-white text-center">
-                  WANT THE VIBES?
+                  MUSIC ON OR OFF?
                 </h2>
                 <p className="text-white/50 font-body text-xs md:text-sm text-center">
                   Experience the site with our original soundtrack
