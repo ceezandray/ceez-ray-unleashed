@@ -17,7 +17,7 @@ const MediaPress = () => {
   ];
 
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative bg-background">
       {/* Background photo with gradient fades */}
       <div className="absolute inset-0 overflow-hidden">
         <img
