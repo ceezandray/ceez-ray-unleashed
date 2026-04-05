@@ -179,16 +179,16 @@ const LatestEpisodes = () => {
               </button>
 
               <div className="text-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
-                  <Lock className="w-7 h-7 text-primary" />
-                </div>
+                <img
+                  src="/images/bpf-logo.png"
+                  alt="Black Picket Fence"
+                  className="h-14 mx-auto mb-4 object-contain"
+                />
                 <h3 className="font-heading text-2xl text-foreground mb-1">
-                  {selectedEpisode
-                    ? `UNLOCK "${selectedEpisode.toUpperCase()}"`
-                    : "UNLOCK SEASON 1"}
+                  GET YOUR ACCESS PASS
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Choose how you want to watch
+                  Unlock Season 1 of Ceez and Ray
                 </p>
               </div>
 
