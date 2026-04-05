@@ -44,9 +44,9 @@ const Index = () => {
             >
               <div className="w-full h-48 md:h-56 overflow-hidden">
                 <img
-                  src="/images/ceez-ray-gorilla.png"
+                  src="/images/music-popup.gif"
                   alt="Ceez & Ray"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 
