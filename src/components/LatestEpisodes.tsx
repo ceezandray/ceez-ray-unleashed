@@ -144,7 +144,7 @@ const LatestEpisodes = () => {
                 </span>
               </div>
               <p className="font-heading text-xs tracking-wider text-muted-foreground mb-0.5">{ep.number}</p>
-              <h4 className="font-heading text-base text-foreground mb-0.5 group-hover:text-primary transition-colors">
+              <h4 className="font-heading text-base text-primary mb-0.5 group-hover:text-primary/80 transition-colors">
                 {ep.title}
               </h4>
               <p className="text-muted-foreground text-xs leading-relaxed">{ep.description}</p>
