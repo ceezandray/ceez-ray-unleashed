@@ -112,8 +112,8 @@ const LatestEpisodes = () => {
 
                 {ep.free ? (
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-300 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ background: 'rgba(153,0,0,0.7)' }}>
-                      <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+                    <div className="w-11 h-11 rounded-full bg-background/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
                   </div>
                 ) : (
