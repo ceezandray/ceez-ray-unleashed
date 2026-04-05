@@ -27,6 +27,7 @@ const episodes = [
     thumbnail: "/images/ep-mugshot.png",
     duration: "11:48",
     free: false,
+    objectPosition: "left bottom",
   },
   {
     number: "EP 04",
