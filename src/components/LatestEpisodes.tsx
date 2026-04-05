@@ -179,16 +179,16 @@ const LatestEpisodes = () => {
               </button>
 
               <div className="text-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
-                  <Lock className="w-7 h-7 text-primary" />
-                </div>
+                <img
+                  src="/images/bpf-logo.png"
+                  alt="Black Picket Fence"
+                  className="h-14 mx-auto mb-4 object-contain"
+                />
                 <h3 className="font-heading text-2xl text-foreground mb-1">
-                  {selectedEpisode
-                    ? `UNLOCK "${selectedEpisode.toUpperCase()}"`
-                    : "UNLOCK SEASON 1"}
+                  GET YOUR ACCESS PASS
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Choose how you want to watch
+                  Unlock Season 1 of Ceez and Ray
                 </p>
               </div>
 
@@ -214,7 +214,7 @@ const LatestEpisodes = () => {
                     <Shield className="w-4 h-4 text-primary" />
                     <h4 className="font-heading text-sm text-foreground">ACCESS PASS</h4>
                   </div>
-                  <span className="font-heading text-xl text-primary">$14.99</span>
+                  <span className="font-heading text-xl text-foreground">$14.99</span>
                 </div>
                 <p className="text-muted-foreground text-xs mb-3">Unlock all Season 1 episodes · Save over 50%</p>
                 <button className="w-full font-heading text-xs tracking-wider py-3 bg-primary text-white hover:bg-primary/80 transition-all duration-300">
