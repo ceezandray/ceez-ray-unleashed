@@ -118,10 +118,10 @@ const LatestEpisodes = () => {
                   </div>
                 ) : (
                   <div className="absolute inset-0 bg-background/85 group-hover:bg-background/75 transition-all duration-300 flex flex-col items-center justify-center gap-2">
-                    <div className="w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-full bg-background/80 border border-primary/40 flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all duration-300">
                       <Lock className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="font-heading text-[10px] tracking-[0.2em] text-primary/80 group-hover:text-primary transition-colors">
+                    <span className="font-heading text-[10px] tracking-[0.2em] text-white group-hover:text-white/90 transition-colors">
                       UNLOCK WITH ACCESS PASS
                     </span>
                   </div>
