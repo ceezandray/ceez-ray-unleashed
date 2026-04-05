@@ -152,40 +152,6 @@ const LatestEpisodes = () => {
           ))}
         </div>
 
-        {/* Access Pass Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10 border border-primary/20 bg-primary/5 p-6 flex flex-col md:flex-row items-center justify-between gap-4 cursor-pointer hover:border-primary/40 transition-colors"
-          onClick={() => {
-            setSelectedEpisode(null);
-            setShowPaywall(true);
-          }}
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-              <Shield className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <h4 className="font-heading text-lg text-foreground">
-                SEASON 1 ACCESS PASS
-              </h4>
-              <p className="text-muted-foreground text-xs">
-                Unlock all 6 episodes · Save over 50% vs buying individually
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <span className="font-heading text-2xl text-primary">$14.99</span>
-              <p className="text-muted-foreground text-[10px] line-through">$17.94 if bought separately</p>
-            </div>
-            <button className="font-heading text-xs tracking-wider px-6 py-3 bg-primary text-white hover:bg-primary/80 transition-all whitespace-nowrap">
-              GET ACCESS
-            </button>
-          </div>
-        </motion.div>
       </div>
 
       {/* Paywall Modal */}
