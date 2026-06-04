@@ -5,7 +5,7 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
-    bio: "Born in New Jersey, Quantice Nash is the creator of Ceez & Ray and the founder of Black Picket Fence Entertainment. As creator, director, and executive producer, he leads the vision, storytelling, character development, and production of the series. Known for his innovative use of AI-driven animation, Quantice creates bold, entertaining content that blends humor, culture, and cinematic storytelling. His creative work has earned recognition through award-winning campaigns and contests featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
+    bio: "Born in New Jersey, Quantice Nash is the creator of Ceez & Ray and founder of Black Picket Fence Entertainment. As creator, director, and executive producer, he leads the vision, storytelling, and production of the series. His award-winning creative work has been recognized through campaigns and contests featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
     socials: {
       tiktok: "#",
       instagram: "#",
