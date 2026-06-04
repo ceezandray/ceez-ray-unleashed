@@ -9,7 +9,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "The Studio", href: "/about-bpf" },
   { label: "Characters", href: "/#cast" },
-  { label: "Episodes", href: "/episodes" },
+  { label: "Media", href: "/episodes" },
   { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
   { label: "Login", href: "/login" },
