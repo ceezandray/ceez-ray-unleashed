@@ -56,12 +56,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <h1 className="font-heading text-5xl md:text-7xl text-foreground mb-1 leading-tight">
-              CEEZ & RAY
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-3 leading-tight">
+              CEEZ & RAY — <span className="text-primary text-glow-red">Season 1 Coming Soon</span>
             </h1>
-             <h2 className="font-heading text-4xl md:text-6xl text-primary text-glow-red mb-3 leading-tight">
-               SEASON ONE COMING SOON
-             </h2>
           </motion.div>
 
           <motion.p
