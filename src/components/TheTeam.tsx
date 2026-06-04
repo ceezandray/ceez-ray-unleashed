@@ -17,7 +17,7 @@ const team = [
     name: "Jasmine Wilson",
     role: "Creative Collaborator & Web / Game Developer",
     image: "/images/jasmine.png",
-    bio: "Jasmine Wilson is a creative collaborator on Ceez & Ray, helping bring the franchise to life through web development, game development, and interactive experiences. With a background in digital design, operations, and creative production, she specializes in building engaging platforms that connect audiences to the Ceez & Ray universe. Jasmine's creative work has earned recognition through award-winning campaigns and contests featuring brands such as NASA, Louis Vuitton, Burger King, Nike, Puma, LEGO, and more.",
+    bio: "Jasmine Wilson is a creative collaborator on Ceez & Ray, specializing in web development, game development, and interactive experiences. Her award-winning creative work has been recognized through campaigns and contests featuring brands such as NASA, Louis Vuitton, Burger King, Nike, Puma, LEGO, and more.",
     socials: {
       tiktok: "#",
       instagram: "#",
