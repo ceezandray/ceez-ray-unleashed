@@ -4,17 +4,21 @@ import { Bell, X } from "lucide-react";
 
 const HeroSection = () => {
   const [showNotify, setShowNotify] = useState(false);
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (firstName.trim() && email.trim() && birthday.trim()) {
       setSubmitted(true);
       setTimeout(() => {
         setShowNotify(false);
         setSubmitted(false);
+        setFirstName("");
         setEmail("");
+        setBirthday("");
       }, 2500);
     }
   };
