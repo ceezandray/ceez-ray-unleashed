@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 const team = [
   {
     name: "Quantice Nash",
+    firstName: "Quantice",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
     bio: "Quantice Nash is the creator of Ceez & Ray and founder of Black Picket Fence Entertainment, leading the vision, storytelling, and production of the series. His award-winning creative work has been recognized through campaigns featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
@@ -13,6 +14,7 @@ const team = [
   },
   {
     name: "Jasmine Wilson",
+    firstName: "Jasmine",
     role: "Creative Collaborator & Web / Game Developer",
     image: "/images/jasmine.png",
     bio: "Jasmine Wilson is a creative collaborator on Ceez & Ray, specializing in web development, game development, and interactive experiences. Her award-winning creative work has been recognized through campaigns and contests featuring brands such as NASA, Louis Vuitton, Burger King, Nike, Puma, LEGO, and more.",
