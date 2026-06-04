@@ -116,6 +116,7 @@ const TheTeam = () => {
                 {member.bio}
               </p>
               <div className="flex items-center justify-center gap-3">
+                <span className="font-body text-sm text-muted-foreground">Follow {member.firstName} on:</span>
                 {Object.entries(member.socials).map(([type, url]) => (
                   <a
                     key={type}
