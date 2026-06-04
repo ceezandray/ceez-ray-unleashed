@@ -137,14 +137,14 @@ const HeroSection = () => {
                 <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
                   <Bell className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-heading text-2xl text-foreground mb-2">GET NOTIFIED AT LAUNCH</h3>
-                <p className="text-muted-foreground text-sm">Be the first to know when the series drops. We will never spam.</p>
+                <h3 className="font-heading text-2xl text-foreground mb-2">BE FIRST IN THE BODEGA</h3>
+                <p className="text-muted-foreground text-sm">Drop your info and we'll hit you up the moment Season 1 goes live. No spam, no nonsense — just the launch.</p>
               </div>
 
               {submitted ? (
                 <div className="text-center py-4">
-                  <div className="text-primary font-heading text-lg mb-1">YOU'RE IN! 🔥</div>
-                  <p className="text-muted-foreground text-sm">We'll hit your inbox when the series launches.</p>
+                  <div className="text-primary font-heading text-lg mb-1">YOU'RE ON THE LIST 🔥</div>
+                  <p className="text-muted-foreground text-sm">We'll slide into your inbox when Ceez & Ray drops.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
