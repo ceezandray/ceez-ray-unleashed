@@ -81,7 +81,7 @@ const HeroSection = () => {
               className="font-heading tracking-wider px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm animate-pulse-glow inline-flex items-center gap-2"
             >
               <Bell className="w-4 h-4" />
-              [ BE FIRST TO SEE IT ]
+              Get Exclusive Access
             </button>
           </motion.div>
         </motion.div>
