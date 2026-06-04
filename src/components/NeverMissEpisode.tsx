@@ -43,7 +43,7 @@ const NeverMissEpisode = () => {
               <span className="text-primary text-glow-red">EPISODE.</span>
             </h2>
             <p className="text-muted-foreground text-sm max-w-md mx-auto mb-6">
-              Get notified the second new episodes drop. No spam, just heat.
+              Get notified when we launch the series. No spam, just heat.
             </p>
             <button
               onClick={() => setShowPopup(true)}
