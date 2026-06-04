@@ -98,7 +98,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-up": "slide-up 0.8s ease-out forwards",
         "fade-in": "fade-in 1s ease-out forwards",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
       },
     },
   },
