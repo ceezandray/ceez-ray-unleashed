@@ -85,10 +85,10 @@ const HeroSection = () => {
           >
             <button
               onClick={() => setShowNotify(true)}
-              className="font-heading tracking-wider px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-base md:text-lg animate-pulse-glow inline-flex items-center gap-2"
+              className="font-heading tracking-wider px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm md:text-base animate-pulse-glow inline-flex items-center gap-2"
             >
               <Bell className="w-5 h-5" />
-              Get Notification
+              Get Notified
             </button>
           </motion.div>
         </motion.div>
