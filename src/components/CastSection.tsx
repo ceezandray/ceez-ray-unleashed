@@ -34,17 +34,6 @@ const CastSection = () => {
           </h3>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center mb-16"
-        >
-          <button className="font-heading text-xs tracking-wider px-6 py-3 border border-accent/40 text-accent hover:bg-accent/10 transition-all duration-300">
-            SEE THE REST OF THE CAST
-          </button>
-        </motion.div>
 
         {/* Characters - pushed down 60px */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">

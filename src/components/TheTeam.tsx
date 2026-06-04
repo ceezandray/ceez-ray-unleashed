@@ -5,12 +5,10 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
-    bio: "Born in New Jersey, Quantice Nash is the creator of Ceez & Ray and founder of Black Picket Fence Entertainment. As creator, director, and executive producer, he leads the vision, storytelling, and production of the series. His award-winning creative work has been recognized through campaigns and contests featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
+    bio: "Quantice Nash is the creator of Ceez & Ray and founder of Black Picket Fence Entertainment, leading the vision, storytelling, and production of the series. His award-winning creative work has been recognized through campaigns featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
     socials: {
-      tiktok: "#",
-      instagram: "#",
-      youtube: "#",
-      email: "#",
+      tiktok: "https://www.tiktok.com/@czadaboi",
+      instagram: "https://www.instagram.com/czadaboi",
     },
   },
   {
@@ -19,10 +17,8 @@ const team = [
     image: "/images/jasmine.png",
     bio: "Jasmine Wilson is a creative collaborator on Ceez & Ray, specializing in web development, game development, and interactive experiences. Her award-winning creative work has been recognized through campaigns and contests featuring brands such as NASA, Louis Vuitton, Burger King, Nike, Puma, LEGO, and more.",
     socials: {
-      tiktok: "#",
-      instagram: "#",
-      youtube: "#",
-      email: "#",
+      tiktok: "https://www.tiktok.com/@iflipbrandscom",
+      instagram: "https://www.instagram.com/iflipbrandscom",
     },
   },
 ];
