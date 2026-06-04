@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about-bpf" },
-  { label: "Episodes", href: "/episodes" },
+  { label: "Media", href: "/episodes" },
   { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];

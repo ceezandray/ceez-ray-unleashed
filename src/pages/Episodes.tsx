@@ -61,13 +61,13 @@ const Episodes = () => {
             className="text-center mb-14"
           >
             <h1 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
-              SEASON ONE
+              SEASON ONE COMING SOON!
             </h1>
             <h2 className="font-heading text-5xl md:text-7xl text-primary mb-2">
-              ALL <span className="text-glow-red">EPISODES</span>
+              LATEST <span className="text-glow-red">MEDIA</span>
             </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Follow Ceez & Ray from the bodega to the courtroom.
+              Follow Ceez & Ray behind the scenes on their journey from the bodega to the courtroom.
             </p>
           </motion.div>
 
