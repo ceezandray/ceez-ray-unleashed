@@ -75,10 +75,10 @@ const LatestEpisodes = () => {
         >
           <div>
             <h2 className="font-heading text-sm tracking-[0.3em] text-foreground mb-4">
-              SEASON ONE
+              Interactive Media.
             </h2>
             <h3 className="font-heading text-4xl md:text-5xl text-primary">
-              LATEST <span className="text-glow-red">EPISODES</span>
+              LATEST <span className="text-glow-red">CLIPS</span>
             </h3>
           </div>
           <a

@@ -56,11 +56,11 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <h1 className="font-heading text-4xl md:text-6xl text-foreground mb-1 leading-tight">
-              EPISODE ONE
+            <h1 className="font-heading text-5xl md:text-7xl text-foreground mb-1 leading-tight">
+              CEEZ & RAY
             </h1>
-             <h2 className="font-heading text-5xl md:text-7xl text-primary text-glow-red mb-3 leading-tight">
-               JOE'S BODEGA
+             <h2 className="font-heading text-4xl md:text-6xl text-primary text-glow-red mb-3 leading-tight">
+               SEASON ONE COMING SOON
              </h2>
           </motion.div>
 
@@ -70,7 +70,7 @@ const HeroSection = () => {
             transition={{ delay: 1.1 }}
             className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg"
           >
-            It all started with a strawberry smoothie, banana bread, and a very bad decision.
+            One gorilla. One pigeon. One bodega incident that changes everything.
           </motion.p>
 
           <motion.div
@@ -79,18 +79,12 @@ const HeroSection = () => {
             transition={{ delay: 1.4 }}
             className="flex gap-4 flex-wrap"
           >
-            <a
-              href="#episodes"
-              className="font-heading tracking-wider px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm animate-pulse-glow"
-            >
-              WATCH EPISODE 1
-            </a>
             <button
               onClick={() => setShowNotify(true)}
-              className="inline-flex items-center gap-2 font-heading tracking-wider px-8 py-4 border border-muted-foreground/50 text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 text-sm"
+              className="font-heading tracking-wider px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm animate-pulse-glow inline-flex items-center gap-2"
             >
               <Bell className="w-4 h-4" />
-              NEVER MISS AN EPISODE
+              [ BE FIRST TO SEE IT ]
             </button>
           </motion.div>
         </motion.div>
