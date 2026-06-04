@@ -59,7 +59,7 @@ const HeroSection = () => {
             <h1 className="font-heading text-5xl md:text-7xl text-foreground mb-1 leading-tight">
               CEEZ & RAY
             </h1>
-            <h2 className="font-heading text-4xl md:text-6xl text-primary text-glow-red mb-3 leading-tight">
+            <h2 className="font-heading text-3xl md:text-5xl text-primary text-glow-red mb-3 leading-tight">
               SEASON 1 COMING SOON
             </h2>
           </motion.div>
