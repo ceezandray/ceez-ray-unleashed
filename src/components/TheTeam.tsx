@@ -5,7 +5,7 @@ const team = [
     name: "Quantice Nash",
     role: "Creator / Director / Executive Producer",
     image: "/images/quantice.jpg",
-    bio: "Born in New Jersey, Quantice Nash is the award-winning creator behind Ceez & Ray. As creator, director, and executive producer, he brings bold storytelling and raw authenticity to every frame. A pioneer in AI-driven animation, Quantice blends cutting-edge technology with culture-first content, delivering work that's energetic, humorous, and unmistakably his.",
+    bio: "Born in New Jersey, Quantice Nash is the creator of Ceez & Ray and the founder of Black Picket Fence Entertainment. As creator, director, and executive producer, he leads the vision, storytelling, character development, and production of the series. Known for his innovative use of AI-driven animation, Quantice creates bold, entertaining content that blends humor, culture, and cinematic storytelling. His creative work has earned recognition through award-winning campaigns and contests featuring brands such as Tesla, Coca-Cola, Prime, Nike, Saratoga, and more.",
     socials: {
       tiktok: "#",
       instagram: "#",
@@ -15,9 +15,9 @@ const team = [
   },
   {
     name: "Jasmine Wilson",
-    role: "Producer / Brand Strategist / Audio Director",
+    role: "Creative Collaborator & Web / Game Developer",
     image: "/images/jasmine.png",
-    bio: "Jasmine Wilson is the operational backbone of Black Picket Fence Entertainment. With expertise in production, brand strategy, and digital marketing, she builds the ecosystem powering the BPF brand. From audio direction to merch and platform strategy, Jasmine ensures every piece works together to expand the Ceez & Ray universe.",
+    bio: "Jasmine Wilson is a creative collaborator on Ceez & Ray, helping bring the franchise to life through web development, game development, and interactive experiences. With a background in digital design, operations, and creative production, she specializes in building engaging platforms that connect audiences to the Ceez & Ray universe. Jasmine's creative work has earned recognition through award-winning campaigns and contests featuring brands such as NASA, Louis Vuitton, Burger King, Nike, Puma, LEGO, and more.",
     socials: {
       tiktok: "#",
       instagram: "#",
