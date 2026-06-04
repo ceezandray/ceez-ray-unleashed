@@ -137,25 +137,45 @@ const HeroSection = () => {
                 <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
                   <Bell className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-heading text-2xl text-foreground mb-2">NEVER MISS AN EPISODE</h3>
-                <p className="text-muted-foreground text-sm">Get notified when new episodes drop. No spam, just heat.</p>
+                <h3 className="font-heading text-2xl text-foreground mb-2">GET NOTIFIED AT LAUNCH</h3>
+                <p className="text-muted-foreground text-sm">Be the first to know when the series drops. We will never spam.</p>
               </div>
 
               {submitted ? (
                 <div className="text-center py-4">
                   <div className="text-primary font-heading text-lg mb-1">YOU'RE IN! 🔥</div>
-                  <p className="text-muted-foreground text-sm">We'll hit your inbox when the next episode drops.</p>
+                  <p className="text-muted-foreground text-sm">We'll hit your inbox when the series launches.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+                  <input
+                    type="text"
+                    required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First Name"
+                    maxLength={50}
+                    className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
+                  />
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
+                    placeholder="Email"
+                    maxLength={255}
                     className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
                   />
+                  <div className="flex flex-col gap-1">
+                    <label className="text-muted-foreground text-xs tracking-wider uppercase">Birthday</label>
+                    <input
+                      type="date"
+                      required
+                      value={birthday}
+                      onChange={(e) => setBirthday(e.target.value)}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm outline-none focus:border-primary placeholder:text-muted-foreground"
+                    />
+                  </div>
                   <button
                     type="submit"
                     className="w-full font-heading tracking-wider py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-all text-sm rounded-lg"
