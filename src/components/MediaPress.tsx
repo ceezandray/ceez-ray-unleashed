@@ -23,7 +23,7 @@ const MediaPress = () => {
         <img
           src="/images/ceez-ray-gorilla.png"
           alt="Ceez & Ray"
-          className="w-full h-full object-cover object-top opacity-30"
+          className="w-full h-full object-cover object-top opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
